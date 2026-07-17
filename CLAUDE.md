@@ -44,6 +44,11 @@ criar Server Action/Route Handler que vai quebrar o build.
 - Tailwind only — sem CSS inline, sem styled-components
 - Cores da marca já configuradas no `tailwind.config.ts`: `#94B94A` (verde),
   `#384C96` (azul), `#D88739` (laranja) — usar os tokens, não hex direto no JSX
+- **Exceção intencional — `--color-brand-blue-header` (`#1E55A6`):** usado só no
+  `Header` (`components/header.tsx`), nunca no resto do site. É o azul já embutido
+  no arquivo `public/logo/don-energy-logo.png`, escolhido pra grudar visualmente
+  com o logo — diverge de propósito do `--color-brand-blue` (`#384C96`) oficial.
+  Não "corrigir" isso pra bater com a paleta.
 - Fontes: Sora (headings) + Inter (body), via `next/font/google`
 - Nomes de arquivo: kebab-case. Componentes: PascalCase
 

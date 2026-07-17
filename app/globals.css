@@ -13,8 +13,12 @@
   --color-brand-blue: #384c96;
   --color-brand-orange: #d88739;
 
+  /* Exceção intencional: ver nota no CLAUDE.md — usar só no Header, pra
+     casar com o azul já embutido no arquivo public/logo/don-energy-logo.png */
+  --color-brand-blue-header: #1e55a6;
+
   --font-sans: var(--font-sans);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-sora);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -135,5 +139,67 @@ body {
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.reveal-on-scroll {
+  animation: reveal-in linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 35%;
+}
+
+@supports not (animation-timeline: view()) {
+  .reveal-on-scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-dissolve-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.hero-dissolve {
+  animation: hero-dissolve-out linear both;
+  animation-timeline: scroll();
+  animation-range: 0px 100vh;
+}
+
+@supports not (animation-timeline: scroll()) {
+  .hero-dissolve {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-on-scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-dissolve {
+    animation: none;
+    opacity: 1;
   }
 }

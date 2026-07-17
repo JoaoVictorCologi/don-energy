@@ -62,6 +62,14 @@ body {
 }
 
 :root {
+  /* Fonte única de verdade pro tamanho do Header (components/header.tsx).
+     Ele NÃO tem altura fixa — cresce com py + logo. Se mudar o padding ou
+     o tamanho do logo lá, mude aqui também: tudo que depende da altura do
+     header (Hero min-h, scroll-mt das seções) lê essas duas variáveis. */
+  --header-py: 0.75rem; /* = py-3 */
+  --header-logo-size: 4rem; /* = h-16 / w-16 */
+  --header-height: calc(var(--header-py) * 2 + var(--header-logo-size));
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

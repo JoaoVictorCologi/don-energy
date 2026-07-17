@@ -4,7 +4,10 @@ import { obras } from "@/lib/obras-data";
 
 export function ObrasGallery() {
   return (
-    <section id="servicos" className="bg-background px-6 py-20">
+    <section
+      id="obras"
+      className="scroll-mt-[var(--header-height)] bg-background px-6 py-20"
+    >
       <div className="mx-auto max-w-6xl">
         <h2 className="font-heading text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Obras entregues

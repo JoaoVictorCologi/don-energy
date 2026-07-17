@@ -34,7 +34,9 @@
       "PowerShell(Get-CimInstance Win32_Process -Filter \"CommandLine LIKE '%next dev%'\" | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -Confirm:$false }; Start-Sleep -Milliseconds 300; Get-CimInstance Win32_Process -Filter \"CommandLine LIKE '%next dev%'\" | Select-Object ProcessId,CommandLine)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000 --max-time 2)",
       "PowerShell(Stop-Process -Id 8596 -Force -Confirm:$false)",
-      "PowerShell(Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue)"
+      "PowerShell(Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue)",
+      "Bash(git push *)",
+      "WebFetch(domain:agpower.com.br)"
     ]
   }
 }

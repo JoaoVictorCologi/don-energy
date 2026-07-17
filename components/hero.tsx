@@ -5,7 +5,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function Hero() {
   return (
-    <section className="hero-dissolve relative isolate flex min-h-[calc(100svh-88px)] items-center justify-center overflow-hidden px-6 py-24 text-center text-white">
+    <section className="hero-dissolve relative isolate flex min-h-[calc(100svh-var(--header-height))] items-center justify-center overflow-hidden px-6 py-24 text-center text-white">
       <Image
         src="/obras/obra-09.webp"
         alt=""

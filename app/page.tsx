@@ -1,4 +1,5 @@
 import { Depoimentos } from "@/components/depoimentos";
+import { FormularioContato } from "@/components/formulario-contato";
 import { Hero } from "@/components/hero";
 import { ObrasGallery } from "@/components/obras-gallery";
 import { Servicos } from "@/components/servicos";
@@ -10,6 +11,7 @@ export default function Home() {
       <Servicos />
       <ObrasGallery />
       <Depoimentos />
+      <FormularioContato />
     </main>
   );
 }

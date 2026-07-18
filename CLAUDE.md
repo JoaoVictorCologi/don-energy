@@ -23,6 +23,11 @@ Se uma feature parecer exigir servidor, a resposta correta é resolver no client
 (ex: montar um link `wa.me` com os dados) ou avisar antes de implementar — não
 criar Server Action/Route Handler que vai quebrar o build.
 
+**Exceção**: `app/robots.ts` e `app/sitemap.ts` são tecnicamente "Route
+Handlers especiais", mas são seguros em static export — rodam só em build
+time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
+`/sitemap.xml`) dentro de `out/`. Não conta como violação da regra acima.
+
 ## Commands
 - `npm run dev` — servidor local (porta 3000)
 - `npm run build` — gera o export estático em `/out`
@@ -72,3 +77,11 @@ criar Server Action/Route Handler que vai quebrar o build.
 - Logo: usar sempre os arquivos de `public/logo/` — versão fundo branco ainda é
   aproximação gerada, marcar visualmente se precisar trocar depois da aprovação
   do cliente
+- **`SITE_URL` (`lib/site-config.ts`) é um placeholder** (`https://SEU-DOMINIO-AQUI.com.br`)
+  até o domínio de produção ser registrado com o cliente. É usado em
+  `metadataBase` (layout), `app/robots.ts` e `app/sitemap.ts` — trocar só ali
+  quando o domínio real existir, não precisa buscar em outro lugar do projeto.
+- Ícones/favicon usam a convenção de arquivo do Next (`app/favicon.ico`,
+  `app/icon.png` + `icon1-4.png`, `app/apple-icon.png`) — não em `public/`.
+  Se precisar trocar algum, é só substituir o arquivo no lugar certo, o Next
+  gera as tags `<link>` sozinho.

@@ -252,11 +252,7 @@ export function FormularioContato() {
               />
               <FieldLabel htmlFor="consentimento" className="font-normal">
                 Concordo com o tratamento dos meus dados conforme a{" "}
-                <Link
-                  href="/privacidade"
-                  prefetch={false}
-                  className="underline underline-offset-4"
-                >
+                <Link href="/privacidade" className="underline underline-offset-4">
                   política de privacidade
                 </Link>
                 .

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { SITE_URL } from "@/lib/site-config";
+import { PRIVACIDADE_ATUALIZADA_EM, SITE_URL } from "@/lib/site-config";
 
 export const dynamic = "force-static";
 
@@ -11,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${SITE_URL}/privacidade`,
+      lastModified: PRIVACIDADE_ATUALIZADA_EM,
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
   ];
 }

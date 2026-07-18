@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, Inter, Geist } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { cn } from "@/lib/utils";
 
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -252,7 +252,15 @@ export function FormularioContato() {
               />
               <FieldLabel htmlFor="consentimento" className="font-normal">
                 Concordo com o tratamento dos meus dados conforme a{" "}
-                <Link href="/privacidade" className="underline underline-offset-4">
+                {/* prefetch=false: rota nested (/privacidade) — o export
+                    estático do Next 16.2.10 gera o payload de prefetch com
+                    um path diferente do que o client pede, 404 sempre no
+                    console em produção. Link funciona normal ao clicar. */}
+                <Link
+                  href="/privacidade"
+                  prefetch={false}
+                  className="underline underline-offset-4"
+                >
                   política de privacidade
                 </Link>
                 .

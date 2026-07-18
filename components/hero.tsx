@@ -10,7 +10,7 @@ export function Hero() {
         src="/obras/obra-09.webp"
         alt=""
         fill
-        priority
+        preload
         sizes="100vw"
         className="object-cover"
       />

@@ -24,10 +24,10 @@ const MenuMobile = dynamic(() => import("./menu-mobile").then((module) => module
 });
 
 const links = [
-  { href: "/#servicos", label: "Serviços" },
+  { href: "/servicos/", label: "Serviços" },
   { href: "/#obras", label: "Obras" },
   { href: "/#depoimentos", label: "Depoimentos" },
-  { href: "/#contato", label: "Contato" },
+  { href: "/contato/", label: "Contato" },
 ];
 
 export function Header() {

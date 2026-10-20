@@ -14,7 +14,8 @@ export function WhatsappFlutuante() {
     if (contato) observer.observe(contato);
     return () => observer.disconnect();
   }, [pathname]);
-  if (oculto || pathname !== "/") return null;
+  const paginaComAtalho = pathname === "/" || /^\/servicos(?:\/|$)/.test(pathname);
+  if (oculto || !paginaComAtalho) return null;
   return (
     <a
       href={buildWhatsAppUrl()}

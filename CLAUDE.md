@@ -79,9 +79,15 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
   sem otimização automática de fontes remotas
 - Formulário de contato NÃO envia e-mail — ele só valida (RHF+Zod) e monta um link `wa.me`
   com os dados codificados na mensagem. Não criar Server Action nem API Route pra isso.
-- Logo: usar `siteConfig.logo`, arquivo local em `public/logo/`; preservar os originais. A variante compacta aguarda avaliação final de leitura do slogan.
+- Logo: usar `siteConfig.logo`, arquivo local em `public/logo/`; preservar os originais. A variante compacta e o header sobreposto foram validados no encerramento da E1; preservar a composição.
 - `SITE_URL` e todos os dados de contato estão em `lib/site-config.ts`. Usar a URL Vercel até existir domínio definitivo publicado. `lib/contato-data.ts` é uma fachada sem dados duplicados.
 - Ícones/favicon usam a convenção de arquivo do Next (`app/favicon.ico`,
   `app/icon.png` + `icon1-4.png`, `app/apple-icon.png`) — não em `public/`.
   Se precisar trocar algum, é só substituir o arquivo no lugar certo, o Next
   gera as tags `<link>` sozinho.
+
+## E2 — Serviços e contato
+- Somente os quatro perfis solares, IDs estáveis em `lib/perfis-solares.ts`; detalhes de página separados para não carregar textos longos no formulário.
+- Rotas estáticas `/servicos/`, quatro `/servicos/[slug]/` e `/contato/`, com barra final. Detalhes usam generateStaticParams e dynamicParams=false.
+- Reutilizar FormularioContato e validação atuais. A query servico aceita apenas um dos quatro slugs e pré-seleciona o radio existente; não adicionar campos de outras atividades.
+- Mapa externo somente após clique, consulta pelo endereço central. Não carregar SDK, chave ou conta. Header e Hero E1 preservados.

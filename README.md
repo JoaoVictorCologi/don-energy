@@ -58,3 +58,13 @@ Manter um pacote completo da versão anterior e seu inventário. Se a nova vers�
 Medir o export de produção com Lighthouse 13.5.0: três execuções sequenciais por perfil (celular/desktop), por rota representativa, mediana e variação. Meta: pontuações superiores a 90 nas quatro categorias, sem promessa de resultado fixo. Auditoria automática não substitui navegação por teclado, foco, contraste e teste funcional.
 
 A central do projeto está em C:/Users/colog/Documents/Obsidian Vault/Don-Energy-Site/00-Painel.md. Evidências locais da E1 ficam em Materiais/Referencias/E1/ no vault, fora da publicação. Consulte Etapas/E1-Fundacao.md para aprovação, arquivos, medições, pendências e rollback da implementação. Trabalhar em etapa/e1-fundacao, preservando o trabalho anterior; não publicar nem iniciar E2 sem aprovação.
+
+## E2 — Serviços e contato (2026-10-20)
+
+Catálogo exclusivo de energia solar: residencial, comercial, rural e usina de investimento. Rotas: `/servicos/`, `/servicos/solar-residencial/`, `/servicos/solar-comercial/`, `/servicos/solar-rural/`, `/servicos/usina-de-investimento/` e `/contato/`. Todas exportadas em `out/`, com metadados e sitemap.
+
+O formulário solar existente é compartilhado. `/contato/?servico=solar-residencial#formulario-proposta` pré-seleciona o perfil; slugs desconhecidos são ignorados. Não inserir dados pessoais na URL interna. Mensagem preparada pelo WhatsApp, sem envio automático; consentimento obrigatório e link alternativo preservados. Contato direto permanece no HTML sem JavaScript.
+
+O mapa usa consulta ao endereço central e só cria iframe após “Carregar mapa”. “Como chegar” abre o Google Maps; conferir a marcação física do endereço na avaliação do usuário. Sem SDK, API key ou geolocalização. A política descreve a conexão externa.
+
+Checkpoint E1 validada: `e5c4234257ed490555fcf59e7a247be0fbd743d9`, preservado em `etapa/e1-fundacao`. E2 em `etapa/e2-servicos-contato`. Não usar o rollback pré-E1 para desfazer esta etapa; preservar mudanças posteriores e consultar os commits/rollback E2 no vault. Não fazer deploy automático.

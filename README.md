@@ -79,3 +79,9 @@ siteConfig.logo usa a derivação nativa aprovada sem slogan, public/logo/don-en
 “Como chegar” abre /maps/dir/?api=1&destination= com o endereço central. Carregamento real do mapa e destino de rotas conferidos no navegador; confirmação de que o ponto corresponde ao imóvel segue com o responsável. Não inferir validação por HTTP 200.
 
 E2 permanece Aguardando validação. Evidências, questões comerciais e rollback no vault, Materiais/Referencias/E2-revisao-editorial-mapa/. Sem push, merge, publicação ou E3. Os trechos E1 acima são históricos; esta seção prevalece para os ajustes atuais.
+
+## Aplicação visual E2 — avaliação local
+
+Composição aprovada aplicada às oito páginas existentes e 404. Marca sem slogan, superfícies claras/azul profundo, cartões fotográficos e navegação apenas por destinos disponíveis. Acervo atual autorizado, com classificação/dados pendentes; relatos mantidos em lib/depoimentos-data.ts, sem apresentação pública. Formulário e mapa por escolha preservados.
+
+Branch: etapa/e2-aplicacao-visual; checkpoint anterior fd693cb. Prévia funcional: npm run preview:static em http://127.0.0.1:4173/. Maquete independente: vault/porta 4175. Evidências, validações e rollback no vault, Etapas/E2-Aplicacao-visual.md. E2 aguardando aceite final; sem E3/E4, push, merge ou deploy.

@@ -50,7 +50,7 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - Cores da marca configuradas no `app/globals.css`: `#94B94A` (verde),
   `#384C96` (azul), `#D88739` (laranja) — usar os tokens, não hex direto no JSX
 - Header fixo: transparente sobre o Hero apenas na inicial e no topo; azul sólido após 16 px de scroll, ao abrir o menu móvel e desde o início nas internas. Manter 64/72 px, reserva de espaço nas internas e padding superior do Hero.
-- `--color-brand-blue-header` usa o azul oficial (`#384C96`) quando o Header está sólido e no Footer. A logo compacta deriva do original com transparência; preservar proporção e identidade. CTAs laranja usam `text-brand-ink` para contraste.
+- `--color-brand-blue-header` usa o azul profundo de apoio (`#182447`) quando o Header está sólido e no Footer. A logo compacta deriva do original com transparência; preservar proporção e identidade. CTAs laranja usam `text-brand-ink` para contraste.
 - **Exceção intencional — `#25D366` (verde oficial do WhatsApp):** usado só
   no botão flutuante (`components/whatsapp-flutuante.tsx`), como hex direto
   (não é um token da marca, de propósito). É a cor pela qual o ícone do
@@ -99,3 +99,8 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - Não reintroduzir percentuais, crédito, retorno, garantias ou fluxo comercial como fatos sem confirmação registrada. Não atribuir notas automáticas aos depoimentos.
 - “Como chegar” deve abrir a tela de rotas com destino central, sem presumir origem ou pedir geolocalização no código do site. Renderização do mapa e confirmação do imóvel são validações distintas.
 - Prévia visual no vault/porta 4175 permanece separada do site funcional.
+
+## Aplicação visual E2
+- Composição D27 aplicada às páginas existentes, sem E3/E4. Header compacto e marca sem slogan; cartões fotográficos sem pictogramas/WhatsApp repetido.
+- Fotografias atuais autorizadas; classificação e dados das obras continuam em conferência. Depoimentos preservados em arquivo, fora da renderização pública até confirmação.
+- Preservar o formulário RHF/Zod e mapa por escolha. E2 aguardando aceite final; sem push, merge ou deploy nesta entrega.

@@ -7,8 +7,8 @@ import { localizacao } from "@/lib/localizacao";
 export function MapaContato() {
   const [visivel, setVisivel] = useState(false);
   return (
-    <section aria-labelledby="localizacao-titulo" className="mx-auto max-w-6xl px-6 pb-16 sm:pb-20">
-      <h2 id="localizacao-titulo" className="font-heading text-3xl font-bold text-brand-blue">Onde estamos</h2>
+    <section aria-labelledby="localizacao-titulo" className="site-shell pb-20">
+      <h2 id="localizacao-titulo" className="site-title">Onde estamos</h2>
       <p className="mt-4 leading-relaxed text-muted-foreground">{localizacao.endereco}</p>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">O mapa do Google só é carregado quando você escolher exibi-lo. Essa ação conecta seu navegador ao Google.</p>
       <div className="my-5 flex flex-wrap items-center gap-x-6 gap-y-3">

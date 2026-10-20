@@ -10,5 +10,5 @@ const FormularioContato = dynamic(() => import("./formulario-contato").then((mod
 export function ContatoPagina() {
   const query = useSearchParams();
   const perfil = perfilPorSlug(query.get("servico"));
-  return <FormularioContato key={perfil?.id ?? "sem-perfil"} perfilInicial={perfil?.id} sectionId="campos-proposta" />;
+  return <FormularioContato key={perfil?.id ?? "sem-perfil"} perfilInicial={perfil?.id} sectionId="campos-proposta" compacto />;
 }

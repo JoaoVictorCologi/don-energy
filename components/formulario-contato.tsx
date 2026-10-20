@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Building2, Home, Tractor, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -22,13 +21,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 import { perfisSolares, type PerfilSolarId } from "@/lib/perfis-solares";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
-
-const icones = {
-  residencial: Home,
-  comercial: Building2,
-  rural: Tractor,
-  usina: TrendingUp,
-} as const;
 
 const tiposImovel = perfisSolares.map((s) => ({ id: s.id, titulo: s.titulo }));
 
@@ -68,7 +60,7 @@ function montarMensagem(dados: FormValues) {
   return linhas.join("\n");
 }
 
-export function FormularioContato({ perfilInicial, sectionId = "formulario-proposta" }: { perfilInicial?: PerfilSolarId; sectionId?: string }) {
+export function FormularioContato({ perfilInicial, sectionId = "formulario-proposta", compacto = false }: { perfilInicial?: PerfilSolarId; sectionId?: string; compacto?: boolean }) {
   const [enviado, setEnviado] = useState(false);
   const [urlWhatsapp, setUrlWhatsapp] = useState("");
   const {
@@ -158,13 +150,13 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
     // scroll específica — confirmado visualmente na Fase 1.13.
     <section
       id={sectionId}
-      className="scroll-mt-[var(--header-height)] bg-background px-6 pt-20 pb-32 sm:py-20"
+      className={compacto ? "rounded-md border border-border bg-background p-6 sm:p-8" : "site-section scroll-mt-[var(--header-height)] bg-brand-soft px-6 pb-24"}
     >
       <div className="mx-auto max-w-3xl">
-        <h2 className="font-heading text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="font-heading text-2xl font-medium tracking-tight text-brand-blue sm:text-3xl">
           Peça sua proposta
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Preencha os dados para preparar sua mensagem no WhatsApp. O envio é feito por você.
         </p>
         <form onSubmit={onSubmitForm} noValidate className="mt-10">
@@ -207,18 +199,16 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
                     aria-invalid={!!errors.tipoImovel}
                     aria-describedby={errors.tipoImovel ? "erro-tipoImovel" : undefined}
                     className={cn(
-                      "grid grid-cols-2 gap-3 rounded-lg sm:grid-cols-4",
+                      "grid grid-cols-1 gap-3 rounded-lg min-[380px]:grid-cols-2",
                       errors.tipoImovel &&
                         "border border-destructive p-3 ring-3 ring-destructive/20"
                     )}
                   >
                     {tiposImovel.map((tipo) => {
-                      const Icon = icones[tipo.id];
                       return (
                         <FieldLabel key={tipo.id} htmlFor={`tipo-${tipo.id}`}>
                           <Field orientation="horizontal">
                             <RadioGroupItem value={tipo.id} id={`tipo-${tipo.id}`} />
-                            <Icon className="size-4 shrink-0 text-brand-green" />
                             {tipo.titulo}
                           </Field>
                         </FieldLabel>
@@ -288,7 +278,7 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
             <Button
               type="submit"
               size="lg"
-              className="bg-brand-orange text-brand-ink hover:bg-brand-orange/90"
+              className="min-h-12 bg-brand-orange text-brand-ink hover:bg-brand-orange/90"
             >
               Quero minha proposta
             </Button>

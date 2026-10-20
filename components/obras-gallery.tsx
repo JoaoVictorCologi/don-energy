@@ -1,21 +1,9 @@
 import { obras, legendaObra } from "@/lib/obras-data";
+import { FotoAcervo } from "@/components/foto-acervo";
 
 export function ObrasGallery() {
-  return (
-    <section id="obras" className="scroll-mt-[var(--header-height)] bg-background px-6 py-20">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Obras realizadas</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">Conheça algumas instalações. Os dados de identificação e potência de cada obra estão em conferência.</p>
-        <div className="mt-10 grid grid-cols-1 gap-5 min-[380px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-          {obras.map((obra) => (
-            <figure key={obra.file} className="overflow-hidden rounded-lg border bg-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={"/obras/otimizadas/" + obra.file.replace(".webp", "-640.webp")} srcSet={[320, 640].map((width) => "/obras/otimizadas/" + obra.file.replace(".webp", "-" + width + ".webp") + " " + width + "w").join(", ")} sizes="(min-width: 1152px) 260px, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, (min-width: 380px) 50vw, 100vw" alt={"Instalação de painéis solares — " + legendaObra(obra)} width="640" height="640" loading="lazy" className="aspect-square w-full object-cover" />
-              <figcaption className="break-words p-3 text-xs leading-relaxed text-muted-foreground">{legendaObra(obra)}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  const destaques = [obras[8], obras[0], obras[10]];
+  const restantes = obras.filter(obra => !destaques.includes(obra));
+  const foto = (obra: (typeof obras)[number]) => <figure key={obra.file}><FotoAcervo numero={obra.file.slice(5,7)} sizes="(min-width: 1200px) 355px, (min-width: 768px) 30vw, 100vw" /><figcaption className="mt-4 text-xs leading-relaxed text-muted-foreground">{legendaObra(obra)}</figcaption></figure>;
+  return <section id="obras" className="site-section scroll-mt-[var(--header-height)]"><div className="site-shell"><p className="site-eyebrow">Fotografias do acervo</p><h2 className="site-title">A energia solar ganha forma.</h2><p className="mt-6 max-w-xl leading-relaxed text-muted-foreground">Um olhar sobre as instalações. Descrições e dados de cada obra estão em conferência.</p><div className="mt-10 grid gap-8 md:grid-cols-3">{destaques.map(foto)}</div><details className="mt-10 border-y border-border py-3"><summary className="min-h-12 cursor-pointer rounded-sm py-3 font-semibold text-brand-blue">Ver mais fotografias do acervo</summary><div className="grid gap-8 py-7 md:grid-cols-3">{restantes.map(foto)}</div></details></div></section>;
 }

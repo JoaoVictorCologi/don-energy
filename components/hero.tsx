@@ -1,48 +1,27 @@
-import Image from "next/image";
-
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function Hero() {
   return (
-    <section className="hero-dissolve relative isolate flex min-h-[calc(100svh-var(--header-height))] items-center justify-center overflow-hidden px-6 py-24 text-center text-white">
-      <Image
-        src="/obras/obra-09.webp"
-        alt=""
-        fill
-        preload
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/75 via-brand-blue/45 to-brand-blue/20" />
-      <div className="relative z-10 flex max-w-2xl flex-col items-center gap-6">
-        <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
-          Energia solar sob medida para você
-        </h1>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <Button
-            size="lg"
-            nativeButton={false}
-            className="bg-brand-orange text-white hover:bg-brand-orange/90"
-            render={
-              <a
-                href={buildWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-              />
-            }
-          >
-            Falar no WhatsApp
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            nativeButton={false}
-            className="border-white bg-transparent text-white hover:bg-white/10 hover:text-white"
-            render={<a href="#servicos" />}
-          >
-            Ver serviços
-          </Button>
+    <section className="relative isolate flex min-h-[min(760px,calc(100svh-var(--header-height)))] items-center overflow-hidden bg-brand-blue px-6 py-16 text-white sm:py-24">
+      <picture>
+        <source type="image/avif" srcSet="/obras/otimizadas/hero-640.avif 640w, /obras/otimizadas/hero-960.avif 960w, /obras/otimizadas/hero-1440.avif 1440w" sizes="100vw" />
+      {/* Export estático: srcSet aponta para arquivos preparados, sem otimizador de servidor. */}
+
+      <img src="/obras/otimizadas/hero-1440.webp" srcSet="/obras/otimizadas/hero-640.webp 640w, /obras/otimizadas/hero-960.webp 960w, /obras/otimizadas/hero-1440.webp 1440w" sizes="100vw" width="1440" height="960" alt="" fetchPriority="high" loading="eager" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+      </picture>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-blue/95 via-brand-blue/85 to-brand-blue/60" />
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="max-w-2xl">
+          <p className="mb-5 text-sm font-semibold tracking-[0.16em] text-white uppercase">Mococa e região · Energia solar</p>
+          <h1 className="font-heading text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">Energia solar sob medida para você</h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white sm:text-lg">Soluções para sua casa, seu negócio, sua propriedade rural ou seu projeto de investimento. Converse com a Don Energy sobre o que você precisa.</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button size="lg" nativeButton={false} className="min-h-12 bg-brand-orange text-brand-ink hover:bg-brand-orange/90" render={<a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" />}>Falar no WhatsApp <ArrowUpRight aria-hidden="true" /></Button>
+            <Button size="lg" variant="outline" nativeButton={false} className="min-h-12 border-white/70 bg-transparent text-white hover:bg-white/10 hover:text-white" render={<Link href="/#servicos" />}>Conhecer soluções <ArrowDown aria-hidden="true" /></Button>
+          </div>
         </div>
       </div>
     </section>

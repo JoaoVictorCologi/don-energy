@@ -4,6 +4,9 @@ import { contato } from "@/lib/contato-data";
 import { PRIVACIDADE_ATUALIZADA_EM } from "@/lib/site-config";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacidade/" },
+  openGraph: { title: "Política de Privacidade — Don Energy", description: "Como a Don Energy usa os dados fornecidos pelo site.", url: "/privacidade/", images: ["/og-image.png"] },
+  twitter: { card: "summary_large_image", title: "Política de Privacidade — Don Energy", description: "Como a Don Energy usa os dados fornecidos pelo site.", images: ["/og-image.png"] },
   title: "Política de Privacidade — Don Energy",
   description:
     "Como a Don Energy coleta, usa e protege os dados pessoais fornecidos através deste site.",
@@ -16,7 +19,7 @@ const ultimaAtualizacaoExibicao = PRIVACIDADE_ATUALIZADA_EM.toLocaleDateString(
 
 export default function Privacidade() {
   return (
-    <main className="flex-1">
+    <main id="conteudo" tabIndex={-1} className="flex-1">
       <article className="mx-auto max-w-3xl px-6 py-16">
         <h1 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Política de Privacidade

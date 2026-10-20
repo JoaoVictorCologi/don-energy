@@ -1,13 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Inter, Geist } from "next/font/google";
+import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { WhatsappFlutuante } from "@/components/whatsapp-flutuante";
 import { cn } from "@/lib/utils";
-import { SITE_URL } from "@/lib/site-config";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+import { SITE_URL, siteConfig } from "@/lib/site-config";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -20,13 +18,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  // TODO: SITE_URL (lib/site-config.ts) ainda é um placeholder até o
-  // domínio de produção ser registrado.
   metadataBase: new URL(SITE_URL),
   title: "Don Energy — Energia Solar em Mococa e Região",
+  alternates: { canonical: "/" },
+  twitter: { card: "summary_large_image", title: "Don Energy — Energia Solar em Mococa e Região", description: siteConfig.descricao, images: [siteConfig.imagemSocial.src] },
   description:
     "Soluções completas em energia solar para residências, comércios, propriedades rurais e usinas de investimento em Mococa-SP e região.",
   openGraph: {
+    url: "/",
     title: "Don Energy — Energia Solar em Mococa e Região",
     description:
       "Soluções completas em energia solar para residências, comércios, propriedades rurais e usinas de investimento em Mococa-SP e região.",
@@ -59,9 +58,10 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={cn("h-full", "antialiased", sora.variable, inter.variable, "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", sora.variable, inter.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">
+        <a href="#conteudo" className="sr-only fixed top-2 left-2 z-[100] rounded-md bg-white px-4 py-3 text-brand-blue focus:not-sr-only">Pular para o conteúdo</a>
         <Header />
         {children}
         <Footer />

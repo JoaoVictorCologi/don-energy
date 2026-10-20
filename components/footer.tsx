@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { siteConfig } from "@/lib/site-config";
 import { Clock, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 
@@ -11,16 +13,16 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           <div>
             <Image
-              src="/logo/don-energy-logo.png"
+              src={siteConfig.logo.src}
               alt="Don Energy"
-              width={64}
-              height={64}
-              className="h-16 w-16 object-contain"
+              width={siteConfig.logo.width}
+              height={siteConfig.logo.height}
+              className="h-16 w-auto object-contain"
             />
           </div>
 
           <div>
-            <h3 className="font-heading text-sm font-semibold tracking-wide text-white/70 uppercase">
+            <h3 className="font-heading text-sm font-semibold tracking-wide text-white/90 uppercase">
               Contato
             </h3>
             <div className="mt-3 flex flex-col gap-2 text-sm text-white/90">
@@ -45,7 +47,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading text-sm font-semibold tracking-wide text-white/70 uppercase">
+            <h3 className="font-heading text-sm font-semibold tracking-wide text-white/90 uppercase">
               Horário de funcionamento
             </h3>
             <div className="mt-3 flex flex-col gap-2 text-sm text-white/90">
@@ -61,9 +63,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/20 pt-6 text-center text-sm text-white/70">
-          © {new Date().getFullYear()} Don Energy. Todos os direitos
-          reservados.
+        <div className="mt-8 border-t border-white/20 pt-6 text-center text-sm text-white/90">
+          <Link href="/privacidade/" prefetch={false} className="mb-4 inline-flex min-h-11 items-center underline underline-offset-4">Política de privacidade</Link>
+          <p>© {new Date().getFullYear()} Don Energy. Todos os direitos
+          reservados.</p>
         </div>
       </div>
     </footer>

@@ -12,12 +12,12 @@
   --color-brand-green: #94b94a;
   --color-brand-blue: #384c96;
   --color-brand-orange: #d88739;
+  --color-brand-ink: #171f32;
 
-  /* Exceção intencional: ver nota no CLAUDE.md — usar só no Header, pra
-     casar com o azul já embutido no arquivo public/logo/don-energy-logo.png */
-  --color-brand-blue-header: #1e55a6;
+  /* Header e footer usam o azul oficial; a nova logo tem canal alfa. */
+  --color-brand-blue-header: #384c96;
 
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-inter);
   --font-heading: var(--font-sora);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -62,12 +62,9 @@ body {
 }
 
 :root {
-  /* Fonte única de verdade pro tamanho do Header (components/header.tsx).
-     Ele NÃO tem altura fixa — cresce com py + logo. Se mudar o padding ou
-     o tamanho do logo lá, mude aqui também: tudo que depende da altura do
-     header (Hero min-h, scroll-mt das seções) lê essas duas variáveis. */
-  --header-py: 0.75rem; /* = py-3 */
-  --header-logo-size: 4rem; /* = h-16 / w-16 */
+  /* Altura compartilhada entre header, primeira dobra e âncoras. */
+  --header-py: 0.5rem;
+  --header-logo-size: 3rem;
   --header-height: calc(var(--header-py) * 2 + var(--header-logo-size));
 
   --background: oklch(1 0 0);
@@ -136,6 +133,15 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+@media (min-width: 768px) {
+  :root { --header-logo-size: 3.5rem; }
+}
+
+:where(a, button, input, [role="checkbox"], [role="radio"]):focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
 }
 
 @layer base {
@@ -210,4 +216,7 @@ body {
     animation: none;
     opacity: 1;
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
 }

@@ -34,7 +34,10 @@ const tiposImovel = servicos.map((s) => ({ id: s.id, titulo: s.titulo }));
 
 const schema = z.object({
   nome: z.string().trim().min(2, "Informe seu nome"),
-  telefone: z.string().trim().min(10, "Informe um telefone válido com DDD"),
+  telefone: z.string().trim().regex(/^\+?[\d\s().-]+$/, "Informe um telefone válido com DDD").refine((value) => {
+    const digits = value.replace(/\D/g, "");
+    return digits.length >= 10 && digits.length <= 13;
+  }, "Informe um telefone válido com DDD"),
   tipoImovel: z.enum(
     ["residencial", "comercial", "rural", "usina"],
     "Selecione o tipo de imóvel"
@@ -124,7 +127,7 @@ export function FormularioContato() {
   if (enviado) {
     return (
       <section
-        id="contato"
+        id="formulario-proposta"
         className="scroll-mt-[var(--header-height)] bg-background px-6 py-20"
       >
         <div className="mx-auto max-w-xl text-center">
@@ -132,7 +135,7 @@ export function FormularioContato() {
             Perfeito!
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Abrimos o WhatsApp numa nova aba com seus dados preenchidos.
+            Sua mensagem está pronta. Se o WhatsApp não abriu em outra aba, use o link abaixo para continuar.
           </p>
           <a
             href={urlWhatsapp}
@@ -154,7 +157,7 @@ export function FormularioContato() {
     // "política de privacidade" ou o canto do botão numa posição de
     // scroll específica — confirmado visualmente na Fase 1.13.
     <section
-      id="contato"
+      id="formulario-proposta"
       className="scroll-mt-[var(--header-height)] bg-background px-6 pt-20 pb-32 sm:py-20"
     >
       <div className="mx-auto max-w-3xl">
@@ -171,6 +174,7 @@ export function FormularioContato() {
                 <FieldLabel htmlFor="nome">Nome</FieldLabel>
                 <Input
                   id="nome"
+                  autoComplete="name"
                   aria-invalid={!!errors.nome}
                   {...register("nome")}
                 />
@@ -180,6 +184,8 @@ export function FormularioContato() {
                 <FieldLabel htmlFor="telefone">Telefone/WhatsApp</FieldLabel>
                 <Input
                   id="telefone"
+                  type="tel"
+                  autoComplete="tel"
                   aria-invalid={!!errors.telefone}
                   {...register("telefone")}
                 />
@@ -226,6 +232,7 @@ export function FormularioContato() {
                 <FieldLabel htmlFor="cidade">Cidade</FieldLabel>
                 <Input
                   id="cidade"
+                  autoComplete="address-level2"
                   aria-invalid={!!errors.cidade}
                   {...register("cidade")}
                 />
@@ -262,7 +269,7 @@ export function FormularioContato() {
                     um path diferente do que o client pede, 404 sempre no
                     console em produção. Link funciona normal ao clicar. */}
                 <Link
-                  href="/privacidade"
+                  href="/privacidade/"
                   prefetch={false}
                   className="underline underline-offset-4"
                 >
@@ -276,7 +283,7 @@ export function FormularioContato() {
             <Button
               type="submit"
               size="lg"
-              className="bg-brand-orange text-white hover:bg-brand-orange/90"
+              className="bg-brand-orange text-brand-ink hover:bg-brand-orange/90"
             >
               Quero minha proposta
             </Button>

@@ -47,14 +47,9 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - NEVER use `any` explícito — usar `unknown` + type guard
 - Imports: ES modules (import/export), sem require()
 - Tailwind only — sem CSS inline, sem styled-components
-- Cores da marca já configuradas no `tailwind.config.ts`: `#94B94A` (verde),
+- Cores da marca configuradas no `app/globals.css`: `#94B94A` (verde),
   `#384C96` (azul), `#D88739` (laranja) — usar os tokens, não hex direto no JSX
-- **Exceção intencional — `--color-brand-blue-header` (`#1E55A6`):** usado no
-  `Header` (`components/header.tsx`) e no `Footer` (`components/footer.tsx`),
-  nunca no resto do site. É o azul já embutido no arquivo
-  `public/logo/don-energy-logo.png`, escolhido pra grudar visualmente com o
-  logo — diverge de propósito do `--color-brand-blue` (`#384C96`) oficial.
-  Não "corrigir" isso pra bater com a paleta.
+- `--color-brand-blue-header` usa o azul oficial (`#384C96`) no Header e Footer. A logo compacta deriva do original com transparência; preservar proporção e identidade. CTAs laranja usam `text-brand-ink` para contraste.
 - **Exceção intencional — `#25D366` (verde oficial do WhatsApp):** usado só
   no botão flutuante (`components/whatsapp-flutuante.tsx`), como hex direto
   (não é um token da marca, de propósito). É a cor pela qual o ícone do
@@ -67,6 +62,9 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 ## next.config.ts — obrigatório
 - `output: 'export'`
 - `images: { unoptimized: true }` (otimização de imagem do Next exige servidor)
+- `trailingSlash: true`: `/privacidade/index.html`; links e canonicals com barra final.
+- Prévia estática: `npm run preview:static`. Não usar `next start` para export.
+- Hostinger: publicar apenas conteúdo de `out/`, mediante aprovação separada. Consulte README para validação, backup e rollback.
 
 ## Workflow (fase atual: MVP para aprovação do cliente)
 - Prioridade agora é ter algo visualmente completo e navegável — não é necessário
@@ -80,13 +78,8 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
   sem otimização automática de fontes remotas
 - Formulário de contato NÃO envia e-mail — ele só valida (RHF+Zod) e monta um link `wa.me`
   com os dados codificados na mensagem. Não criar Server Action nem API Route pra isso.
-- Logo: usar sempre os arquivos de `public/logo/` — versão fundo branco ainda é
-  aproximação gerada, marcar visualmente se precisar trocar depois da aprovação
-  do cliente
-- **`SITE_URL` (`lib/site-config.ts`) é um placeholder** (`https://SEU-DOMINIO-AQUI.com.br`)
-  até o domínio de produção ser registrado com o cliente. É usado em
-  `metadataBase` (layout), `app/robots.ts` e `app/sitemap.ts` — trocar só ali
-  quando o domínio real existir, não precisa buscar em outro lugar do projeto.
+- Logo: usar `siteConfig.logo`, arquivo local em `public/logo/`; preservar os originais. A variante compacta aguarda avaliação final de leitura do slogan.
+- `SITE_URL` e todos os dados de contato estão em `lib/site-config.ts`. Usar a URL Vercel até existir domínio definitivo publicado. `lib/contato-data.ts` é uma fachada sem dados duplicados.
 - Ícones/favicon usam a convenção de arquivo do Next (`app/favicon.ico`,
   `app/icon.png` + `icon1-4.png`, `app/apple-icon.png`) — não em `public/`.
   Se precisar trocar algum, é só substituir o arquivo no lugar certo, o Next

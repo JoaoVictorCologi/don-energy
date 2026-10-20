@@ -1,13 +1,27 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function WhatsappFlutuante() {
+  const [oculto, setOculto] = useState(false);
+  const pathname = usePathname();
+  useEffect(() => {
+    // Evita cobrir campos e links: o próprio formulário já oferece contato.
+    const observer = new IntersectionObserver((entries) => setOculto(entries.some((entry) => entry.isIntersecting)));
+    const contato = document.getElementById("contato");
+    if (contato) observer.observe(contato);
+    return () => observer.disconnect();
+  }, [pathname]);
+  if (oculto || pathname !== "/") return null;
   return (
     <a
       href={buildWhatsAppUrl()}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
-      className="fixed right-6 bottom-[calc(1.5rem+env(safe-area-inset-bottom))] z-40 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105"
+      className="fixed right-6 bottom-[calc(1.5rem+env(safe-area-inset-bottom))] z-40 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-brand-ink shadow-lg transition-transform hover:scale-105"
     >
       <svg
         role="img"

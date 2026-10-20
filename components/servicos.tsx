@@ -63,7 +63,7 @@ export function Servicos() {
                 </CardContent>
                 <CardFooter>
                   <Button
-                    className="w-full bg-brand-orange text-white hover:bg-brand-orange/90"
+                    className="w-full bg-brand-orange text-brand-ink hover:bg-brand-orange/90"
                     nativeButton={false}
                     render={
                       <a

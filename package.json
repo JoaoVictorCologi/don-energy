@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "preview:static": "node scripts/preview-static.mjs out 4173"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

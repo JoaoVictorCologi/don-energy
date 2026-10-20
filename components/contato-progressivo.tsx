@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-function ContatoAlternativo() {
+export function ContatoAlternativo() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-20 text-center">
       <h2 className="font-heading text-3xl font-bold sm:text-4xl">Peça sua proposta</h2>

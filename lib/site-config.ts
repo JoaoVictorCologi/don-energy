@@ -31,7 +31,7 @@ export const siteConfig = {
 
 export const SITE_URL = siteConfig.url;
 // Atualizar apenas quando houver alteração real da política.
-export const PRIVACIDADE_ATUALIZADA_EM = new Date("2026-07-18");
+export const PRIVACIDADE_ATUALIZADA_EM = new Date("2026-10-20");
 
 export const localBusiness = {
   "@context": "https://schema.org",

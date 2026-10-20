@@ -93,6 +93,18 @@ export default function Privacidade() {
 
           <section>
             <h2 className="font-heading text-xl font-semibold text-foreground">
+              Mapa de localização
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              O mapa do Google na página de contato só é carregado quando você escolhe a opção “Carregar mapa”. Ao fazer isso, seu navegador se conecta ao Google, que recebe as informações técnicas dessa conexão. O link “Como chegar” também abre um serviço externo do Google.
+            </p>
+            <p className="mt-3 text-muted-foreground">
+              O uso desses serviços está sujeito à <a href="https://policies.google.com/privacy?hl=pt-BR" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">política de privacidade do Google</a>. Você pode usar os contatos e o formulário sem carregar o mapa. Os dados preenchidos no formulário não são enviados ao provedor do mapa.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-heading text-xl font-semibold text-foreground">
               5. Compartilhamento com terceiros
             </h2>
             <p className="mt-3 text-muted-foreground">

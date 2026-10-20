@@ -20,7 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
-import { servicos } from "@/lib/servicos-data";
+import { perfisSolares, type PerfilSolarId } from "@/lib/perfis-solares";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const icones = {
@@ -30,7 +30,7 @@ const icones = {
   usina: TrendingUp,
 } as const;
 
-const tiposImovel = servicos.map((s) => ({ id: s.id, titulo: s.titulo }));
+const tiposImovel = perfisSolares.map((s) => ({ id: s.id, titulo: s.titulo }));
 
 const schema = z.object({
   nome: z.string().trim().min(2, "Informe seu nome"),
@@ -68,7 +68,7 @@ function montarMensagem(dados: FormValues) {
   return linhas.join("\n");
 }
 
-export function FormularioContato() {
+export function FormularioContato({ perfilInicial, sectionId = "formulario-proposta" }: { perfilInicial?: PerfilSolarId; sectionId?: string }) {
   const [enviado, setEnviado] = useState(false);
   const [urlWhatsapp, setUrlWhatsapp] = useState("");
   const {
@@ -82,7 +82,7 @@ export function FormularioContato() {
     defaultValues: {
       nome: "",
       telefone: "",
-      tipoImovel: "" as unknown as FormValues["tipoImovel"],
+      tipoImovel: (perfilInicial ?? "") as FormValues["tipoImovel"],
       consumoOuConta: "",
       cidade: "",
       consentimento: false as unknown as true,
@@ -127,7 +127,7 @@ export function FormularioContato() {
   if (enviado) {
     return (
       <section
-        id="formulario-proposta"
+        id={sectionId}
         className="scroll-mt-[var(--header-height)] bg-background px-6 py-20"
       >
         <div className="mx-auto max-w-xl text-center">
@@ -157,7 +157,7 @@ export function FormularioContato() {
     // "política de privacidade" ou o canto do botão numa posição de
     // scroll específica — confirmado visualmente na Fase 1.13.
     <section
-      id="formulario-proposta"
+      id={sectionId}
       className="scroll-mt-[var(--header-height)] bg-background px-6 pt-20 pb-32 sm:py-20"
     >
       <div className="mx-auto max-w-3xl">
@@ -176,9 +176,10 @@ export function FormularioContato() {
                   id="nome"
                   autoComplete="name"
                   aria-invalid={!!errors.nome}
+                  aria-describedby={errors.nome ? "erro-nome" : undefined}
                   {...register("nome")}
                 />
-                <FieldError errors={[errors.nome]} />
+                <FieldError id="erro-nome" errors={[errors.nome]} />
               </Field>
               <Field data-invalid={!!errors.telefone}>
                 <FieldLabel htmlFor="telefone">Telefone/WhatsApp</FieldLabel>
@@ -187,9 +188,10 @@ export function FormularioContato() {
                   type="tel"
                   autoComplete="tel"
                   aria-invalid={!!errors.telefone}
+                  aria-describedby={errors.telefone ? "erro-telefone" : undefined}
                   {...register("telefone")}
                 />
-                <FieldError errors={[errors.telefone]} />
+                <FieldError id="erro-telefone" errors={[errors.telefone]} />
               </Field>
             </div>
 
@@ -203,6 +205,7 @@ export function FormularioContato() {
                     value={field.value}
                     onValueChange={field.onChange}
                     aria-invalid={!!errors.tipoImovel}
+                    aria-describedby={errors.tipoImovel ? "erro-tipoImovel" : undefined}
                     className={cn(
                       "grid grid-cols-2 gap-3 rounded-lg sm:grid-cols-4",
                       errors.tipoImovel &&
@@ -224,7 +227,7 @@ export function FormularioContato() {
                   </RadioGroup>
                 )}
               />
-              <FieldError errors={[errors.tipoImovel]} />
+              <FieldError id="erro-tipoImovel" errors={[errors.tipoImovel]} />
             </FieldSet>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -234,9 +237,10 @@ export function FormularioContato() {
                   id="cidade"
                   autoComplete="address-level2"
                   aria-invalid={!!errors.cidade}
+                  aria-describedby={errors.cidade ? "erro-cidade" : undefined}
                   {...register("cidade")}
                 />
-                <FieldError errors={[errors.cidade]} />
+                <FieldError id="erro-cidade" errors={[errors.cidade]} />
               </Field>
               <Field>
                 <FieldLabel htmlFor="consumoOuConta">
@@ -259,6 +263,7 @@ export function FormularioContato() {
                     checked={field.value ?? false}
                     onCheckedChange={field.onChange}
                     aria-invalid={!!errors.consentimento}
+                    aria-describedby={errors.consentimento ? "erro-consentimento" : undefined}
                   />
                 )}
               />
@@ -278,7 +283,7 @@ export function FormularioContato() {
                 .
               </FieldLabel>
             </Field>
-            <FieldError errors={[errors.consentimento]} />
+            <FieldError id="erro-consentimento" errors={[errors.consentimento]} />
 
             <Button
               type="submit"

@@ -148,9 +148,14 @@ export function FormularioContato() {
   }
 
   return (
+    // pb-32 (em vez de py-20 simétrico) só abaixo de sm: dá mais respiro
+    // depois do botão de enviar em mobile, pra reduzir a chance do botão
+    // flutuante do WhatsApp (bottom-right, fixed) cobrir o link de
+    // "política de privacidade" ou o canto do botão numa posição de
+    // scroll específica — confirmado visualmente na Fase 1.13.
     <section
       id="contato"
-      className="scroll-mt-[var(--header-height)] bg-background px-6 py-20"
+      className="scroll-mt-[var(--header-height)] bg-background px-6 pt-20 pb-32 sm:py-20"
     >
       <div className="mx-auto max-w-3xl">
         <h2 className="font-heading text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">

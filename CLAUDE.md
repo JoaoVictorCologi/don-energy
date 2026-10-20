@@ -55,6 +55,12 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
   `public/logo/don-energy-logo.png`, escolhido pra grudar visualmente com o
   logo — diverge de propósito do `--color-brand-blue` (`#384C96`) oficial.
   Não "corrigir" isso pra bater com a paleta.
+- **Exceção intencional — `#25D366` (verde oficial do WhatsApp):** usado só
+  no botão flutuante (`components/whatsapp-flutuante.tsx`), como hex direto
+  (não é um token da marca, de propósito). É a cor pela qual o ícone do
+  WhatsApp é universalmente reconhecido — usar o `--color-brand-green`
+  (`#94B94A`) do site deixaria o botão com um verde "errado" pra esse
+  contexto específico. Não "corrigir" isso pra usar o token da marca.
 - Fontes: Sora (headings) + Inter (body), via `next/font/google`
 - Nomes de arquivo: kebab-case. Componentes: PascalCase
 

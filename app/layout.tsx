@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora, Inter, Geist } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { WhatsappFlutuante } from "@/components/whatsapp-flutuante";
 import { cn } from "@/lib/utils";
 import { SITE_URL } from "@/lib/site-config";
 
@@ -42,6 +43,14 @@ export const metadata: Metadata = {
   },
 };
 
+// viewportFit: "cover" é o que permite env(safe-area-inset-bottom) resolver
+// pra um valor real em iPhones com barra de gestos — usado pelo botão
+// flutuante do WhatsApp (components/whatsapp-flutuante.tsx). Sem isso, o
+// env() sempre resolve pra 0 silenciosamente, sem erro nenhum.
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,6 +65,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <WhatsappFlutuante />
       </body>
     </html>
   );

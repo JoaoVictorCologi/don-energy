@@ -28,9 +28,9 @@ export function DetalheServico({ servico }: { servico: Servico }) {
           <section aria-labelledby="solucao"><h2 id="solucao" className="font-heading text-2xl font-bold text-brand-blue">Uma solução para o seu perfil</h2><p className="mt-5 leading-relaxed text-muted-foreground">{servico.solucao}</p><ul className="mt-6 grid gap-3">{servico.pontos.map((ponto) => <li key={ponto} className="flex gap-3"><Check aria-hidden="true" className="mt-1 size-5 shrink-0 text-brand-green" /><span>{ponto}</span></li>)}</ul></section>
         </div>
         <section aria-labelledby="funcionamento" className="mt-16 border-t pt-14">
-          <h2 id="funcionamento" className="font-heading text-3xl font-bold text-brand-blue">Da primeira conversa à proposta</h2>
+          <h2 id="funcionamento" className="font-heading text-3xl font-bold text-brand-blue">Informações para a primeira conversa</h2>
           <ol className="mt-8 grid gap-6 md:grid-cols-3">{servico.etapas.map((etapa, i) => <li key={etapa.titulo} className="rounded-xl border bg-muted/20 p-6"><span aria-hidden="true" className="font-heading text-3xl font-bold text-brand-blue">0{i + 1}</span><h3 className="mt-4 font-heading text-xl font-semibold">{etapa.titulo}</h3><p className="mt-3 leading-relaxed text-muted-foreground">{etapa.texto}</p></li>)}</ol>
-          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">Dimensionamento, prazos e condições são definidos após a análise do projeto.</p>
+          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">Escopo, prazos e responsabilidades precisam ser esclarecidos na proposta do projeto.</p>
         </section>
         <section aria-labelledby="duvidas" className="mt-16 max-w-3xl">
           <h2 id="duvidas" className="font-heading text-3xl font-bold text-brand-blue">Dúvidas frequentes</h2>

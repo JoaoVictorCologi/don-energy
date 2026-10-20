@@ -18,7 +18,7 @@ export function Hero() {
       <div className="mx-auto w-full max-w-6xl">
         <div className="max-w-2xl">
           <p className="mb-5 text-sm font-semibold tracking-[0.16em] text-white uppercase">Mococa e região · Energia solar</p>
-          <h1 className="font-heading text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">Energia solar sob medida para você</h1>
+          <h1 className="font-heading text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">Energia solar para o seu projeto</h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white sm:text-lg">Soluções para sua casa, seu negócio, sua propriedade rural ou seu projeto de investimento. Converse com a Don Energy sobre o que você precisa.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button size="lg" nativeButton={false} className="min-h-12 bg-brand-orange text-brand-ink hover:bg-brand-orange/90" render={<a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" />}>Falar no WhatsApp <ArrowUpRight aria-hidden="true" /></Button>

@@ -1,4 +1,3 @@
-import { Star } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { depoimentos } from "@/lib/depoimentos-data";
@@ -14,7 +13,7 @@ export function Depoimentos() {
           O que nossos clientes dizem
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
-          Avaliações reais de quem já instalou com a Don Energy.
+          Experiências compartilhadas com a Don Energy.
         </p>
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {depoimentos.map((depoimento, index) => (
@@ -26,15 +25,7 @@ export function Depoimentos() {
             >
               <CardHeader>
                 <CardTitle className="text-lg">{depoimento.nome}</CardTitle>
-                <div className="flex gap-1" aria-hidden="true">
-                  {Array.from({ length: 5 }, (_, i) => (
-                    <Star
-                      key={i}
-                      fill="currentColor"
-                      className="size-4 text-brand-orange"
-                    />
-                  ))}
-                </div>
+
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">

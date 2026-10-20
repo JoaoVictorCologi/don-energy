@@ -21,5 +21,6 @@ export const obras = registros.map((obra) => ({
 }));
 
 export function legendaObra(obra: (typeof obras)[number]) {
-  return [obra.tipo, obra.cidade, obra.potenciaKwp + " kWp"].join(" · ");
+  const dados = [obra.tipo, obra.cidade, obra.potenciaKwp.includes("<<") ? "" : obra.potenciaKwp + " kWp"].filter((valor) => valor && !valor.includes("<<"));
+  return dados.length ? dados.join(" · ") : "Instalação solar — fotografia do acervo";
 }

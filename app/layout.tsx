@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   twitter: { card: "summary_large_image", title: "Don Energy — Energia Solar em Mococa e Região", description: siteConfig.descricao, images: [siteConfig.imagemSocial.src] },
   description:
-    "Soluções completas em energia solar para residências, comércios, propriedades rurais e usinas de investimento em Mococa-SP e região.",
+    "Soluções em energia solar para residências, comércios, propriedades rurais e usinas de investimento em Mococa-SP e região.",
   openGraph: {
     url: "/",
     title: "Don Energy — Energia Solar em Mococa e Região",

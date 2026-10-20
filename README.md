@@ -68,3 +68,14 @@ O formulário solar existente é compartilhado. `/contato/?servico=solar-residen
 O mapa usa consulta ao endereço central e só cria iframe após “Carregar mapa”. “Como chegar” abre o Google Maps; conferir a marcação física do endereço na avaliação do usuário. Sem SDK, API key ou geolocalização. A política descreve a conexão externa.
 
 Checkpoint E1 validada: `e5c4234257ed490555fcf59e7a247be0fbd743d9`, preservado em `etapa/e1-fundacao`. E2 em `etapa/e2-servicos-contato`. Não usar o rollback pré-E1 para desfazer esta etapa; preservar mudanças posteriores e consultar os commits/rollback E2 no vault. Não fazer deploy automático.
+
+
+## Revisão editorial E2 — 2026-10-20
+
+Branch de trabalho: etapa/e2-revisao-editorial-mapa, base preservada 1b0480a. Revisados inicial, quatro perfis solares e contato; promessas sem comprovação retiradas dos textos próprios. Depoimentos mantêm o teor original e aguardam confirmação de origem/autorização; removidas as cinco estrelas automáticas. Escopo, diferenciais, garantias e processo comercial continuam dependentes do responsável.
+
+siteConfig.logo usa a derivação nativa aprovada sem slogan, public/logo/don-energy-marca-sem-microtexto-834x558.png. Originais e variante compacta anterior preservados. A prévia visual E5 em 4175 continua separada da funcional E2 em 4173; não aplicar o restante da composição por esta revisão.
+
+“Como chegar” abre /maps/dir/?api=1&destination= com o endereço central. Carregamento real do mapa e destino de rotas conferidos no navegador; confirmação de que o ponto corresponde ao imóvel segue com o responsável. Não inferir validação por HTTP 200.
+
+E2 permanece Aguardando validação. Evidências, questões comerciais e rollback no vault, Materiais/Referencias/E2-revisao-editorial-mapa/. Sem push, merge, publicação ou E3. Os trechos E1 acima são históricos; esta seção prevalece para os ajustes atuais.

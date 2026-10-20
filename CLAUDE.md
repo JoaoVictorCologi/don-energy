@@ -91,3 +91,11 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - Rotas estáticas `/servicos/`, quatro `/servicos/[slug]/` e `/contato/`, com barra final. Detalhes usam generateStaticParams e dynamicParams=false.
 - Reutilizar FormularioContato e validação atuais. A query servico aceita apenas um dos quatro slugs e pré-seleciona o radio existente; não adicionar campos de outras atividades.
 - Mapa externo somente após clique, consulta pelo endereço central. Não carregar SDK, chave ou conta. Header e Hero E1 preservados.
+
+
+## Revisão editorial E2 e marca aprovada
+- Branch de revisão: etapa/e2-revisao-editorial-mapa, base 1b0480a preservada. E2 aguardando validação; não publicar ou avançar E3.
+- siteConfig.logo aponta para a derivação nativa sem microtexto aprovada em D25. Preservar arquivo original, proporções e alturas do header; não reintroduzir o slogan no arquivo ou como texto ao lado.
+- Não reintroduzir percentuais, crédito, retorno, garantias ou fluxo comercial como fatos sem confirmação registrada. Não atribuir notas automáticas aos depoimentos.
+- “Como chegar” deve abrir a tela de rotas com destino central, sem presumir origem ou pedir geolocalização no código do site. Renderização do mapa e confirmação do imóvel são validações distintas.
+- Prévia visual no vault/porta 4175 permanece separada do site funcional.

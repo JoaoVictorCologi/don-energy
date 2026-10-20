@@ -19,8 +19,8 @@ export const siteConfig = {
     { dias: "Segunda a sexta", horario: "08:00 – 18:00", schemaDias: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], abre: "08:00", fecha: "18:00" },
     { dias: "Sábado", horario: "09:30 – 12:00", schemaDias: ["Saturday"], abre: "09:30", fecha: "12:00" },
   ],
-  // Derivada do original: corte apenas de margens alfa e redução proporcional.
-  logo: { src: "/logo/don-energy-logo-compacta.png", width: 167, height: 112 },
+  // Assinatura sem slogan aprovada em D25; derivação nativa, original preservado.
+  logo: { src: "/logo/don-energy-marca-sem-microtexto-834x558.png", width: 834, height: 558 },
   imagemSocial: { src: "/og-image.png", width: 1200, height: 630, alt: "Don Energy — Energia Solar" },
   numeros: {
     obrasRealizadas: "<<PREENCHER>>",

@@ -40,11 +40,11 @@ const schema = z.object({
   }, "Informe um telefone válido com DDD"),
   tipoImovel: z.enum(
     ["residencial", "comercial", "rural", "usina"],
-    "Selecione o tipo de imóvel"
+    "Selecione o perfil solar"
   ),
   consumoOuConta: z.string().trim().optional(),
   cidade: z.string().trim().min(2, "Informe sua cidade"),
-  consentimento: z.literal(true, "É preciso aceitar pra continuar"),
+  consentimento: z.literal(true, "É necessário concordar com a política de privacidade para continuar."),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -59,7 +59,7 @@ function montarMensagem(dados: FormValues) {
     "",
     `Nome: ${dados.nome}`,
     `Telefone: ${dados.telefone}`,
-    `Tipo de imóvel: ${tituloPorId[dados.tipoImovel]}`,
+    `Perfil solar: ${tituloPorId[dados.tipoImovel]}`,
     `Cidade: ${dados.cidade}`,
   ];
   if (dados.consumoOuConta) {
@@ -132,10 +132,10 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
       >
         <div className="mx-auto max-w-xl text-center">
           <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Perfeito!
+            Sua mensagem está pronta
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Sua mensagem está pronta. Se o WhatsApp não abriu em outra aba, use o link abaixo para continuar.
+            O envio é feito por você no WhatsApp. Se a aba não abriu, use o link abaixo para continuar.
           </p>
           <a
             href={urlWhatsapp}
@@ -143,7 +143,7 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
             rel="noopener noreferrer"
             className="mt-4 inline-block text-sm text-brand-blue underline underline-offset-4"
           >
-            Não abriu? Clique aqui.
+            Continuar no WhatsApp
           </a>
         </div>
       </section>
@@ -165,7 +165,7 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
           Peça sua proposta
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
-          Preencha seus dados e fale direto com a gente pelo WhatsApp.
+          Preencha os dados para preparar sua mensagem no WhatsApp. O envio é feito por você.
         </p>
         <form onSubmit={onSubmitForm} noValidate className="mt-10">
           <FieldGroup>
@@ -182,7 +182,7 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
                 <FieldError id="erro-nome" errors={[errors.nome]} />
               </Field>
               <Field data-invalid={!!errors.telefone}>
-                <FieldLabel htmlFor="telefone">Telefone/WhatsApp</FieldLabel>
+                <FieldLabel htmlFor="telefone">Telefone ou WhatsApp (com DDD)</FieldLabel>
                 <Input
                   id="telefone"
                   type="tel"
@@ -196,7 +196,7 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
             </div>
 
             <FieldSet>
-              <FieldLegend variant="label">Tipo de imóvel</FieldLegend>
+              <FieldLegend variant="label">Perfil do projeto solar</FieldLegend>
               <Controller
                 control={control}
                 name="tipoImovel"
@@ -244,9 +244,9 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
               </Field>
               <Field>
                 <FieldLabel htmlFor="consumoOuConta">
-                  Consumo mensal (kWh) ou valor da conta — opcional
+                  Consumo mensal (kWh) ou conta de energia (R$) — opcional
                 </FieldLabel>
-                <Input id="consumoOuConta" {...register("consumoOuConta")} />
+                <Input id="consumoOuConta" placeholder="Ex.: 450 kWh/mês ou R$ 350/mês" {...register("consumoOuConta")} />
               </Field>
             </div>
 

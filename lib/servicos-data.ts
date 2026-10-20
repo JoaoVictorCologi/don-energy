@@ -1,4 +1,7 @@
-export const servicos = [
+import { perfisSolares } from "@/lib/perfis-solares";
+import { detalhesSolares } from "@/lib/servicos-detalhes";
+
+const servicosBase = [
   {
     id: "residencial",
     titulo: "Residencial",
@@ -44,3 +47,12 @@ export const servicos = [
     ],
   },
 ] as const;
+
+
+export const servicos = perfisSolares.map((perfil) => {
+  const base = servicosBase.find((item) => item.id === perfil.id);
+  if (!base) throw new Error("Perfil solar sem dados: " + perfil.id);
+  return { ...base, ...perfil, ...detalhesSolares[perfil.id] };
+});
+
+export type Servico = (typeof servicos)[number];

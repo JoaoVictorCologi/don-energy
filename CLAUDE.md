@@ -49,7 +49,8 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - Tailwind only — sem CSS inline, sem styled-components
 - Cores da marca configuradas no `app/globals.css`: `#94B94A` (verde),
   `#384C96` (azul), `#D88739` (laranja) — usar os tokens, não hex direto no JSX
-- `--color-brand-blue-header` usa o azul oficial (`#384C96`) no Header e Footer. A logo compacta deriva do original com transparência; preservar proporção e identidade. CTAs laranja usam `text-brand-ink` para contraste.
+- Header fixo: transparente sobre o Hero apenas na inicial e no topo; azul sólido após 16 px de scroll, ao abrir o menu móvel e desde o início nas internas. Manter 64/72 px, reserva de espaço nas internas e padding superior do Hero.
+- `--color-brand-blue-header` usa o azul oficial (`#384C96`) quando o Header está sólido e no Footer. A logo compacta deriva do original com transparência; preservar proporção e identidade. CTAs laranja usam `text-brand-ink` para contraste.
 - **Exceção intencional — `#25D366` (verde oficial do WhatsApp):** usado só
   no botão flutuante (`components/whatsapp-flutuante.tsx`), como hex direto
   (não é um token da marca, de propósito). É a cor pela qual o ícone do

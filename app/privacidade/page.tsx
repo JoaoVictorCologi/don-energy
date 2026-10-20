@@ -83,7 +83,7 @@ export default function Privacidade() {
                 href="https://www.whatsapp.com/legal/privacy-policy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-4"
+                className="break-all underline underline-offset-4"
               >
                 https://www.whatsapp.com/legal/privacy-policy
               </a>

@@ -4,9 +4,19 @@ import dynamic from "next/dynamic";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+
+// A altura e a posição ficam constantes; apenas a superfície muda ao rolar.
+function subscribeHeaderScroll(onChange: () => void) {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+}
+
+const getHeaderScroll = () => window.scrollY > 16;
+const getServerHeaderScroll = () => false;
 
 const MenuMobile = dynamic(() => import("./menu-mobile").then((module) => module.MenuMobile), {
   ssr: false,
@@ -23,8 +33,24 @@ const links = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [menuAtivado, setMenuAtivado] = useState(false);
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  const scrolled = useSyncExternalStore(subscribeHeaderScroll, getHeaderScroll, getServerHeaderScroll);
+  const solid = !onHome || scrolled || open;
+
+  useEffect(() => {
+    // Não deixar um menu modal oculto prendendo o foco após ampliar a tela.
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const closeOnDesktop = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
   return (
-    <header className="sticky top-0 z-50 bg-brand-blue-header text-white shadow-sm">
+    <>
+    <header
+      data-header-surface={solid ? "solid" : "overlay"}
+      className={"fixed inset-x-0 top-0 z-50 text-white transition-[background-color,box-shadow] duration-200 motion-reduce:transition-none " + (solid ? "bg-brand-blue-header shadow-sm" : "bg-transparent")}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-[var(--header-py)]">
         <Link href="/" aria-label="Don Energy — página inicial" className="flex min-h-11 items-center gap-3 rounded-sm">
           <Image src={siteConfig.logo.src} alt="Don Energy — Energia Solar" width={siteConfig.logo.width} height={siteConfig.logo.height} loading="eager" className="h-[var(--header-logo-size)] w-auto object-contain" />
@@ -47,5 +73,8 @@ export function Header() {
         </div>
       </div>
     </header>
+    {/* Nas internas, reservar a altura desde o HTML inicial, sem salto ao hidratar. */}
+    {!onHome && <div aria-hidden="true" className="h-[var(--header-height)] shrink-0" />}
+    </>
   );
 }

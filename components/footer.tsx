@@ -9,15 +9,15 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 export function Footer() {
   return (
     <footer className="bg-brand-blue-header text-white">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+      <div className="site-shell py-14">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.4fr_1fr]">
           <div>
             <Image
               src={siteConfig.logo.src}
               alt="Don Energy"
               width={siteConfig.logo.width}
               height={siteConfig.logo.height}
-              className="h-16 w-auto object-contain"
+              className="h-16 w-auto object-contain" loading="lazy"
             />
           </div>
 
@@ -65,7 +65,7 @@ export function Footer() {
 
         <nav aria-label="Navegação no rodapé" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold"><Link prefetch={false} href="/servicos/" className="inline-flex min-h-11 items-center underline underline-offset-4">Soluções solares</Link><Link prefetch={false} href="/contato/" className="inline-flex min-h-11 items-center underline underline-offset-4">Fale com a Don Energy</Link></nav>
 
-        <div className="mt-8 border-t border-white/20 pt-6 text-center text-sm text-white/90">
+        <div className="mt-8 border-t border-white/20 pt-6 text-sm text-white/90">
           <Link href="/privacidade/" prefetch={false} className="mb-4 inline-flex min-h-11 items-center underline underline-offset-4">Política de privacidade</Link>
           <p>© {new Date().getFullYear()} Don Energy. Todos os direitos
           reservados.</p>

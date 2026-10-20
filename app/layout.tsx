@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: "/",
     title: "Don Energy — Energia Solar em Mococa e Região",
     description:
-      "Soluções completas em energia solar para residências, comércios, propriedades rurais e usinas de investimento em Mococa-SP e região.",
+      "Soluções em energia solar para residências, comércios, propriedades rurais e usinas de investimento em Mococa-SP e região.",
     locale: "pt_BR",
     type: "website",
     images: [
@@ -60,7 +60,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={cn("h-full", "antialiased", sora.variable, inter.variable, "font-sans")}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col wrap-anywhere">
         <a href="#conteudo" className="sr-only fixed top-2 left-2 z-[100] rounded-md bg-white px-4 py-3 text-brand-blue focus:not-sr-only">Pular para o conteúdo</a>
         <Header />
         {children}

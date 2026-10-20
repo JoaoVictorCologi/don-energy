@@ -14,8 +14,10 @@
   --color-brand-orange: #d88739;
   --color-brand-ink: #171f32;
 
-  /* Header e footer usam o azul oficial; a nova logo tem canal alfa. */
-  --color-brand-blue-header: #384c96;
+  /* Azul profundo de apoio aprovado; preservar as cores da marca. */
+  --color-brand-blue-header: #182447;
+  --color-brand-deep: #182447;
+  --color-brand-soft: #f5f6fa;
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-sora);
@@ -68,7 +70,7 @@ body {
   --header-height: calc(var(--header-py) * 2 + var(--header-logo-size));
 
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: #171f32;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -78,11 +80,11 @@ body {
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: #535c6d;
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+  --border: #d9dde6;
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
@@ -219,4 +221,13 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+
+@layer components {
+  .site-shell { @apply mx-auto w-full max-w-[1200px] px-6 md:px-10; }
+  .site-section { @apply py-20 md:py-24; }
+  .site-eyebrow { @apply mb-5 text-xs font-semibold tracking-[0.13em] text-brand-blue uppercase; }
+  .site-title { @apply max-w-3xl font-heading text-3xl leading-[1.22] font-medium tracking-[-0.035em] text-brand-blue md:text-[2.5rem]; }
+  .site-link { @apply inline-flex min-h-11 items-center gap-4 text-sm font-semibold text-brand-blue underline-offset-8 hover:underline; }
+  .site-button { @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-sm bg-brand-orange px-6 py-3 text-sm font-semibold text-brand-ink hover:bg-brand-orange/90; }
 }

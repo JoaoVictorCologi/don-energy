@@ -24,9 +24,9 @@ const MenuMobile = dynamic(() => import("./menu-mobile").then((module) => module
 });
 
 const links = [
-  { href: "/servicos/", label: "Serviços" },
-  { href: "/#obras", label: "Obras" },
-  { href: "/#depoimentos", label: "Depoimentos" },
+  { href: "/", label: "Início" },
+  { href: "/servicos/", label: "Soluções" },
+  { href: "/#obras", label: "Fotos" },
   { href: "/contato/", label: "Contato" },
 ];
 
@@ -51,13 +51,12 @@ export function Header() {
       data-header-surface={solid ? "solid" : "overlay"}
       className={"fixed inset-x-0 top-0 z-50 text-white transition-[background-color,box-shadow] duration-200 motion-reduce:transition-none " + (solid ? "bg-brand-blue-header shadow-sm" : "bg-transparent")}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-[var(--header-py)]">
+      <div className="site-shell flex items-center justify-between gap-4 py-[var(--header-py)]">
         <Link href="/" aria-label="Don Energy — página inicial" className="flex min-h-11 items-center gap-3 rounded-sm">
-          <Image src={siteConfig.logo.src} alt="Don Energy — Energia Solar" width={siteConfig.logo.width} height={siteConfig.logo.height} loading="eager" className="h-[var(--header-logo-size)] w-auto object-contain" />
-          <span className="text-sm font-semibold tracking-wide sm:text-base">Don Energy</span>
+          <Image src={siteConfig.logo.src} alt="Don Energy" width={siteConfig.logo.width} height={siteConfig.logo.height} loading="eager" className="h-[var(--header-logo-size)] w-auto object-contain" />
         </Link>
         <nav aria-label="Navegação principal" className="hidden items-center gap-5 md:flex">
-          {links.map((link) => <a key={link.href} href={link.href} className="inline-flex min-h-11 items-center rounded-sm text-sm font-medium underline-offset-4 hover:underline">{link.label}</a>)}
+          {links.map((link) => <a key={link.href} href={link.href} aria-current={pathname === link.href || (link.href === "/servicos/" && pathname.startsWith("/servicos/")) ? "page" : undefined} className="inline-flex min-h-11 items-center rounded-sm text-sm font-medium underline-offset-8 hover:underline aria-[current=page]:underline">{link.label}</a>)}
         </nav>
         <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="hidden min-h-11 items-center rounded-md bg-brand-orange px-4 text-sm font-semibold text-brand-ink hover:bg-brand-orange/90 md:inline-flex">Falar no WhatsApp</a>
         <div className="md:hidden">

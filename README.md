@@ -1,100 +1,61 @@
 # Don Energy — Site institucional
 
-Next.js 16.2.10 (App Router), React 19, TypeScript e Tailwind CSS 4. Conteúdo em arquivos locais; formulário com React Hook Form/Zod abre uma mensagem no WhatsApp. Sem API, banco de dados ou envio automático.
+Next.js 16.2.10 (App Router), React 19, TypeScript e Tailwind CSS 4. Exportação estática, conteúdo local e atendimento pelo WhatsApp. Sem backend, API, banco ou envio automático.
 
-## Ambiente e execução
+## Estado vigente e preservação
 
-Ambiente validado na E1: Node 24.11.0, npm 11.6.1, Windows. A versão de Node está em .nvmrc. Não atualizar dependências automaticamente; preservar o lockfile.
+- E1 validada: `e5c4234`. E2 visual validada: `93e0754`.
+- E3 em `944c461`: **entrega parcial validada, com detalhes das obras pendentes do proprietário**.
+- E4 em `205dbbf`: **interface validada; cálculo pendente de aprovação técnica em Q07-A**. O simulador não calcula estimativas.
+- E5: consolidação autorizada na branch `etapa/e5-consolidacao-visual`, base `205dbbf`, aguardando avaliação da entrega. Não fazer push, merge, deploy ou avançar para publicação por inferência.
 
-~~~powershell
+A central do projeto fica em `C:/Users/colog/Documents/Obsidian Vault/Don-Energy-Site/00-Painel.md`. Consultar `Etapas/E5-Reformulacao-visual.md` e `Materiais/Referencias/E5/` para evidências, commits, limitações e rollback. Questões comerciais/técnicas centralizadas em `Confirmacoes-do-proprietario.md`. Guias anteriores preservados no histórico Git, sem prevalecer sobre este estado.
+
+## Ambiente e comandos
+
+Node 24.11.0 (`.nvmrc`), npm 11.6.1. Preservar lockfile; não atualizar dependências automaticamente.
+
+```powershell
 npm ci
 npm run dev
-~~~
-
-Validação de entrega:
-
-~~~powershell
 npm run lint
 npm run build
 npm run preview:static
-~~~
+```
 
-O build gera out/. A prévia serve http://127.0.0.1:4173, apenas em loopback, com status 404 para endereços inexistentes, sem fallback de SPA. A prévia aplica gzip a HTML, CSS, JavaScript e texto; confirmar compressão no servidor real. Encerre com Ctrl+C. Não usar next start para exportação estática. next dev não serve de referência de desempenho.
+O build gera `out/`. A prévia estática serve `http://127.0.0.1:4173/` em loopback, com gzip para texto e status 404 real. `next start` não serve exportação estática. Medir desempenho no build de produção, sem `next dev`.
 
-## Conteúdo e identidade
+## Páginas, conteúdo e identidade
 
-- lib/site-config.ts: URL, telefone/WhatsApp, endereço, horários, logo, imagem social e números ainda pendentes. contato-data.ts mantém a interface existente sem duplicar dados. Corrigir a URL nesse único lugar após publicação do domínio definitivo; por enquanto é https://don-energy.vercel.app.
-- lib/servicos-data.ts, obras-data.ts e depoimentos-data.ts: conteúdo atual. Dados de obras não confirmados permanecem como <<PREENCHER>>. Textos comerciais, fotos e depoimentos preexistentes ainda precisam de confirmação/autorização antes de publicação.
-- public/obras/otimizadas/: miniaturas 320/640 px e Hero 640/960/1440 px em AVIF com alternativa WebP e srcSet. Fontes fotográficas preservadas em public/obras/. unoptimized: true não cria versões menores; preparar os arquivos antes do build.
-- public/logo/don-energy-logo-compacta.png: margens alfa recortadas e redução proporcional do original fornecido; não deriva da versão preparada com defeitos. Logo antiga e originais do vault preservados. Identidade e leitura do slogan ainda sujeitas à avaliação final; solicitar variante oficial simplificada se necessário.
-- app/globals.css: azul oficial no header/footer, laranja com texto escuro nos CTAs, Inter no corpo e Sora nos títulos. Altura compartilhada do header: 64 px no celular e 72 px a partir de 768 px. Na inicial ele é fixo e transparente sobre a fotografia, sem faixa azul; a superfície torna-se sólida após 16 px de rolagem ou com o menu móvel aberto. Nas internas o fundo é sólido desde o HTML inicial, com espaço reservado abaixo. O Hero reserva altura do header no padding superior para não esconder o título.
-- Formulário e links wa.me preenchem a mensagem; o visitante decide enviá-la no WhatsApp. Testes usam somente dados fictícios. Botão flutuante oculta-se quando o formulário está visível e na política de privacidade, sem eliminar o contato do formulário/header/footer. O formulário existente carrega perto da seção via contato-progressivo.tsx; um link de WhatsApp permanece no HTML estático mesmo sem JavaScript.
+Dez rotas: `/`, `/servicos/`, `/servicos/solar-residencial/`, `/servicos/solar-comercial/`, `/servicos/solar-rural/`, `/servicos/usina-de-investimento/`, `/obras/`, `/simulador/`, `/contato/`, `/privacidade/`. Mais `404.html`, robots e sitemap. `trailingSlash: true`, `output: export`, imagens locais com `unoptimized: true`; preparar derivados antes do build.
 
-O menu móvel mantém o Popover Base UI existente, carregado quando o visitante interage com o botão (antecipado em foco/hover). Não é baixado para a navegação desktop. O controle reserva 44 × 44 px durante o carregamento.
+- `lib/site-config.ts`: única fonte de URL, marca, telefone, endereço, horários e imagem social. `contato-data.ts` é uma fachada. URL configurada: `https://don-energy.vercel.app`; não presumir que configuração local confirma o destino de deploy. Números institucionais não confirmados não são exibidos.
+- Marca D25 sem “Energia solar” embaixo ou ao lado. Derivação nativa 834 × 558, transparência e proporções preservadas; originais e versões históricas mantidos. Não ampliar o raster compacto nem reconstruir por IA.
+- Sora/Inter, azul e laranja, base clara e azul profundo de apoio. Header 64/72 px, transparente apenas na inicial no topo; sólido após 16 px, menu aberto e desde o início nas internas. Preservar reserva de altura e padding do Hero. CTAs laranja usam texto escuro.
+- Fotografias atuais autorizadas (D27), sem classificação por serviço, cidade, potência ou quantidade de obras presumidas. `lib/fotos-data.ts` organiza arquivos; `lib/obras-data.ts` organiza projetos confirmados e continua vazio. A estrutura `DetalheObra` não cria rota pública. Onze fotos não são onze obras. Sem filtros até dados confirmados.
+- `public/obras/` preserva fontes; `otimizadas/` contém variantes E2 e Hero AVIF/WebP; `portfolio/` contém variantes 480/960/1440 derivadas das fontes, com ampliação integral. `sizes` sem srcSet não gera variantes no export.
+- Depoimentos preservados em `lib/depoimentos-data.ts`, fora do HTML/bundle público até origem e autorização. Integração automática Google adiada. Sem promessas comerciais, técnicas ou financeiras não confirmadas.
 
-## Rotas e SEO
+## Navegação e fluxos preservados
 
-Rotas desta entrega: / e /privacidade/. E2–E4 não implementadas. trailingSlash: true produz privacidade/index.html. Robots e sitemap são estáticos; canonicals e metadados apontam ao endereço publicado configurado. LocalBusiness contém somente os dados confirmados; não inventar avaliações agregadas, certificações ou dados comerciais.
+Menu: Início, Soluções, Projetos, Simulador e Contato. Base UI móvel carrega sob demanda; preservar teclado/Escape/foco e redimensionamento. Ampliação do portfólio carrega diálogo sob demanda; sem JS, abre o arquivo da foto.
 
-A página 404 é gerada como 404.html; o servidor de produção deve devolvê-la com status 404. A existência do arquivo não configura o servidor por si só. Não cadastrar links para futuras páginas.
+Formulário RHF/Zod compartilhado. `?servico=solar-residencial` aceita apenas os quatro slugs; valores desconhecidos são ignorados. Não colocar dados pessoais em URLs internas. Consentimento obrigatório; mensagem preparada abre WhatsApp e o visitante decide enviar. Testes interceptam destinos e usam dados fictícios. Fallback de WhatsApp permanece sem JS; o atalho flutuante só aparece onde previsto e não cobre o formulário.
 
-## Preparação para Hostinger — publicação não autorizada nesta etapa
+E4 mostra “Cálculo em preparação” desde o início. Ação principal “Revisar dados”; validação sintática sob demanda, revisão/edição e contato opcional. Sem fórmulas, parâmetros presumidos, conversão R$→kWh, estimativas ou projeções de retorno. Usina tem tratamento próprio. Contexto em memória; atualizar contato exige ação explícita, preservando rascunho e invalidando mensagem antiga quando necessário. Sem persistência em URL/localStorage.
 
-1. Confirmar plano exato com suporte a site próprio Custom PHP/HTML, domínio/subdomínio, diretório público e método de envio. Não presumir que o Criador de Sites oferece esse acesso ou que haverá Node em execução.
-2. Confirmar a versão aprovada, registrar commit/base, Node e backup da versão publicada e do diretório público. Preservar DNS de e-mail e manter Vercel disponível durante a validação conforme combinado.
-3. Gerar out/ com instalação limpa, lint e build. Em homologação pública, impedir indexação; na produção aprovada, permitir indexação. Validar em endereço de homologação antes de trocar DNS.
-4. Enviar apenas o conteúdo de out/ ao diretório público indicado, com index.html na raiz, _next/, imagens, ícones, sitemap e robots. Não enviar .git, fontes, node_modules, .env, backups ou credenciais. Publicar de forma controlada, evitando mistura entre HTML novo e ativos de versões diferentes.
-5. Testar acesso direto e atualização de / e /privacidade/, links entre elas, parâmetros de URL, mensagem de WhatsApp, recursos estáticos e um endereço inexistente (deve responder 404). Não redirecionar todas as URLs para index.html.
-6. Confirmar HTTPS, domínio canônico e ausência de conteúdo misto. Regras de cache/compressão/cabeçalhos dependem do servidor e do plano; não esperar execução de headers/rewrites/redirects do Next na hospedagem de arquivos. Avaliar cache longo imutável só para _next/static/ com hash; HTML/robots/sitemap devem permitir revalidação. Não aplicar cache imutável a todo o diretório.
-7. Confirmar o servidor antes de produzir regras. Por exemplo, ErrorDocument 404 /404.html só deve ser adotado se o ambiente real aceitar essa configuração. Não foi criado .htaccess sem conhecer o plano. Não ativar deploy automático, conectar contas ou mudar DNS sem autorização separada.
-8. Após publicação autorizada, repetir lint/build se fontes mudarem, testes manuais, verificação de cabeçalhos/status/HTTPS e Lighthouse no endereço real. Guardar HTML e JSON dos relatórios e registrar URL, ferramenta, navegador, perfil, data e condições.
+Mapa só carrega após “Carregar mapa”; “Como chegar” abre rotas para o endereço central. Localização confirmada pelo usuário em D27. Sem SDK, API key ou geolocalização. A política descreve conexões com Google e WhatsApp.
 
-### Rollback de publicação (a confirmar no plano real)
+## Qualidade, SEO e publicação posterior
 
-Manter um pacote completo da versão anterior e seu inventário. Se a nova versão falhar, restaurar integralmente o conteúdo público anterior pelo método confirmado no hPanel, incluindo HTML e ativos correspondentes; revalidar rotas, 404, HTTPS e contato. Registrar eventual reversão de DNS e suas condições antes da migração. Não apagar o projeto Vercel automaticamente.
+Rodar lint, TypeScript/build/export e regressões proporcionais. Auditar as dez páginas em Lighthouse 13.5.0, três amostras por perfil, medianas/faixas; E5 concentra 60 auditorias finais depois de estabilizar. Registrar LCP/CLS e limitações; localhost não comprova Core Web Vitals de campo, Vercel ou Hostinger. Conferir teclado, 320 px, zoom 200%, densidade 2×, 404 e fluxos além da auditoria automática.
 
-## Qualidade e acompanhamento
+Metadados/canonicals/sitemap usam `SITE_URL`. Robots permite indexação no ambiente configurado. Ambiente de avaliação e sua indexação devem ser decididos antes de publicar. Não gerar links para páginas inexistentes nem Review/AggregateRating sem autorização.
 
-Medir o export de produção com Lighthouse 13.5.0: três execuções sequenciais por perfil (celular/desktop), por rota representativa, mediana e variação. Meta: pontuações superiores a 90 nas quatro categorias, sem promessa de resultado fixo. Auditoria automática não substitui navegação por teclado, foco, contraste e teste funcional.
+Git/Vercel é um marco separado: conferir remoto atual, projeto/conta, repositório vinculado, branch de produção, gatilhos, build/saída, URL, proteção/indexação e deployment anterior. Sem vincular projeto, reconfigurar ou publicar nesta entrega.
 
-A central do projeto está em C:/Users/colog/Documents/Obsidian Vault/Don-Energy-Site/00-Painel.md. Evidências locais da E1 ficam em Materiais/Referencias/E1/ no vault, fora da publicação. Consulte Etapas/E1-Fundacao.md para aprovação, arquivos, medições, pendências e rollback da implementação. Trabalhar em etapa/e1-fundacao, preservando o trabalho anterior; não publicar nem iniciar E2 sem aprovação.
+Hostinger posterior: confirmar plano com arquivos próprios, domínio, diretório, HTTPS, compressão/cache e 404; não presumir Node nem recursos do Criador de Sites. Enviar apenas `out/` mediante autorização, preservar DNS/e-mail e backup completo. Testar dez rotas, atualização direta, ativos, 404, contatos e avisos E3/E4 na URL real. Cache imutável apenas para ativos com hash; HTML/robots/sitemap devem revalidar. Não criar `.htaccess` antes de conhecer o servidor.
 
-## E2 — Serviços e contato (2026-10-20)
+## Rollback
 
-Catálogo exclusivo de energia solar: residencial, comercial, rural e usina de investimento. Rotas: `/servicos/`, `/servicos/solar-residencial/`, `/servicos/solar-comercial/`, `/servicos/solar-rural/`, `/servicos/usina-de-investimento/` e `/contato/`. Todas exportadas em `out/`, com metadados e sitemap.
-
-O formulário solar existente é compartilhado. `/contato/?servico=solar-residencial#formulario-proposta` pré-seleciona o perfil; slugs desconhecidos são ignorados. Não inserir dados pessoais na URL interna. Mensagem preparada pelo WhatsApp, sem envio automático; consentimento obrigatório e link alternativo preservados. Contato direto permanece no HTML sem JavaScript.
-
-O mapa usa consulta ao endereço central e só cria iframe após “Carregar mapa”. “Como chegar” abre o Google Maps; conferir a marcação física do endereço na avaliação do usuário. Sem SDK, API key ou geolocalização. A política descreve a conexão externa.
-
-Checkpoint E1 validada: `e5c4234257ed490555fcf59e7a247be0fbd743d9`, preservado em `etapa/e1-fundacao`. E2 em `etapa/e2-servicos-contato`. Não usar o rollback pré-E1 para desfazer esta etapa; preservar mudanças posteriores e consultar os commits/rollback E2 no vault. Não fazer deploy automático.
-
-
-## Revisão editorial E2 — 2026-10-20
-
-Branch de trabalho: etapa/e2-revisao-editorial-mapa, base preservada 1b0480a. Revisados inicial, quatro perfis solares e contato; promessas sem comprovação retiradas dos textos próprios. Depoimentos mantêm o teor original e aguardam confirmação de origem/autorização; removidas as cinco estrelas automáticas. Escopo, diferenciais, garantias e processo comercial continuam dependentes do responsável.
-
-siteConfig.logo usa a derivação nativa aprovada sem slogan, public/logo/don-energy-marca-sem-microtexto-834x558.png. Originais e variante compacta anterior preservados. A prévia visual E5 em 4175 continua separada da funcional E2 em 4173; não aplicar o restante da composição por esta revisão.
-
-“Como chegar” abre /maps/dir/?api=1&destination= com o endereço central. Carregamento real do mapa e destino de rotas conferidos no navegador; confirmação de que o ponto corresponde ao imóvel segue com o responsável. Não inferir validação por HTTP 200.
-
-E2 permanece Aguardando validação. Evidências, questões comerciais e rollback no vault, Materiais/Referencias/E2-revisao-editorial-mapa/. Sem push, merge, publicação ou E3. Os trechos E1 acima são históricos; esta seção prevalece para os ajustes atuais.
-
-## Aplicação visual E2 — avaliação local
-
-Composição aprovada aplicada às oito páginas existentes e 404. Marca sem slogan, superfícies claras/azul profundo, cartões fotográficos e navegação apenas por destinos disponíveis. Acervo atual autorizado, com classificação/dados pendentes; relatos mantidos em lib/depoimentos-data.ts, sem apresentação pública. Formulário e mapa por escolha preservados.
-
-Branch: etapa/e2-aplicacao-visual; checkpoint anterior fd693cb. Prévia funcional: npm run preview:static em http://127.0.0.1:4173/. Maquete independente: vault/porta 4175. Evidências, validações e rollback no vault, Etapas/E2-Aplicacao-visual.md. E2 aguardando aceite final; sem E3/E4, push, merge ou deploy.
-
-## E3 — acervo com entrega parcial validada
-
-Base E2 validada em 93e0754; branch etapa/e3-portfolio-depoimentos. Página /obras/ com fotografias autorizadas e ampliação acessível; destaques/navegação integrados. Fotos em lib/fotos-data.ts e projetos em lib/obras-data.ts: obrasConfirmadas está vazio, sem presumir um projeto por foto. Componente DetalheObra preparado, sem rota/link de projeto até agrupamento confirmado.
-
-Sem filtros por dados ausentes, depoimentos públicos ou automação Google. Fontes e variantes E2 preservadas; derivados maiores gerados diretamente das fontes em public/obras/portfolio/. E3 em 944c461: entrega parcial validada, com detalhes das obras pendentes do proprietário. Sem conclusão integral, push, merge ou publicação. E4 segue o recorte próprio abaixo. Evidências e rollback em Etapas/E3-Portfolio-e-depoimentos.md no vault.
-
-
-## E4 — interface de preparação
-- E3 em 944c461 tem entrega parcial validada; detalhes reais e depoimentos continuam pendentes.
-- /simulador/ organiza campos, revisão/edição e contato existente. Estado visível: Cálculo em preparação. Nenhuma fórmula, parâmetro presumido, conversão R$→kWh ou resultado numérico.
-- Usinas seguem preparação de atendimento específico, sem aplicar projeção residencial. Contexto fica em memória e só atualiza contato por ação explícita, preservando rascunho.
-- Interface implementada, aguardando validação; cálculo pendente de aprovação técnica Q07-A no vault. Não declarar simulador concluído, publicar ou iniciar E5.
+E5 retorna à árvore aceita `205dbbf`, por revert dos commits E5 em ordem inversa, com branch/HEAD/árvore limpa conferidos. Preservar qualquer trabalho posterior antes de replanejar; sem reset ou exclusão recursiva. Recriar `out/` e revalidar fluxos. Não usar rollback E4→E3 para desfazer E5. O script/dry-run e a lista real de commits ficam no vault. Restaurar deployment é operação diferente, sujeita ao destino e autorização do marco seguinte.

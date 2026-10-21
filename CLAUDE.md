@@ -36,9 +36,9 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 ## Architecture
 - App Router: rotas em `app/`
 - Server Components por padrão para conteúdo estático; `'use client'` apenas em
-  componentes com interatividade real (formulário, calculadora, menu mobile)
+  componentes com interatividade real (formulário, revisão de dados, menu mobile)
 - `components/ui/` — primitivos shadcn
-- `components/` — componentes de feature (Hero, Calculadora, FormularioContato, etc.)
+- `components/` — componentes de feature (Hero, SimuladorSolar, FormularioContato, etc.)
 - `lib/whatsapp.ts` — helper para montar a URL `wa.me` a partir dos dados do formulário
   (número da empresa, formatação/encoding da mensagem)
 - `lib/` — demais helpers e configs
@@ -67,55 +67,22 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - Prévia estática: `npm run preview:static`. Não usar `next start` para export.
 - Hostinger: publicar apenas conteúdo de `out/`, mediante aprovação separada. Consulte README para validação, backup e rollback.
 
-## Workflow (fase atual: MVP para aprovação do cliente)
-- Prioridade agora é ter algo visualmente completo e navegável — não é necessário
-  suite de teste automatizado nesta fase
-- Rodar `npm run build` antes de qualquer entrega pro cliente, pra garantir que o
-  export estático não quebrou
-- Commits em português, direto: "adiciona seção de calculadora"
+## Estado e limites vigentes — E5
+- Ler README.md e o painel do vault antes de alterar o projeto. E5 autorizada em etapa/e5-consolidacao-visual sobre 205dbbf; entrega aguardando avaliação, sem push, merge ou deploy.
+- E2 validada em 93e0754. E3 em 944c461: entrega parcial validada, com detalhes das obras pendentes do proprietário. E4 em 205dbbf: interface validada; cálculo pendente de aprovação técnica Q07-A.
+- Existem dez páginas e a 404, listadas no README. Não retomar etapas aceitas nem aplicar a maquete independente da porta 4175 automaticamente.
+- Marca D25 sem slogan/microtexto abaixo ou ao lado, derivação nativa 834×558 e originais preservados. Preservar a composição e alturas do header.
+- Fotografias autorizadas; fotos e projetos são dados distintos. obrasConfirmadas vazio é intencional. Sem agrupamentos, slugs, cidades, potência, classificação ou contagem presumidos. DetalheObra não tem rota pública.
+- Depoimentos preservados fora da renderização/bundle público; integração Google adiada. Filtros dependem de dados confirmados.
+- FormularioContato RHF/Zod compartilhado, quatro perfis solares. Query servico só aceita slugs conhecidos. Não criar backend/email, resultados ou envio automático. Consentimento e fallback devem permanecer.
+- /simulador/ prepara dados, não calcula: Cálculo em preparação, ação Revisar dados. Não inserir fórmulas, parâmetros, conversão R$→kWh ou estimativas. Usina mantém tratamento específico. Contexto em memória e atualização explícita do contato, preservando rascunho; invalidar mensagem antiga após mudança.
+- Mapa externo por escolha; Como chegar usa endereço central, confirmado em D27. Sem SDK/chave/geolocalização. Não tratar HTTP 200 como conferência visual.
+- SITE_URL centralizado em lib/site-config.ts; domínio/canonical/indexação só mudam após confirmar ambiente. Robots atual permite indexação; não presumir homologação protegida.
+- Não inventar serviços, garantias, retorno ou fatos comerciais. Pendências exclusivamente na nota Confirmacoes-do-proprietario.md do vault, sobretudo Q05-A/Q06/Q07-A.
 
-## Common Gotchas
-- Qualquer imagem usada precisa estar em `public/` ou ser importada localmente —
-  sem otimização automática de fontes remotas
-- Formulário de contato NÃO envia e-mail — ele só valida (RHF+Zod) e monta um link `wa.me`
-  com os dados codificados na mensagem. Não criar Server Action nem API Route pra isso.
-- Logo: usar `siteConfig.logo`, arquivo local em `public/logo/`; preservar os originais. A variante compacta e o header sobreposto foram validados no encerramento da E1; preservar a composição.
-- `SITE_URL` e todos os dados de contato estão em `lib/site-config.ts`. Usar a URL Vercel até existir domínio definitivo publicado. `lib/contato-data.ts` é uma fachada sem dados duplicados.
-- Ícones/favicon usam a convenção de arquivo do Next (`app/favicon.ico`,
-  `app/icon.png` + `icon1-4.png`, `app/apple-icon.png`) — não em `public/`.
-  Se precisar trocar algum, é só substituir o arquivo no lugar certo, o Next
-  gera as tags `<link>` sozinho.
-
-## E2 — Serviços e contato
-- Somente os quatro perfis solares, IDs estáveis em `lib/perfis-solares.ts`; detalhes de página separados para não carregar textos longos no formulário.
-- Rotas estáticas `/servicos/`, quatro `/servicos/[slug]/` e `/contato/`, com barra final. Detalhes usam generateStaticParams e dynamicParams=false.
-- Reutilizar FormularioContato e validação atuais. A query servico aceita apenas um dos quatro slugs e pré-seleciona o radio existente; não adicionar campos de outras atividades.
-- Mapa externo somente após clique, consulta pelo endereço central. Não carregar SDK, chave ou conta. Header e Hero E1 preservados.
-
-
-## Revisão editorial E2 e marca aprovada
-- Branch de revisão: etapa/e2-revisao-editorial-mapa, base 1b0480a preservada. E2 aguardando validação; não publicar ou avançar E3.
-- siteConfig.logo aponta para a derivação nativa sem microtexto aprovada em D25. Preservar arquivo original, proporções e alturas do header; não reintroduzir o slogan no arquivo ou como texto ao lado.
-- Não reintroduzir percentuais, crédito, retorno, garantias ou fluxo comercial como fatos sem confirmação registrada. Não atribuir notas automáticas aos depoimentos.
-- “Como chegar” deve abrir a tela de rotas com destino central, sem presumir origem ou pedir geolocalização no código do site. Renderização do mapa e confirmação do imóvel são validações distintas.
-- Prévia visual no vault/porta 4175 permanece separada do site funcional.
-
-## Aplicação visual E2
-- Composição D27 aplicada às páginas existentes, sem E3/E4. Header compacto e marca sem slogan; cartões fotográficos sem pictogramas/WhatsApp repetido.
-- Fotografias atuais autorizadas; classificação e dados das obras continuam em conferência. Depoimentos preservados em arquivo, fora da renderização pública até confirmação.
-- Preservar o formulário RHF/Zod e mapa por escolha. E2 aguardando aceite final; sem push, merge ou deploy nesta entrega.
-
-## E3 — acervo e projetos
-- E2 validada em 93e0754. E3 autoriza acervo, ampliação, destaques e navegação; não reabrir E2 nem alterar sua identidade.
-- Fotografias são arquivos; projetos exigem agrupamento confirmado. obrasConfirmadas vazio é intencional. Não gerar rotas/contagens/classificações a partir dos nomes das fotos.
-- DetalheObra é estrutura sem rota pública. Ativar slugs/sitemap/links apenas com grupos confirmados e geração estática real.
-- Depoimentos preservados fora do HTML e do bundle público; integração Google adiada. Filtros somente com dados confirmados que os sustentem.
-- AmpliacaoGaleria melhora links estáticos com diálogo Base UI sob demanda; sem JS os links abrem a imagem. Preservar teclado/Escape/retorno de foco.
-- E3 em 944c461: entrega parcial validada, com detalhes das obras pendentes do proprietário. Não marcar conclusão integral nem presumir respostas ou publicação.
-
-
-## E4 — interface de preparação
-- E3 em 944c461 tem entrega parcial validada; detalhes reais e depoimentos continuam pendentes.
-- /simulador/ organiza campos, revisão/edição e contato existente. Estado visível: Cálculo em preparação. Nenhuma fórmula, parâmetro presumido, conversão R$→kWh ou resultado numérico.
-- Usinas seguem preparação de atendimento específico, sem aplicar projeção residencial. Contexto fica em memória e só atualiza contato por ação explícita, preservando rascunho.
-- Interface implementada, aguardando validação; cálculo pendente de aprovação técnica Q07-A no vault. Não declarar simulador concluído, publicar ou iniciar E5.
+## Validação e preservação
+- Rodar lint, TypeScript/build/export e regressões previstas; documentação da E5 no vault define cobertura e evidências. Não criar testes que apenas espelham a implementação.
+- Investigar LCP com hipóteses isoladas, preservando nitidez e todos os resultados. Não tornar todas as fotos prioritárias. Depois de estabilizar, dez rotas × dois perfis × três auditorias Lighthouse = 60; registrar mediana, faixa, LCP/CLS e limitações.
+- Conferir teclado, foco, 320 px, zoom 200%, 2× e funções além do Lighthouse. Navegadores físicos não testados não podem ser declarados aprovados.
+- Commits locais em português; referências E1–E4 preservadas. Rollback E5 retorna à árvore 205dbbf por reverts E5 em ordem inversa, após conferir HEAD/branch/árvore limpa. Preservar qualquer trabalho posterior.
+- Git/Vercel e Hostinger são marcos posteriores; consultar dossiê no vault. Não criar PR, conectar projetos, configurar gatilhos, enviar ou publicar sem autorização própria.

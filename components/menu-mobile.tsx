@@ -24,4 +24,3 @@ export function MenuMobile({ open, onOpenChange, links }: Props) {
         </Popover>
   );
 }
-

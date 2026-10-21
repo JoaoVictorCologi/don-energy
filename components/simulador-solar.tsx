@@ -3,24 +3,29 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
-import { useForm, useWatch } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, useWatch, type Resolver } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { perfisSolares, type PerfilSolarId } from "@/lib/perfis-solares";
-import { contextoParaContato, estadosBrasileiros, ligacoes, nomePerfil, simuladorSchema, type ContextoSimulador, type DadosSimulador } from "@/lib/simulador-schema";
+import { contextoParaContato, estadosBrasileiros, ligacoes, nomePerfil, type ContextoSimulador } from "@/lib/simulador-contexto";
+import type { DadosSimulador } from "@/lib/simulador-schema";
 
 const FormularioContato = dynamic(() => import("./formulario-contato").then(m => m.FormularioContato), {
   ssr: false,
   loading: () => <p role="status" className="p-6">Carregando formulário de contato…</p>,
 });
+const resolverSimulador: Resolver<DadosSimulador> = async (values, context, options) => {
+  const [{ zodResolver }, { simuladorSchema }] = await Promise.all([import("@hookform/resolvers/zod"), import("@/lib/simulador-schema")]);
+  return zodResolver(simuladorSchema)(values, context, options);
+};
+
 const subscribeInterativo = () => () => {};
 const classeSelect = "min-h-11 w-full min-w-0 rounded-md border border-input bg-white px-3 py-2 text-sm text-brand-ink shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue";
 
 export function SimuladorSolar({ explicacao }: { explicacao: ReactNode }) {
   const interativo = useSyncExternalStore(subscribeInterativo, () => true, () => false);
-  const { register, handleSubmit, control, setValue, clearErrors, setFocus, formState: { errors } } = useForm<DadosSimulador>({
-    resolver: zodResolver(simuladorSchema),
+  const { register, handleSubmit, control, setValue, clearErrors, setFocus, formState: { errors, isSubmitting } } = useForm<DadosSimulador>({
+    resolver: resolverSimulador,
     defaultValues: { perfil: "" as PerfilSolarId, cidade: "", uf: "" as DadosSimulador["uf"], tipoDado: "nao-sei", valor: "", ligacao: "nao-sei" },
   });
   const perfil = useWatch({ control, name: "perfil" });
@@ -65,7 +70,7 @@ export function SimuladorSolar({ explicacao }: { explicacao: ReactNode }) {
             {tipoDado !== "nao-sei" && <Field data-invalid={!!errors.valor}><FieldLabel htmlFor="sim-valor">{tipoDado === "conta" ? "Valor informado da conta (R$/mês)" : "Consumo informado (kWh/mês)"}</FieldLabel><Input id="sim-valor" className="min-h-11" inputMode="decimal" maxLength={30} aria-invalid={!!errors.valor} aria-describedby={"sim-ajuda-valor" + (errors.valor ? " sim-erro-valor" : "")} {...register("valor")} /><p id="sim-ajuda-valor" className="text-xs leading-relaxed text-muted-foreground">Use números e vírgula decimal, sem pontos, símbolos ou unidades. Informe o dado como aparece na sua conta; não fazemos conversão nem cálculo.</p><FieldError id="sim-erro-valor" errors={[errors.valor]} /></Field>}
             <Field><FieldLabel htmlFor="sim-ligacao">Tipo de ligação informado</FieldLabel><select id="sim-ligacao" className={classeSelect} aria-describedby="sim-ajuda-ligacao" {...register("ligacao")}>{ligacoes.map(l => <option key={l.id} value={l.id}>{l.titulo}</option>)}</select><p id="sim-ajuda-ligacao" className="text-xs leading-relaxed text-muted-foreground">Se não souber, mantenha “Não sei”. A revisão não confirma a elegibilidade técnica do imóvel.</p></Field>
           </>}
-          <button type="submit" className="site-button w-full">Revisar dados <span aria-hidden="true">↗</span></button>
+          <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="site-button w-full">Revisar dados <span aria-hidden="true">↗</span></button>
           <p className="text-xs leading-relaxed text-muted-foreground">Cálculo em preparação. Esta ação apenas revisa o preenchimento. <Link prefetch={false} href="/contato/" className="underline underline-offset-4">Você também pode ir direto ao contato.</Link></p>
         </fieldset></form>
       </div>

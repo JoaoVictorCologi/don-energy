@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import type { ContextoSimulador } from "@/lib/simulador-schema";
+import type { ContextoSimulador } from "@/lib/simulador-contexto";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 

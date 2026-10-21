@@ -20,7 +20,7 @@ export const siteConfig = {
     { dias: "Sábado", horario: "09:30 – 12:00", schemaDias: ["Saturday"], abre: "09:30", fecha: "12:00" },
   ],
   // Assinatura sem slogan aprovada em D25; derivação nativa, original preservado.
-  logo: { src: "/logo/don-energy-marca-sem-microtexto-834x558.png", width: 834, height: 558 },
+  logo: { src: "/logo/don-energy-marca-sem-microtexto-834x558.webp", width: 834, height: 558 },
   imagemSocial: { src: "/og-image.png", width: 1200, height: 630, alt: "Don Energy — Energia Solar" },
   numeros: {
     obrasRealizadas: "<<PREENCHER>>",
@@ -31,7 +31,7 @@ export const siteConfig = {
 
 export const SITE_URL = siteConfig.url;
 // Atualizar apenas quando houver alteração real da política.
-export const PRIVACIDADE_ATUALIZADA_EM = new Date("2026-10-20");
+export const PRIVACIDADE_ATUALIZADA_EM = new Date("2026-10-21");
 
 export const localBusiness = {
   "@context": "https://schema.org",

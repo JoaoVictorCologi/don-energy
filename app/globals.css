@@ -141,7 +141,7 @@ body {
   :root { --header-logo-size: 3.5rem; }
 }
 
-:where(a, button, input, [role="checkbox"], [role="radio"]):focus-visible {
+:where(a, button, input, select, textarea, summary, [role="checkbox"], [role="radio"]):focus-visible {
   outline: 3px solid currentColor;
   outline-offset: 4px;
 }

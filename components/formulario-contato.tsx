@@ -2,7 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { ContextoSimulador } from "@/lib/simulador-schema";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -45,7 +46,7 @@ const tituloPorId = Object.fromEntries(
   tiposImovel.map((t) => [t.id, t.titulo])
 ) as Record<FormValues["tipoImovel"], string>;
 
-function montarMensagem(dados: FormValues) {
+function montarMensagem(dados: FormValues, contexto?: ContextoSimulador) {
   const linhas = [
     "Olá! Gostaria de solicitar uma proposta de energia solar.",
     "",
@@ -57,29 +58,43 @@ function montarMensagem(dados: FormValues) {
   if (dados.consumoOuConta) {
     linhas.push(`Consumo/conta: ${dados.consumoOuConta}`);
   }
+  if (contexto) {
+    linhas.push("", "Origem: preparação no simulador — dados informados pelo visitante, sem estimativa calculada.", "Ligação informada: " + contexto.ligacao);
+  }
   return linhas.join("\n");
 }
 
-export function FormularioContato({ perfilInicial, sectionId = "formulario-proposta", compacto = false }: { perfilInicial?: PerfilSolarId; sectionId?: string; compacto?: boolean }) {
+export function FormularioContato({ perfilInicial, contextoInicial, sectionId = "formulario-proposta", compacto = false }: { perfilInicial?: PerfilSolarId; contextoInicial?: ContextoSimulador; sectionId?: string; compacto?: boolean }) {
   const [enviado, setEnviado] = useState(false);
+  const [contextoDaMensagem, setContextoDaMensagem] = useState(contextoInicial);
   const [urlWhatsapp, setUrlWhatsapp] = useState("");
   const {
     register,
     handleSubmit,
     control,
     getValues,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
       nome: "",
       telefone: "",
-      tipoImovel: (perfilInicial ?? "") as FormValues["tipoImovel"],
-      consumoOuConta: "",
-      cidade: "",
+      tipoImovel: (contextoInicial?.perfil ?? perfilInicial ?? "") as FormValues["tipoImovel"],
+      consumoOuConta: contextoInicial?.consumoOuConta ?? "",
+      cidade: contextoInicial?.cidade ?? "",
       consentimento: false as unknown as true,
     },
   });
+
+  // O contexto só muda por atualização explícita no simulador. Preservar nome,
+  // telefone, consentimento e o rascunho quando a revisão é reaberta.
+  useEffect(() => {
+    if (!contextoInicial) return;
+    setValue("tipoImovel", contextoInicial.perfil);
+    setValue("cidade", contextoInicial.cidade);
+    setValue("consumoOuConta", contextoInicial.consumoOuConta);
+  }, [contextoInicial, setValue]);
 
   function onSubmitForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -107,16 +122,17 @@ export function FormularioContato({ perfilInicial, sectionId = "formulario-propo
     // funciona porque about:blank é same-origin nesse instante) — mesma
     // proteção contra tabnabbing, sem perder a referência.
     const popup = window.open("", "_blank");
-    const url = buildWhatsAppUrl(montarMensagem(resultado.data));
+    const url = buildWhatsAppUrl(montarMensagem(resultado.data, contextoInicial));
     setUrlWhatsapp(url);
     if (popup) {
       popup.opener = null;
       popup.location.href = url;
     }
+    setContextoDaMensagem(contextoInicial);
     setEnviado(true);
   }
 
-  if (enviado) {
+  if (enviado && contextoDaMensagem === contextoInicial) {
     return (
       <section
         id={sectionId}

@@ -86,8 +86,15 @@ Composição aprovada aplicada às oito páginas existentes e 404. Marca sem slo
 
 Branch: etapa/e2-aplicacao-visual; checkpoint anterior fd693cb. Prévia funcional: npm run preview:static em http://127.0.0.1:4173/. Maquete independente: vault/porta 4175. Evidências, validações e rollback no vault, Etapas/E2-Aplicacao-visual.md. E2 aguardando aceite final; sem E3/E4, push, merge ou deploy.
 
-## E3 — acervo para avaliação
+## E3 — acervo com entrega parcial validada
 
 Base E2 validada em 93e0754; branch etapa/e3-portfolio-depoimentos. Página /obras/ com fotografias autorizadas e ampliação acessível; destaques/navegação integrados. Fotos em lib/fotos-data.ts e projetos em lib/obras-data.ts: obrasConfirmadas está vazio, sem presumir um projeto por foto. Componente DetalheObra preparado, sem rota/link de projeto até agrupamento confirmado.
 
-Sem filtros por dados ausentes, depoimentos públicos ou automação Google. Fontes e variantes E2 preservadas; derivados maiores gerados diretamente das fontes em public/obras/portfolio/. E3: escopo implementado aguardando avaliação, detalhes reais e confirmações do proprietário pendentes. Sem conclusão integral, E4, push, merge ou publicação. Evidências e rollback em Etapas/E3-Portfolio-e-depoimentos.md no vault.
+Sem filtros por dados ausentes, depoimentos públicos ou automação Google. Fontes e variantes E2 preservadas; derivados maiores gerados diretamente das fontes em public/obras/portfolio/. E3 em 944c461: entrega parcial validada, com detalhes das obras pendentes do proprietário. Sem conclusão integral, push, merge ou publicação. E4 segue o recorte próprio abaixo. Evidências e rollback em Etapas/E3-Portfolio-e-depoimentos.md no vault.
+
+
+## E4 — interface de preparação
+- E3 em 944c461 tem entrega parcial validada; detalhes reais e depoimentos continuam pendentes.
+- /simulador/ organiza campos, revisão/edição e contato existente. Estado visível: Cálculo em preparação. Nenhuma fórmula, parâmetro presumido, conversão R$→kWh ou resultado numérico.
+- Usinas seguem preparação de atendimento específico, sem aplicar projeção residencial. Contexto fica em memória e só atualiza contato por ação explícita, preservando rascunho.
+- Interface implementada, aguardando validação; cálculo pendente de aprovação técnica Q07-A no vault. Não declarar simulador concluído, publicar ou iniciar E5.

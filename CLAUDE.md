@@ -111,4 +111,11 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - DetalheObra é estrutura sem rota pública. Ativar slugs/sitemap/links apenas com grupos confirmados e geração estática real.
 - Depoimentos preservados fora do HTML e do bundle público; integração Google adiada. Filtros somente com dados confirmados que os sustentem.
 - AmpliacaoGaleria melhora links estáticos com diálogo Base UI sob demanda; sem JS os links abrem a imagem. Preservar teclado/Escape/retorno de foco.
-- E3 aguardando avaliação do recorte e dados do proprietário, sem conclusão integral ou publicação.
+- E3 em 944c461: entrega parcial validada, com detalhes das obras pendentes do proprietário. Não marcar conclusão integral nem presumir respostas ou publicação.
+
+
+## E4 — interface de preparação
+- E3 em 944c461 tem entrega parcial validada; detalhes reais e depoimentos continuam pendentes.
+- /simulador/ organiza campos, revisão/edição e contato existente. Estado visível: Cálculo em preparação. Nenhuma fórmula, parâmetro presumido, conversão R$→kWh ou resultado numérico.
+- Usinas seguem preparação de atendimento específico, sem aplicar projeção residencial. Contexto fica em memória e só atualiza contato por ação explícita, preservando rascunho.
+- Interface implementada, aguardando validação; cálculo pendente de aprovação técnica Q07-A no vault. Não declarar simulador concluído, publicar ou iniciar E5.

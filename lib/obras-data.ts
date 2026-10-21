@@ -1,26 +1,32 @@
-const registros = [
-  { file: "obra-01.webp", desc: "Galpão comercial, porta laranja" },
-  { file: "obra-02.webp", desc: "Esquina urbana, telhados de telha, painéis visíveis" },
-  { file: "obra-03.webp", desc: "Telhado residencial, dois arranjos de painel" },
-  { file: "obra-04.webp", desc: "Academia SkyFit" },
-  { file: "obra-05.webp", desc: "Supermercado Oliveira" },
-  { file: "obra-06.webp", desc: "Galpão grande, 4 fileiras de painéis" },
-  { file: "obra-07.webp", desc: "Residência com quadra esportiva e piscina" },
-  { file: "obra-08.webp", desc: "Telhado residencial, piscina ao fundo" },
-  { file: "obra-09.webp", desc: "Casa com piscina e lago ao fundo" },
-  { file: "obra-10.webp", desc: "Churrascaria Espeto na Brasa (comercial)" },
-  { file: "obra-11.webp", desc: "Galpão rural, trator, fazenda" },
-] as const;
+import { fotosAcervo, fotoPorId, type FotoId } from "@/lib/fotos-data";
+import type { PerfilSolarId } from "@/lib/perfis-solares";
 
+export type ObraConfirmada = {
+  id: string;
+  slug: string;
+  agrupamentoConfirmado: true;
+  titulo: string;
+  descricao: string;
+  fotoIds: readonly FotoId[];
+  capaFotoId: FotoId;
+  cidade?: string;
+  uf?: string;
+  potenciaKwp?: number;
+  perfil?: PerfilSolarId;
+  destaque?: number;
+};
 
-export const obras = registros.map((obra) => ({
-  ...obra,
-  tipo: "<<PREENCHER>>",
-  cidade: "<<PREENCHER>>",
-  potenciaKwp: "<<PREENCHER>>",
-}));
+// Acrescentar apenas agrupamentos e dados públicos confirmados em Q05 do vault.
+// Não importar respostas privadas ou tratar cada fotografia como uma obra.
+export const obrasConfirmadas: readonly ObraConfirmada[] = [];
 
-export function legendaObra(obra: (typeof obras)[number]) {
-  const dados = [obra.tipo, obra.cidade, obra.potenciaKwp.includes("<<") ? "" : obra.potenciaKwp + " kWp"].filter((valor) => valor && !valor.includes("<<"));
-  return dados.length ? dados.join(" · ") : "Instalação solar — fotografia do acervo";
+export function fotosDaObra(obra: ObraConfirmada) {
+  if (!obra.fotoIds.length || !obra.fotoIds.includes(obra.capaFotoId)) {
+    throw new Error("A capa deve pertencer à galeria confirmada: " + obra.id);
+  }
+  return obra.fotoIds.map(fotoPorId);
 }
+
+export const fotosSemObra = fotosAcervo.filter(foto =>
+  !obrasConfirmadas.some(obra => obra.fotoIds.includes(foto.id))
+);

@@ -63,7 +63,7 @@ export function Footer() {
           </div>
         </div>
 
-        <nav aria-label="Navegação no rodapé" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold"><Link prefetch={false} href="/servicos/" className="inline-flex min-h-11 items-center underline underline-offset-4">Soluções solares</Link><Link prefetch={false} href="/obras/" className="inline-flex min-h-11 items-center underline underline-offset-4">Projetos e fotografias</Link><Link prefetch={false} href="/contato/" className="inline-flex min-h-11 items-center underline underline-offset-4">Fale com a Don Energy</Link></nav>
+        <nav aria-label="Navegação no rodapé" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold"><Link prefetch={false} href="/servicos/" className="inline-flex min-h-11 items-center underline underline-offset-4">Soluções solares</Link><Link prefetch={false} href="/obras/" className="inline-flex min-h-11 items-center underline underline-offset-4">Projetos e fotografias</Link><Link prefetch={false} href="/simulador/" className="inline-flex min-h-11 items-center underline underline-offset-4">Simulador solar</Link><Link prefetch={false} href="/contato/" className="inline-flex min-h-11 items-center underline underline-offset-4">Fale com a Don Energy</Link></nav>
 
         <div className="mt-8 border-t border-white/20 pt-6 text-sm text-white/90">
           <Link href="/privacidade/" prefetch={false} className="mb-4 inline-flex min-h-11 items-center underline underline-offset-4">Política de privacidade</Link>

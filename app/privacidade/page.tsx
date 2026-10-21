@@ -57,6 +57,12 @@ export default function Privacidade() {
           </section>
 
           <section>
+            <h2 className="font-heading text-xl font-semibold text-foreground">Preparação no simulador solar</h2>
+            <p className="mt-3 text-muted-foreground">Os campos de perfil, cidade/UF, consumo ou conta e ligação são processados no seu navegador para revisar os dados informados. O cálculo está em preparação e não são geradas estimativas. Esses dados não são gravados em banco, armazenamento local ou URL pelo simulador.</p>
+            <p className="mt-3 text-muted-foreground">Se você escolher continuar ao contato, os dados revisados preenchem o formulário na mesma página. Nome, telefone e consentimento são solicitados nessa ação opcional. Somente ao preparar a mensagem e abrir o WhatsApp os dados são encaminhados ao serviço externo; o envio da mensagem é decidido por você.</p>
+          </section>
+
+          <section>
             <h2 className="font-heading text-xl font-semibold text-foreground">
               3. Como usamos seus dados
             </h2>

@@ -26,7 +26,7 @@ const MenuMobile = dynamic(() => import("./menu-mobile").then((module) => module
 const links = [
   { href: "/", label: "Início" },
   { href: "/servicos/", label: "Soluções" },
-  { href: "/#obras", label: "Fotos" },
+  { href: "/obras/", label: "Projetos" },
   { href: "/contato/", label: "Contato" },
 ];
 

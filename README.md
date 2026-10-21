@@ -85,3 +85,9 @@ E2 permanece Aguardando validação. Evidências, questões comerciais e rollbac
 Composição aprovada aplicada às oito páginas existentes e 404. Marca sem slogan, superfícies claras/azul profundo, cartões fotográficos e navegação apenas por destinos disponíveis. Acervo atual autorizado, com classificação/dados pendentes; relatos mantidos em lib/depoimentos-data.ts, sem apresentação pública. Formulário e mapa por escolha preservados.
 
 Branch: etapa/e2-aplicacao-visual; checkpoint anterior fd693cb. Prévia funcional: npm run preview:static em http://127.0.0.1:4173/. Maquete independente: vault/porta 4175. Evidências, validações e rollback no vault, Etapas/E2-Aplicacao-visual.md. E2 aguardando aceite final; sem E3/E4, push, merge ou deploy.
+
+## E3 — acervo para avaliação
+
+Base E2 validada em 93e0754; branch etapa/e3-portfolio-depoimentos. Página /obras/ com fotografias autorizadas e ampliação acessível; destaques/navegação integrados. Fotos em lib/fotos-data.ts e projetos em lib/obras-data.ts: obrasConfirmadas está vazio, sem presumir um projeto por foto. Componente DetalheObra preparado, sem rota/link de projeto até agrupamento confirmado.
+
+Sem filtros por dados ausentes, depoimentos públicos ou automação Google. Fontes e variantes E2 preservadas; derivados maiores gerados diretamente das fontes em public/obras/portfolio/. E3: escopo implementado aguardando avaliação, detalhes reais e confirmações do proprietário pendentes. Sem conclusão integral, E4, push, merge ou publicação. Evidências e rollback em Etapas/E3-Portfolio-e-depoimentos.md no vault.

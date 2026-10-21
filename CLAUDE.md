@@ -104,3 +104,11 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - Composição D27 aplicada às páginas existentes, sem E3/E4. Header compacto e marca sem slogan; cartões fotográficos sem pictogramas/WhatsApp repetido.
 - Fotografias atuais autorizadas; classificação e dados das obras continuam em conferência. Depoimentos preservados em arquivo, fora da renderização pública até confirmação.
 - Preservar o formulário RHF/Zod e mapa por escolha. E2 aguardando aceite final; sem push, merge ou deploy nesta entrega.
+
+## E3 — acervo e projetos
+- E2 validada em 93e0754. E3 autoriza acervo, ampliação, destaques e navegação; não reabrir E2 nem alterar sua identidade.
+- Fotografias são arquivos; projetos exigem agrupamento confirmado. obrasConfirmadas vazio é intencional. Não gerar rotas/contagens/classificações a partir dos nomes das fotos.
+- DetalheObra é estrutura sem rota pública. Ativar slugs/sitemap/links apenas com grupos confirmados e geração estática real.
+- Depoimentos preservados fora do HTML e do bundle público; integração Google adiada. Filtros somente com dados confirmados que os sustentem.
+- AmpliacaoGaleria melhora links estáticos com diálogo Base UI sob demanda; sem JS os links abrem a imagem. Preservar teclado/Escape/retorno de foco.
+- E3 aguardando avaliação do recorte e dados do proprietário, sem conclusão integral ou publicação.

@@ -1,5 +1,17 @@
 @AGENTS.md
 
+## Atualização R1 — 26/10/2026
+
+Estado vigente: E5 aceita e publicada em 4bb0a38; R1 implementada localmente em ajustes/proprietario-2026-10-26, aguardando aceite próprio. Esta atualização prevalece sobre os estados históricos de entrega E5 aguardando avaliação abaixo. Sem push, merge, deploy, Hostinger ou DNS nesta R1.
+
+- Dezesseis páginas e 404: dez anteriores, Nossa História e cinco detalhes de projetos identificados. Onze fotos antigas continuam sem agrupamento; cinco novas não as identificam. Somente Limeira/residencial e Francini/rural têm perfil informado; não criar industrial nem retirar usinas.
+- Hero: Sua Energia pode custar menos. Calculadora em preparação antes do CTA, sem cálculo. História usa trajetória familiar, 2022/2023 e SP/MG recebidos; sem fotografia substituta. Não publicar potência, total anual, geração/economia pendentes ou informações inferidas de Igarai. Nome público: Igreja Nossa Senhora da Luz.
+- Institucional em lib/institucional-data.ts; originais, autorizações e perguntas no vault. Navegação central em lib/navegacao.ts; menu desktop em 1024 px, mantendo alturas 64/72 px. Derivados locais 480/960/1440/1920 em public/obras/projetos; originais preservados no vault.
+- Validação R1 proporcional: regressões E2/E3/E4 e 24 Lighthouse finais (inicial, História, portfólio e detalhe, dois perfis, três execuções). Não repetir os 60 da E5 sem motivo. Comparativo, capturas e limitações em Materiais/Referencias/R1-2026-10-26 no vault. M02/Q05-A/Q06/Q07-A continuam abertos.
+- Rollback R1: reverter somente os commits R1 até a árvore 4bb0a38, após conferir branch/HEAD/árvore; não aplicar o rollback E5 para 205dbbf ao desfazer R1. Preservar trabalho posterior. Publicação futura exige autorização própria.
+
+
+
 # Project: Don Energy — Site institucional
 
 ## Tech Stack
@@ -72,7 +84,7 @@ time (sem acessar `Request`) e viram arquivo estático (`/robots.txt`,
 - E2 validada em 93e0754. E3 em 944c461: entrega parcial validada, com detalhes das obras pendentes do proprietário. E4 em 205dbbf: interface validada; cálculo pendente de aprovação técnica Q07-A.
 - Existem dez páginas e a 404, listadas no README. Não retomar etapas aceitas nem aplicar a maquete independente da porta 4175 automaticamente.
 - Marca D25 sem slogan/microtexto abaixo ou ao lado, derivação nativa 834×558 e originais preservados. Preservar a composição e alturas do header.
-- Fotografias autorizadas; fotos e projetos são dados distintos. obrasConfirmadas vazio é intencional. Sem agrupamentos, slugs, cidades, potência, classificação ou contagem presumidos. DetalheObra não tem rota pública.
+- Fotografias autorizadas; fotos e projetos são dados distintos. obrasConfirmadas contém os cinco projetos identificados em R1; o acervo antigo não está agrupado. Sem agrupamentos, slugs, cidades, potência, classificação ou contagem presumidos. DetalheObra tem rotas estáticas somente para os cinco registros identificados.
 - Depoimentos preservados fora da renderização/bundle público; integração Google adiada. Filtros dependem de dados confirmados.
 - FormularioContato RHF/Zod compartilhado, quatro perfis solares. Query servico só aceita slugs conhecidos. Não criar backend/email, resultados ou envio automático. Consentimento e fallback devem permanecer.
 - /simulador/ prepara dados, não calcula: Cálculo em preparação, ação Revisar dados. Não inserir fórmulas, parâmetros, conversão R$→kWh ou estimativas. Usina mantém tratamento específico. Contexto em memória e atualização explícita do contato, preservando rascunho; invalidar mensagem antiga após mudança.

@@ -1,5 +1,17 @@
 # Don Energy — Site institucional
 
+## Atualização R1 — 26/10/2026
+
+Estado vigente: E5 aceita e publicada em 4bb0a38; R1 implementada localmente em ajustes/proprietario-2026-10-26, aguardando aceite próprio. Esta atualização prevalece sobre os estados históricos de entrega E5 aguardando avaliação abaixo. Sem push, merge, deploy, Hostinger ou DNS nesta R1.
+
+- Dezesseis páginas e 404: dez anteriores, Nossa História e cinco detalhes de projetos identificados. Onze fotos antigas continuam sem agrupamento; cinco novas não as identificam. Somente Limeira/residencial e Francini/rural têm perfil informado; não criar industrial nem retirar usinas.
+- Hero: Sua Energia pode custar menos. Calculadora em preparação antes do CTA, sem cálculo. História usa trajetória familiar, 2022/2023 e SP/MG recebidos; sem fotografia substituta. Não publicar potência, total anual, geração/economia pendentes ou informações inferidas de Igarai. Nome público: Igreja Nossa Senhora da Luz.
+- Institucional em lib/institucional-data.ts; originais, autorizações e perguntas no vault. Navegação central em lib/navegacao.ts; menu desktop em 1024 px, mantendo alturas 64/72 px. Derivados locais 480/960/1440/1920 em public/obras/projetos; originais preservados no vault.
+- Validação R1 proporcional: regressões E2/E3/E4 e 24 Lighthouse finais (inicial, História, portfólio e detalhe, dois perfis, três execuções). Não repetir os 60 da E5 sem motivo. Comparativo, capturas e limitações em Materiais/Referencias/R1-2026-10-26 no vault. M02/Q05-A/Q06/Q07-A continuam abertos.
+- Rollback R1: reverter somente os commits R1 até a árvore 4bb0a38, após conferir branch/HEAD/árvore; não aplicar o rollback E5 para 205dbbf ao desfazer R1. Preservar trabalho posterior. Publicação futura exige autorização própria.
+
+
+
 Next.js 16.2.10 (App Router), React 19, TypeScript e Tailwind CSS 4. Exportação estática, conteúdo local e atendimento pelo WhatsApp. Sem backend, API, banco ou envio automático.
 
 ## Estado vigente e preservação
@@ -32,7 +44,7 @@ Dez rotas: `/`, `/servicos/`, `/servicos/solar-residencial/`, `/servicos/solar-c
 - `lib/site-config.ts`: única fonte de URL, marca, telefone, endereço, horários e imagem social. `contato-data.ts` é uma fachada. URL configurada: `https://don-energy.vercel.app`; não presumir que configuração local confirma o destino de deploy. Números institucionais não confirmados não são exibidos.
 - Marca D25 sem “Energia solar” embaixo ou ao lado. Derivação nativa 834 × 558, transparência e proporções preservadas; originais e versões históricas mantidos. Não ampliar o raster compacto nem reconstruir por IA.
 - Sora/Inter, azul e laranja, base clara e azul profundo de apoio. Header 64/72 px, transparente apenas na inicial no topo; sólido após 16 px, menu aberto e desde o início nas internas. Preservar reserva de altura e padding do Hero. CTAs laranja usam texto escuro.
-- Fotografias atuais autorizadas (D27), sem classificação por serviço, cidade, potência ou quantidade de obras presumidas. `lib/fotos-data.ts` organiza arquivos; `lib/obras-data.ts` organiza projetos confirmados e continua vazio. A estrutura `DetalheObra` não cria rota pública. Onze fotos não são onze obras. Sem filtros até dados confirmados.
+- Fotografias atuais autorizadas (D27), sem classificação por serviço, cidade, potência ou quantidade de obras presumidas. `lib/fotos-data.ts` organiza arquivos; `lib/obras-data.ts` organiza cinco projetos identificados em R1, com detalhes estáticos próprios. Onze fotos não são onze obras. Sem filtros até dados confirmados.
 - `public/obras/` preserva fontes; `otimizadas/` contém variantes E2 e Hero AVIF/WebP; `portfolio/` contém variantes 480/960/1440 derivadas das fontes, com ampliação integral. `sizes` sem srcSet não gera variantes no export.
 - Depoimentos preservados em `lib/depoimentos-data.ts`, fora do HTML/bundle público até origem e autorização. Integração automática Google adiada. Sem promessas comerciais, técnicas ou financeiras não confirmadas.
 

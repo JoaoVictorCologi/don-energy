@@ -13,8 +13,18 @@ const registros = [
   { id: "foto-11", numero: "11", largura: 1920, altura: 1080, alt: "Módulos solares sobre uma cobertura cercada por áreas abertas" },
 ] as const;
 
-export type FotoId = (typeof registros)[number]["id"];
-export const fotosAcervo = registros.map(foto => ({
+// Novos materiais identificados no retorno do proprietário. Não agrupam o acervo antigo.
+const novos = [
+  { id: "r1-limeira", numero: "12", alt: "Vista de cima de módulos solares sobre coberturas claras de uma residência", legenda: "Projeto residencial · Limeira · SP" },
+  { id: "r1-new-way", numero: "13", alt: "Três fileiras de módulos solares sobre cobertura clara, com palmeiras ao redor", legenda: "Espaço de Eventos New Way · Mococa · SP" },
+  { id: "r1-francini", numero: "14", alt: "Três conjuntos de módulos solares instalados no solo, em área gramada junto a árvores", legenda: "Pão de Queijo Francini · Propriedade rural · Mococa · SP" },
+  { id: "r1-oliveira", numero: "15", alt: "Vista aérea de módulos solares nas coberturas do Supermercado Oliveira", legenda: "Supermercado Oliveira · Pirassununga · SP" },
+  { id: "r1-nossa-senhora-da-luz", numero: "16", alt: "Módulos solares sobre telhado de telhas, junto à fachada azul e branca de uma igreja", legenda: "Igreja Nossa Senhora da Luz" },
+] as const;
+
+export type FotoId = (typeof registros)[number]["id"] | (typeof novos)[number]["id"];
+export type Foto = { id: FotoId; numero: string; largura: number; altura: number; alt: string; legenda: string; original?: string; miniatura: string; ampliacao: string; srcSet: string };
+export const fotosAcervo: readonly Foto[] = registros.map(foto => ({
   ...foto,
   original: "/obras/obra-" + foto.numero + ".webp",
   legenda: "Instalação solar · Acervo Don Energy",
@@ -22,13 +32,17 @@ export const fotosAcervo = registros.map(foto => ({
   ampliacao: "/obras/portfolio/" + foto.id + "-1440.webp",
   srcSet: [480, 960, 1440].map(largura => "/obras/portfolio/" + foto.id + "-" + largura + ".webp " + largura + "w").join(", "),
 }));
-export type Foto = (typeof fotosAcervo)[number];
-
+export const fotosProjetos: readonly Foto[] = novos.map(foto => ({
+  ...foto, largura: 4000, altura: 2250,
+  miniatura: "/obras/projetos/" + foto.id + "-480.webp",
+  ampliacao: "/obras/projetos/" + foto.id + "-1920.webp",
+  srcSet: [480, 960, 1440, 1920].map(largura => "/obras/projetos/" + foto.id + "-" + largura + ".webp " + largura + "w").join(", "),
+}));
+export const todasFotos: readonly Foto[] = [...fotosAcervo, ...fotosProjetos];
 export function fotoPorId(id: FotoId): Foto {
-  const foto = fotosAcervo.find(item => item.id === id);
+  const foto = todasFotos.find(item => item.id === id);
   if (!foto) throw new Error("Fotografia não encontrada: " + id);
   return foto;
 }
-
-// Destaque editorial de fotografias; não é contagem nem classificação de projetos.
+// Seleção antiga preservada como referência editorial, sem novos agrupamentos.
 export const fotosDestaque = (["foto-09", "foto-01", "foto-11"] as const).map(fotoPorId);

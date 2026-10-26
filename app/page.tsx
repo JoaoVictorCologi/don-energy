@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { institucional } from "@/lib/institucional-data";
 import { localBusiness } from "@/lib/site-config";
 import { ContatoProgressivo } from "@/components/contato-progressivo";
 import { Hero } from "@/components/hero";
@@ -10,7 +11,7 @@ export default function Home() {
   return <main id="conteudo" tabIndex={-1} className="flex flex-1 flex-col">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness).replace(/</g, "\u003c") }} />
     <Hero />
-    <section aria-labelledby="sobre-titulo" className="site-section"><div className="site-shell grid items-center gap-10 md:grid-cols-2 lg:gap-24"><div><p className="site-eyebrow">A Don Energy</p><h2 id="sobre-titulo" className="site-title">Um projeto solar começa por entender você.</h2><p className="mt-7 leading-relaxed text-muted-foreground">Energia solar residencial, comercial, rural e usinas de investimento em Mococa e região. Conte sobre o seu consumo, o local e o que você espera do projeto.</p><Link prefetch={false} href="/contato/" className="site-link mt-6">Converse com a Don Energy <span aria-hidden="true">↗</span></Link></div><figure><FotoAcervo numero="03" /><figcaption className="mt-3 text-xs text-muted-foreground">Fotografia do acervo Don Energy.</figcaption></figure></div></section>
+    <section aria-labelledby="sobre-titulo" className="site-section"><div className="site-shell grid items-center gap-10 md:grid-cols-2 lg:gap-24"><div><p className="site-eyebrow">A Don Energy</p><h2 id="sobre-titulo" className="site-title">Uma história de família.<br /> Um compromisso com você.</h2><p className="mt-7 leading-relaxed text-muted-foreground">{institucional.resumo}</p><p className="mt-5 leading-relaxed text-muted-foreground">{institucional.compromisso}</p><Link prefetch={false} href="/nossa-historia/" className="site-link mt-6">Conheça nossa história <span aria-hidden="true">↗</span></Link></div><figure><FotoAcervo numero="03" /><figcaption className="mt-3 text-xs text-muted-foreground">Fotografia do acervo Don Energy.</figcaption></figure></div></section>
     <Servicos /><ObrasGallery />
     <section className="site-section bg-brand-soft"><div className="site-shell"><p className="site-eyebrow">Antes da primeira conversa</p><h2 className="site-title">Comece pelo que você já sabe.</h2><div className="mt-12 grid gap-9 md:grid-cols-3">{[
       ["01", "Seu contexto", "Conte sua cidade, o perfil do projeto e as características do local."],

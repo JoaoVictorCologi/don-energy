@@ -2,7 +2,7 @@
 export const siteConfig = {
   nome: "Don Energy",
   url: "https://don-energy.vercel.app",
-  descricao: "Soluções em energia solar para residências, comércios, propriedades rurais e usinas de investimento em Mococa-SP e região.",
+  descricao: "Soluções em energia solar para residências, comércios, propriedades rurais e usinas de investimento com sede em Mococa-SP e atendimento em São Paulo e Minas Gerais.",
   telefoneExibicao: "(19) 99627-4747",
   telefoneInternacional: "+5519996274747",
   whatsapp: "5519996274747",

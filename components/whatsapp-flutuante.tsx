@@ -65,7 +65,7 @@ export function WhatsappFlutuante() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
-      className={(oculto ? "invisible opacity-0 pointer-events-none " : "") + "fixed right-6 bottom-[calc(1.5rem+env(safe-area-inset-bottom))] z-40 flex size-14 items-center justify-center rounded-full bg-brand-orange text-brand-ink shadow-lg transition-transform hover:scale-105"}
+      className={(oculto ? "invisible opacity-0 pointer-events-none " : "") + "fixed right-6 bottom-[calc(1.5rem+env(safe-area-inset-bottom))] z-40 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-brand-ink shadow-lg transition-transform hover:scale-105"}
     >
       <svg
         role="img"

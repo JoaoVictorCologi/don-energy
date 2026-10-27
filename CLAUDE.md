@@ -1,5 +1,12 @@
 @AGENTS.md
 
+## Revisão vigente da R2 — Hero e cores, 27/10/2026
+
+Pedido direto posterior a ccf560f: calculadora única à direita do Hero no desktop e abaixo do texto no celular/tablet; header verde-base #94B94A desde a abertura, com texto escuro contrastante, sem aumentar 64/72 px ou recolorir a logo. Botões de WhatsApp laranja #D88739, incluindo menu/formulário/atalho; títulos/destaques próprios antes verdes agora azul #384C96. Superfícies de apoio azuis/brancas. O header transparente anterior é referência histórica, substituído nesta prévia por instrução expressa.
+
+Iframe oficial Azume preservado internamente; dimensionado pelo contêiner sem escala artificial ou recortes de campos nas telas conferidas. Foto não é esticada pela altura do quadro no celular. Fallback, privacidade, usinas, avaliações adiadas e Q10-A/Q07-A/M02/M03 mantidos. Versão anterior ccf560f preservada em Git/snapshot; revisão somente local, aguardando aceite. Sem push, merge, deploy, Hostinger ou DNS. Registro no vault em Materiais/Referencias/R2-Hero-cores-2026-10-27/. Esta revisão prevalece sobre a distribuição de cores/posição da calculadora nos registros R2 anteriores abaixo.
+
+
 ## Atualização vigente R2 — 27/10/2026
 
 R1 aceita e publicada em master/38c5681 preservada. R2 somente local na branch ajustes/r2-identidade-integracoes-contato, aguardando aceite; sem push, merge, deploy, Hostinger ou DNS. Estados de planejamento/aceite R1 abaixo são históricos.

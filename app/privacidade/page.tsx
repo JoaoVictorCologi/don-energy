@@ -21,7 +21,7 @@ export default function Privacidade() {
   return (
     <main id="conteudo" tabIndex={-1} className="flex-1">
       <article className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="font-heading text-3xl font-medium text-brand-green-dark tracking-tight sm:text-4xl">
+        <h1 className="font-heading text-3xl font-medium text-brand-blue tracking-tight sm:text-4xl">
           Política de Privacidade
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">

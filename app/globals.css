@@ -10,7 +10,7 @@
 
   /* Don Energy — cores de marca */
   --color-brand-green: #94b94a;
-  --color-brand-green-dark: #3f571b;
+  --color-brand-green-dark: #384c96;
   --color-brand-forest: #173b31;
   --color-brand-blue: #384c96;
   --color-brand-orange: #d88739;
@@ -229,17 +229,26 @@ body {
   .site-shell { @apply mx-auto w-full max-w-[1200px] px-6 md:px-10; }
   .site-section { @apply py-20 md:py-24; }
   .site-eyebrow { @apply mb-5 text-xs font-semibold tracking-[0.13em] text-brand-blue uppercase; }
-  .site-title { @apply max-w-3xl font-heading text-3xl leading-[1.22] font-medium tracking-[-0.035em] text-brand-green-dark md:text-[2.5rem]; }
-  .site-link { @apply inline-flex min-h-11 items-center gap-4 text-sm font-semibold text-brand-green-dark underline-offset-8 hover:underline; }
-  .site-button { @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-sm bg-brand-green px-6 py-3 text-sm font-semibold text-brand-ink hover:bg-brand-green/90; }
+  .site-title { @apply max-w-3xl font-heading text-3xl leading-[1.22] font-medium tracking-[-0.035em] text-brand-blue md:text-[2.5rem]; }
+  .site-link { @apply inline-flex min-h-11 items-center gap-4 text-sm font-semibold text-brand-blue underline-offset-8 hover:underline; }
+  .site-button { @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-sm bg-brand-orange px-6 py-3 text-sm font-semibold text-brand-ink hover:bg-brand-orange/90; }
 }
 
 /* R2: verde da marca e tons funcionais contrastantes; logo original preservada. */
-.solucoes-trilho { display: flex; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #3f571b #e3ebd5; }
+.solucoes-trilho { display: flex; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #384c96 #e3ebd5; }
 .solucoes-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
 .solucoes-slide > article { height: 100%; }
-.carousel-control { display: inline-flex; width: 48px; height: 48px; align-items: center; justify-content: center; border: 1px solid #3f571b; border-radius: 4px; color: #3f571b; background: white; }
+.carousel-control { display: inline-flex; width: 48px; height: 48px; align-items: center; justify-content: center; border: 1px solid #384c96; border-radius: 4px; color: #384c96; background: white; }
 .carousel-control:hover:not(:disabled) { background: #e3ebd5; }
 .carousel-control:disabled { opacity: .45; cursor: default; }
 .azume-quadro { height: 1040px; }
 @media (min-width: 768px) { .solucoes-slide { flex-basis: calc((100% - 28px) / 2); } .azume-quadro { height: 700px; } }
+
+/* Ajuste solicitado: calculadora na primeira seção, à direita no desktop. */
+.hero-shell { width: 100%; max-width: 1480px; margin-inline: auto; padding-inline: 24px; }
+.hero-calculadora { container-type: inline-size; }
+.hero-calculadora .azume-quadro { height: 900px; }
+@media (min-width: 768px) { .hero-shell { padding-inline: 40px; } }
+@container (min-width: 570px) { .hero-calculadora .azume-quadro { height: 800px; } }
+@container (min-width: 960px) { .hero-calculadora .azume-quadro { height: 600px; } }
+.site-button:focus-visible { outline-color: #171f32; box-shadow: 0 0 0 7px #ffffff; }

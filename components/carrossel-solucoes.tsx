@@ -46,7 +46,7 @@ export function CarrosselSolucoes({ children }: { children: ReactNode }) {
     </div>
     <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
       <p className="text-sm text-muted-foreground">Arraste para explorar os quatro perfis.</p>
-      <div className="flex min-w-0 flex-wrap items-center gap-3"><span aria-live="polite" aria-atomic="true" className="min-w-20 text-center text-xs text-brand-green-dark">{posicao.primeira}–{posicao.ultima} de 4</span>
+      <div className="flex min-w-0 flex-wrap items-center gap-3"><span aria-live="polite" aria-atomic="true" className="min-w-20 text-center text-xs text-brand-blue">{posicao.primeira}–{posicao.ultima} de 4</span>
         <button type="button" aria-label="Solução anterior" aria-controls="solucoes-paineis" disabled={posicao.inicio} onClick={() => mover(-1)} className="carousel-control"><ArrowLeft aria-hidden="true" className="size-5" /></button>
         <button type="button" aria-label="Próxima solução" aria-controls="solucoes-paineis" disabled={posicao.fim} onClick={() => mover(1)} className="carousel-control"><ArrowRight aria-hidden="true" className="size-5" /></button>
       </div>

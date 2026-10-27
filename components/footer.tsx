@@ -8,7 +8,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
-    <footer className="bg-brand-forest text-white">
+    <footer className="bg-brand-blue text-white">
       <div className="site-shell py-14">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.4fr_1fr]">
           <div>

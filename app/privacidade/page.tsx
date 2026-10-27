@@ -21,7 +21,7 @@ export default function Privacidade() {
   return (
     <main id="conteudo" tabIndex={-1} className="flex-1">
       <article className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="font-heading text-3xl font-medium text-brand-blue tracking-tight sm:text-4xl">
+        <h1 className="font-heading text-3xl font-medium text-brand-green-dark tracking-tight sm:text-4xl">
           Política de Privacidade
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -46,20 +46,19 @@ export default function Privacidade() {
             </h2>
             <p className="mt-3 text-muted-foreground">
               Coletamos apenas os dados que você mesmo nos fornece ao
-              preencher o formulário de contato: nome, telefone, cidade,
+              preencher o formulário de proposta na inicial: nome, telefone, cidade,
               perfil solar e, opcionalmente, consumo mensal de energia ou
               valor da conta de luz.
             </p>
             <p className="mt-3 text-muted-foreground">
-              Não utilizamos cookies de rastreamento, pixels de anúncio ou
-              qualquer ferramenta de análise de comportamento no momento.
+              O site não instala ferramentas próprias de publicidade ou análise de comportamento. Serviços externos integrados, como Azume, Google Maps e WhatsApp, podem utilizar cookies e receber informações técnicas da conexão, conforme suas próprias políticas.
             </p>
           </section>
 
           <section>
-            <h2 className="font-heading text-xl font-semibold text-foreground">3. Preparação no simulador solar</h2>
-            <p className="mt-3 text-muted-foreground">Os campos de perfil, cidade/UF, consumo ou conta e ligação são processados no seu navegador para revisar os dados informados. O cálculo está em preparação e não são geradas estimativas. Esses dados não são gravados em banco, armazenamento local ou URL pelo simulador.</p>
-            <p className="mt-3 text-muted-foreground">Se você escolher continuar ao contato, os dados revisados preenchem o formulário na mesma página. Nome, telefone e consentimento são solicitados nessa ação opcional. Somente ao preparar a mensagem e abrir o WhatsApp os dados são encaminhados ao serviço externo; o envio da mensagem é decidido por você.</p>
+            <h2 className="font-heading text-xl font-semibold text-foreground">3. Calculadora externa da Azume</h2>
+            <p className="mt-3 text-muted-foreground">A inicial integra a calculadora Azume em um quadro de outro domínio, carregado quando você se aproxima dessa seção. Ao utilizar o quadro, seu navegador se conecta à Azume e os dados inseridos são tratados pelo serviço externo. O site da Don Energy não controla os campos, as premissas, o armazenamento ou o encaminhamento interno dessa ferramenta.</p>
+            <p className="mt-3 text-muted-foreground">Consulte as informações de privacidade do fornecedor antes de preencher ou enviar dados. Você também pode optar por falar diretamente com a Don Energy pelos contatos do site. Resultados da ferramenta externa não substituem a avaliação específica do projeto.</p>
           </section>
 
           <section>
@@ -67,7 +66,7 @@ export default function Privacidade() {
               4. Como usamos seus dados
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Usamos essas informações exclusivamente para elaborar uma
+              Usamos as informações encaminhadas diretamente à Don Energy para elaborar uma
               proposta comercial de energia solar e entrar em contato com
               você.
             </p>
@@ -78,7 +77,7 @@ export default function Privacidade() {
               5. Como seus dados são transmitidos
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Este site não armazena seus dados em nenhum banco de dados ou
+              O formulário de proposta da inicial não armazena seus dados em banco de dados ou
               servidor próprio. Ao preencher o formulário e preparar a
               mensagem, seu navegador monta um texto com os dados
               informados e abre o WhatsApp para que você mesmo decida
@@ -102,10 +101,10 @@ export default function Privacidade() {
               6. Mapa de localização
             </h2>
             <p className="mt-3 text-muted-foreground">
-              O mapa do Google na página de contato só é carregado quando você escolhe a opção “Carregar mapa”. Ao fazer isso, seu navegador se conecta ao Google, que recebe as informações técnicas dessa conexão. O link “Como chegar” também abre um serviço externo do Google.
+              O mapa do Google na página de contato é visível sem botão de ativação e carregado quando você se aproxima dessa área. Seu navegador se conecta ao Google, que recebe informações técnicas da conexão. O link “Como chegar” também abre um serviço externo do Google.
             </p>
             <p className="mt-3 text-muted-foreground">
-              O uso desses serviços está sujeito à <a href="https://policies.google.com/privacy?hl=pt-BR" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">política de privacidade do Google</a>. Você pode usar os contatos e o formulário sem carregar o mapa. Os dados preenchidos no formulário não são enviados ao provedor do mapa.
+              O uso desses serviços está sujeito à <a href="https://policies.google.com/privacy?hl=pt-BR" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">política de privacidade do Google</a>. O formulário que permanece na inicial não encaminha os campos preenchidos ao provedor do mapa. Na página de contato não há formulário nem calculadora. Serviços externos podem usar cookies e outras tecnologias conforme suas próprias políticas.
             </p>
           </section>
 

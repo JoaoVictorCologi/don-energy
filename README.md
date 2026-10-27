@@ -1,5 +1,17 @@
 # Don Energy — Site institucional
 
+## Atualização vigente R2 — 27/10/2026
+
+R1 aceita e publicada em master/38c5681 preservada. R2 somente local na branch ajustes/r2-identidade-integracoes-contato, aguardando aceite; sem push, merge, deploy, Hostinger ou DNS. Estados de planejamento/aceite R1 abaixo são históricos.
+
+- Identidade pelo PDF: verde #94B94A protagonista, tons funcionais #3F571B/#173B31 para contraste, azul e laranja como apoio. Logo nativa sem slogan, imagens e proporções preservadas. Divergência RGB/hex da fonte continua registrada no vault.
+- Inicial mantém Hero e formulário próprios; carrossel manual com quatro perfis na seção de soluções, teclado/toque/rolagem, SVG e sem autoplay. Contato independente simplificado: WhatsApp, telefone, horários, endereço, mapa direto e Como chegar; sem formulário nem calculadora nessa página. Atendimento seg–sex 08:00–17:30, sem sábado.
+- Calculadora externa Azume por iframe oficial em /#calculadora, carregada perto da seção e com fallback em nova aba/contato. Não injetar CSS/scripts, recortar campos ou alterar o fornecedor. Carga visual, teclado e destino dos leads exigem registrar os limites verificados; não enviar orçamento ou dados reais de teste sem autorização. Nenhuma fórmula própria ou homologação Q07-A presumida.
+- Quinze páginas de aplicação + 404; /simulador/ é somente alias de transição, sem menu/sitemap. vercel.json prepara 308; public/.htaccess prepara 301 Apache/LiteSpeed com fragmento, e public/simulador/index.html oferece fallback sem servidor configurado. Configurações de hospedagem reais não foram alteradas; conferir no destino após autorização própria. Prévia scripts/preview-static.mjs lê redirecionamentos explícitos de vercel.json.
+- E4 anterior permanece em componentes sem rota pública e no histórico; arquivamento definitivo/substituição de escopo somente após aceite R2. Usinas e dados dos projetos intactos, aguardando proprietário. Avaliações opção 3 ficam somente no plano; não renderizar relatos não verificados, placeholders ou widget. E3 parcial, Q05-A/Q06/Q07-A e M02/M03 abertos.
+- Vault: Etapas/R2-Identidade-integracoes-contato-2026-10-27.md e Materiais/Referencias/R2-2026-10-27/. Prévia R2 em http://127.0.0.1:4176/, referência R1 preservada em 4178. Desfazer apenas o commit R2 por reversão, preservando histórico e alterações posteriores; não aplicar rollback R1/E5 a esta entrega.
+
+
 ## Atualização R1 — 26/10/2026
 
 Estado vigente: E5 aceita e publicada em 4bb0a38; R1 implementada localmente em ajustes/proprietario-2026-10-26, aguardando aceite próprio. Esta atualização prevalece sobre os estados históricos de entrega E5 aguardando avaliação abaixo. Sem push, merge, deploy, Hostinger ou DNS nesta R1.

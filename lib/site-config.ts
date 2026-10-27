@@ -16,8 +16,7 @@ export const siteConfig = {
     pais: "BR",
   },
   horarios: [
-    { dias: "Segunda a sexta", horario: "08:00 – 18:00", schemaDias: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], abre: "08:00", fecha: "18:00" },
-    { dias: "Sábado", horario: "09:30 – 12:00", schemaDias: ["Saturday"], abre: "09:30", fecha: "12:00" },
+    { dias: "Segunda a sexta", horario: "08:00 – 17:30", schemaDias: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], abre: "08:00", fecha: "17:30" },
   ],
   // Assinatura sem slogan aprovada em D25; derivação nativa, original preservado.
   logo: { src: "/logo/don-energy-marca-sem-microtexto-834x558.webp", width: 834, height: 558 },
@@ -31,7 +30,7 @@ export const siteConfig = {
 
 export const SITE_URL = siteConfig.url;
 // Atualizar apenas quando houver alteração real da política.
-export const PRIVACIDADE_ATUALIZADA_EM = new Date("2026-10-21");
+export const PRIVACIDADE_ATUALIZADA_EM = new Date("2026-10-27");
 
 export const localBusiness = {
   "@context": "https://schema.org",

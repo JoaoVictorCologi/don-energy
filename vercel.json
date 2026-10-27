@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/simulador",
+      "destination": "/#calculadora",
+      "permanent": true
+    },
+    {
+      "source": "/simulador/",
+      "destination": "/#calculadora",
+      "permanent": true
+    }
+  ]
+}

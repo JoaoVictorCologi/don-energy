@@ -149,7 +149,7 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
             href={urlWhatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-block text-sm text-brand-blue underline underline-offset-4"
+            className="mt-4 inline-block text-sm text-brand-green-dark underline underline-offset-4"
           >
             Continuar no WhatsApp
           </a>
@@ -169,7 +169,7 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
       className={compacto ? "rounded-md border border-border bg-background p-6 sm:p-8" : "site-section scroll-mt-[var(--header-height)] bg-brand-soft px-6 pb-24"}
     >
       <div className="mx-auto max-w-3xl">
-        <h2 className="font-heading text-2xl font-medium tracking-tight text-brand-blue sm:text-3xl">
+        <h2 className="font-heading text-2xl font-medium tracking-tight text-brand-green-dark sm:text-3xl">
           Peça sua proposta
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -294,7 +294,7 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
             <Button
               type="submit"
               size="lg"
-              className="min-h-12 bg-brand-orange text-brand-ink hover:bg-brand-orange/90"
+              className="min-h-12 bg-brand-green text-brand-ink hover:bg-brand-green/90"
             >
               Quero minha proposta
             </Button>

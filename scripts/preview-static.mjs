@@ -10,11 +10,15 @@ import path from 'node:path';
 // Prévia local de arquivos exportados. Não é um servidor da aplicação.
 const root = path.resolve(process.argv[2] || 'out');
 const port = Number(process.argv[3] || 4173);
+const configPath = path.join(root, "..", "vercel.json");
+const redirects = existsSync(configPath) ? JSON.parse(await readFile(configPath, "utf8")).redirects ?? [] : [];
 const types = { '.html':'text/html; charset=utf-8', '.txt':'text/plain; charset=utf-8', '.xml':'application/xml', '.json':'application/json', '.css':'text/css', '.js':'text/javascript', '.png':'image/png', '.webp':'image/webp', '.avif':'image/avif', '.ico':'image/x-icon', '.woff2':'font/woff2', '.svg':'image/svg+xml' };
 http.createServer(async (req,res) => {
   let pathname;
   try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); }
   catch { res.writeHead(400).end(); return; }
+  const redirect = redirects.find(rule => rule.source === pathname);
+  if (redirect) { res.writeHead(redirect.permanent ? 308 : 307, { Location: redirect.destination }).end(); return; }
   if (!['GET','HEAD'].includes(req.method)) { res.writeHead(405).end(); return; }
   let file = path.resolve(root, '.' + pathname);
   if (file !== root && !file.startsWith(root + path.sep)) { res.writeHead(403).end(); return; }

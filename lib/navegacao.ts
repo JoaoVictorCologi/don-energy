@@ -3,7 +3,6 @@ export const linksPrincipais = [
   { href: "/nossa-historia/", label: "Nossa História" },
   { href: "/servicos/", label: "Soluções" },
   { href: "/obras/", label: "Projetos" },
-  { href: "/simulador/", label: "Simulador" },
   { href: "/contato/", label: "Contato" },
 ] as const;
 export function linkAtivo(pathname: string, href: string) {

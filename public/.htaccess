@@ -1,0 +1,5 @@
+# R2 — preparar para Apache/LiteSpeed. Conferir regras existentes antes de futura migração.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^simulador/?$ /#calculadora [R=301,L,NE]
+</IfModule>

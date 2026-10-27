@@ -1,3 +1,4 @@
+import { ArrowUpRight as Seta } from "lucide-react";
 import type { Foto } from "@/lib/fotos-data";
 import { ImagemPortfolio } from "@/components/imagem-portfolio";
 import { AmpliacaoGaleria } from "@/components/ampliacao-galeria";
@@ -10,7 +11,7 @@ export function GaleriaFotos({ fotos, id = "galeria-acervo" }: { fotos: readonly
           <figure key={foto.id}>
             <a href={foto.ampliacao} data-foto-id={foto.id} aria-haspopup="dialog" aria-label={"Ampliar fotografia " + foto.numero + ": " + foto.alt} className="group relative block overflow-hidden rounded-md bg-brand-soft focus-visible:outline-brand-blue">
               <ImagemPortfolio foto={foto} />
-              <span className="absolute right-3 bottom-3 inline-flex min-h-11 items-center gap-3 rounded-sm bg-brand-deep px-4 text-xs font-semibold text-white">Ampliar <span aria-hidden="true">↗</span></span>
+              <span className="absolute right-3 bottom-3 inline-flex min-h-11 items-center gap-3 rounded-sm bg-brand-forest px-4 text-xs font-semibold text-white">Ampliar <Seta aria-hidden="true" className="size-4 shrink-0" /></span>
             </a>
             <figcaption className="mt-4 text-xs leading-relaxed text-muted-foreground">{foto.legenda}</figcaption>
           </figure>

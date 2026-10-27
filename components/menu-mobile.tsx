@@ -19,7 +19,7 @@ export function MenuMobile({ open, onOpenChange, links }: Props) {
             <PopoverClose className="flex min-h-11 items-center justify-center rounded-md text-sm font-medium hover:bg-muted">Fechar menu</PopoverClose>
             <nav aria-label="Navegação no celular" className="flex flex-col gap-1">
               {links.map((link) => <a key={link.href} href={link.href} aria-current={linkAtivo(pathname, link.href) ? "page" : undefined} onClick={() => onOpenChange(false)} className="flex min-h-11 items-center rounded-md px-3 text-sm font-medium hover:bg-muted">{link.label}</a>)}
-              <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" onClick={() => onOpenChange(false)} className="flex min-h-11 items-center rounded-md bg-brand-orange px-3 text-sm font-semibold text-brand-ink">Falar no WhatsApp</a>
+              <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" onClick={() => onOpenChange(false)} className="flex min-h-11 items-center rounded-md bg-brand-green px-3 text-sm font-semibold text-brand-ink">Falar no WhatsApp</a>
             </nav>
           </PopoverContent>
         </Popover>

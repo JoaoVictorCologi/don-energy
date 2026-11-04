@@ -1,5 +1,5 @@
 import { fotosAcervo, fotoPorId, type FotoId } from "@/lib/fotos-data";
-import type { PerfilSolarId } from "@/lib/perfis-solares";
+// Perfil confirmado da obra, separado do catálogo comercial vigente.
 
 export type ObraConfirmada = {
   id: string;
@@ -12,7 +12,7 @@ export type ObraConfirmada = {
   cidade?: string;
   uf?: string;
   potenciaKwp?: number;
-  perfil?: PerfilSolarId;
+  perfil?: "residencial" | "rural";
   destaque?: number;
 };
 

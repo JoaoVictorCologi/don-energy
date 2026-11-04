@@ -32,7 +32,7 @@ const schema = z.object({
     return digits.length >= 10 && digits.length <= 13;
   }, "Informe um telefone válido com DDD"),
   tipoImovel: z.enum(
-    ["residencial", "comercial", "rural", "usina"],
+    ["residencial", "comercial", "industrial"],
     "Selecione o perfil solar"
   ),
   consumoOuConta: z.string().trim().optional(),
@@ -294,7 +294,7 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
             <Button
               type="submit"
               size="lg"
-              className="min-h-12 bg-brand-orange text-brand-ink hover:bg-brand-orange/90"
+              className="min-h-12 bg-brand-blue text-white hover:bg-brand-blue/90"
             >
               Quero minha proposta
             </Button>

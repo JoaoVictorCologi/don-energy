@@ -42,36 +42,20 @@ export const detalhesSolares = {
       { pergunta: "Como ficam os prazos e a rotina da empresa?", resposta: "Prazos, acesso ao imóvel e planejamento da instalação precisam ser definidos na proposta e alinhados com os responsáveis pela operação." },
     ],
   },
-  rural: {
-    resumo: "Uma solução solar avaliada a partir das necessidades da sua propriedade rural.",
-    necessidade: "Equipamentos, atividades e períodos de produção influenciam o consumo no campo. O local disponível e as condições de instalação também fazem parte da avaliação.",
-    solucao: "A atividade e as variações de consumo da propriedade são informações importantes para a avaliação. Apresente as condições do local e converse com a equipe sobre o escopo do projeto.",
-    pontos: ["Rotina e sazonalidade da propriedade", "Consumo dos equipamentos", "Condições do local de instalação"],
+  industrial: {
+    resumo: "O cliente produz energia em sua propriedade rural e compensa o consumo de energia da sua indústria na cidade.",
+    necessidade: "O local de geração na propriedade rural e o consumo da indústria na cidade precisam ser considerados na conversa sobre o projeto.",
+    solucao: "Apresente as informações disponíveis sobre a propriedade e a indústria. Converse com a equipe para esclarecer as condições do projeto e o que precisa ser avaliado antes de uma proposta.",
+    pontos: ["Local de geração na propriedade rural", "Consumo da indústria na cidade", "Condições do projeto a esclarecer com a equipe"],
     etapas: [
-      { titulo: "Descreva a propriedade", texto: "Informe a cidade e as principais atividades desenvolvidas." },
-      { titulo: "Explique a sazonalidade", texto: "Indique os períodos de maior consumo e os equipamentos utilizados." },
-      { titulo: "Apresente o local", texto: "Descreva a área disponível e as condições conhecidas da instalação." },
+      { titulo: "Apresente os dois locais", texto: "Informe onde ficam a propriedade rural e a indústria." },
+      { titulo: "Reúna os dados disponíveis", texto: "Se possível, separe as contas de energia e as informações sobre o local de geração." },
+      { titulo: "Converse sobre o projeto", texto: "Esclareça com a equipe as condições, o escopo e as próximas informações necessárias." },
     ],
     faq: [
-      { pergunta: "O consumo muda durante o ano. Isso importa?", resposta: "Sim. Informe os períodos de maior consumo e as atividades sazonais para que sejam considerados na análise." },
-      { pergunta: "Posso informar o consumo de equipamentos específicos?", resposta: "Sim. Informações sobre os equipamentos ajudam a entender o perfil da propriedade. A equipe orientará quais dados são necessários ao projeto." },
-      { pergunta: "É preciso definir o local da instalação antes de conversar?", resposta: "Não. Você pode apresentar as possibilidades e esclarecer com a equipe o que precisa ser avaliado tecnicamente." },
-    ],
-  },
-  usina: {
-    resumo: "Avaliação de projetos de geração solar com foco em usinas de investimento.",
-    necessidade: "Uma usina exige uma avaliação específica do local, do projeto e das condições de implantação. Antes de uma decisão, é necessário entender o escopo e as premissas do estudo.",
-    solucao: "Apresente os objetivos e as informações disponíveis sobre o local. Escopo do estudo, condições de implantação, premissas e responsabilidades precisam ser esclarecidos antes de qualquer projeção financeira. Esta página não oferece garantia de rentabilidade.",
-    pontos: ["Objetivos e características do projeto", "Condições do local e da implantação", "Premissas e escopo da avaliação"],
-    etapas: [
-      { titulo: "Apresente o objetivo", texto: "Informe a cidade e o objetivo do projeto de geração solar." },
-      { titulo: "Descreva a área", texto: "Conte quais informações sobre o local já estão disponíveis." },
-      { titulo: "Liste o que precisa esclarecer", texto: "Converse sobre escopo, conexão, custos e premissas da avaliação." },
-    ],
-    faq: [
-      { pergunta: "Existe um retorno financeiro garantido?", resposta: "Não é possível afirmar um retorno fixo nesta página. A avaliação depende das condições e premissas específicas do projeto, que precisam ser apresentadas e analisadas." },
-      { pergunta: "Já preciso ter um terreno definido?", resposta: "Você pode iniciar a conversa informando seu objetivo e as opções disponíveis. A equipe indicará quais informações sobre o local serão necessárias à avaliação." },
-      { pergunta: "Quais informações devo enviar no primeiro contato?", resposta: "Informe seu nome, telefone e cidade, selecione usina de investimento e conte mais sobre seu objetivo durante a conversa no WhatsApp." },
+      { pergunta: "Qual é o cenário apresentado neste serviço?", resposta: "O cliente produz energia em sua propriedade rural e compensa o consumo de energia da sua indústria na cidade." },
+      { pergunta: "O que posso levar para a primeira conversa?", resposta: "As cidades dos dois locais, as contas de energia disponíveis e suas dúvidas sobre o projeto ajudam a contextualizar o atendimento." },
+      { pergunta: "Essa descrição confirma as condições de qualquer projeto?", resposta: "As condições do seu projeto precisam ser esclarecidas com a equipe. Esta apresentação não substitui uma avaliação específica nem apresenta projeções de economia." },
     ],
   },
 } as const satisfies Record<PerfilSolarId, Detalhe>;

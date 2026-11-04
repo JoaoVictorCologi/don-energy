@@ -10,6 +10,26 @@
       "source": "/simulador/",
       "destination": "/#calculadora",
       "permanent": true
+    },
+    {
+      "source": "/servicos/solar-rural",
+      "destination": "/servicos/autoconsumo-remoto-industrial/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/solar-rural/",
+      "destination": "/servicos/autoconsumo-remoto-industrial/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/usina-de-investimento",
+      "destination": "/servicos/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/usina-de-investimento/",
+      "destination": "/servicos/",
+      "permanent": true
     }
   ]
 }

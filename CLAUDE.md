@@ -1,3 +1,7 @@
+# Estado vigente R3 — 04/11/2026
+
+R3 local em ajustes/r3-logo-botoes, sobre R2 publicada 38dde75; aguarda aceite, sem push/merge/deploy/Hostinger/DNS. Nova marca recebida, botões azuis e flutuante WhatsApp verde. Hero verde, trecho do título/textos próprios azuis, sem CTA redundante da calculadora. Catálogo: residencial, comercial e Autoconsumo Remoto - Industrial. Solar-rural redireciona ao novo serviço; usina-de-investimento redireciona a /servicos/, sem oferta/formulários/sitemap correspondentes. Histórico factual rural da obra Francini e todas as fotografias preservados, sem classificação industrial presumida. Iframe Azume interno inalterado; Q10-A/Q07-A, E3 parcial e M02/M03 mantidos. Detalhes/evidências/rollback no vault: Materiais/Referencias/R3-implementacao-2026-11-04/. Estados anteriores abaixo são históricos e não devem reintroduzir o catálogo antigo.
+
 @AGENTS.md
 
 ## Revisão vigente da R2 — Hero e cores, 27/10/2026

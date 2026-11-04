@@ -8,14 +8,14 @@ export function valorDeclaradoValido(value: string) {
 }
 
 export const simuladorSchema = z.object({
-  perfil: z.enum(["residencial", "comercial", "rural", "usina"], "Selecione o perfil do projeto."),
+  perfil: z.enum(["residencial", "comercial", "industrial"], "Selecione o perfil do projeto."),
   cidade: z.string().trim().min(2, "Informe a cidade.").max(100, "Use até 100 caracteres.").refine(v => /\p{L}/u.test(v), "Informe o nome da cidade."),
   uf: z.enum(estadosBrasileiros, "Selecione a UF."),
   tipoDado: z.enum(["nao-sei", "consumo", "conta"]),
   valor: z.string().trim().max(30, "Use até 30 caracteres, sem símbolos ou unidades."),
   ligacao: z.enum(["nao-sei", "monofasica", "bifasica", "trifasica"]),
 }).superRefine((dados, ctx) => {
-  if (dados.perfil !== "usina" && dados.tipoDado !== "nao-sei" && !valorDeclaradoValido(dados.valor)) {
+  if (dados.tipoDado !== "nao-sei" && !valorDeclaradoValido(dados.valor)) {
     ctx.addIssue({ code: "custom", path: ["valor"], message: "Informe um valor maior que zero, usando números e vírgula decimal. Não use pontos, símbolos ou unidades." });
   }
 });

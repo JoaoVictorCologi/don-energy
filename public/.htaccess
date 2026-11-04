@@ -1,5 +1,7 @@
-# R2 — preparar para Apache/LiteSpeed. Conferir regras existentes antes de futura migração.
+# R3 — regras preparadas para futura revisão Apache/LiteSpeed; não publicadas.
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule ^simulador/?$ /#calculadora [R=301,L,NE]
+RewriteRule ^servicos/solar-rural/?$ /servicos/autoconsumo-remoto-industrial/ [R=301,L,NE]
+RewriteRule ^servicos/usina-de-investimento/?$ /servicos/ [R=301,L,NE]
 </IfModule>

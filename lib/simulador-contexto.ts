@@ -17,13 +17,12 @@ export type ContextoSimulador = {
 };
 
 export function contextoParaContato(dados: DadosSimulador): ContextoSimulador {
-  const usina = dados.perfil === "usina";
   const valor = dados.valor.trim().replace(/^0+(?=\d)/, "");
   return {
     perfil: dados.perfil,
     cidade: dados.cidade + " / " + dados.uf,
-    consumoOuConta: usina ? "Não informado — interesse em usina de investimento" : dados.tipoDado === "nao-sei" ? "Não informado" : dados.tipoDado === "conta" ? "Conta informada: R$ " + valor + "/mês" : "Consumo informado: " + valor + " kWh/mês",
-    ligacao: usina ? "Não se aplica a esta preparação de atendimento" : ligacoes.find(item => item.id === dados.ligacao)!.titulo,
+    consumoOuConta: dados.tipoDado === "nao-sei" ? "Não informado" : dados.tipoDado === "conta" ? "Conta informada: R$ " + valor + "/mês" : "Consumo informado: " + valor + " kWh/mês",
+    ligacao: ligacoes.find(item => item.id === dados.ligacao)!.titulo,
   };
 }
 

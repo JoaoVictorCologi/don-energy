@@ -231,7 +231,7 @@ body {
   .site-eyebrow { @apply mb-5 text-xs font-semibold tracking-[0.13em] text-brand-blue uppercase; }
   .site-title { @apply max-w-3xl font-heading text-3xl leading-[1.22] font-medium tracking-[-0.035em] text-brand-blue md:text-[2.5rem]; }
   .site-link { @apply inline-flex min-h-11 items-center gap-4 text-sm font-semibold text-brand-blue underline-offset-8 hover:underline; }
-  .site-button { @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-sm bg-brand-orange px-6 py-3 text-sm font-semibold text-brand-ink hover:bg-brand-orange/90; }
+  .site-button { @apply inline-flex min-h-12 items-center justify-center gap-5 rounded-sm bg-brand-blue px-6 py-3 text-sm font-semibold text-white hover:bg-brand-blue/90; }
 }
 
 /* R2: verde da marca e tons funcionais contrastantes; logo original preservada. */
@@ -252,3 +252,7 @@ body {
 @container (min-width: 570px) { .hero-calculadora .azume-quadro { height: 800px; } }
 @container (min-width: 960px) { .hero-calculadora .azume-quadro { height: 600px; } }
 .site-button:focus-visible { outline-color: #171f32; box-shadow: 0 0 0 7px #ffffff; }
+
+/* R3: sobreposição verde clara mantém contraste do azul sobre a fotografia. */
+.hero-r3-overlay { background: linear-gradient(90deg, rgba(232,241,218,.99), rgba(232,241,218,.97)); }
+@media (min-width:1280px) { .hero-r3-overlay { background: linear-gradient(90deg, rgba(232,241,218,.99) 0%, rgba(232,241,218,.97) 48%, rgba(148,185,74,.68) 76%, rgba(23,59,49,.5)); } }

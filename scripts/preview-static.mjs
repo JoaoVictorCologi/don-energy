@@ -12,7 +12,7 @@ const root = path.resolve(process.argv[2] || 'out');
 const port = Number(process.argv[3] || 4173);
 const configPath = path.join(root, "..", "vercel.json");
 const redirects = existsSync(configPath) ? JSON.parse(await readFile(configPath, "utf8")).redirects ?? [] : [];
-const types = { '.html':'text/html; charset=utf-8', '.txt':'text/plain; charset=utf-8', '.xml':'application/xml', '.json':'application/json', '.css':'text/css', '.js':'text/javascript', '.png':'image/png', '.webp':'image/webp', '.avif':'image/avif', '.ico':'image/x-icon', '.woff2':'font/woff2', '.svg':'image/svg+xml' };
+const types = { '.html':'text/html; charset=utf-8', '.txt':'text/plain; charset=utf-8', '.xml':'application/xml', '.json':'application/json', '.css':'text/css', '.js':'text/javascript', '.jpg':'image/jpeg', '.png':'image/png', '.webp':'image/webp', '.avif':'image/avif', '.ico':'image/x-icon', '.woff2':'font/woff2', '.svg':'image/svg+xml' };
 http.createServer(async (req,res) => {
   let pathname;
   try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); }

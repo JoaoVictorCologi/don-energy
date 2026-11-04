@@ -16,7 +16,7 @@ export function CarrosselSolucoes({ children }: { children: ReactNode }) {
       const r = card.getBoundingClientRect();
       return r.left < bounds.right - 30 && r.right > bounds.left + 30 ? [i + 1] : [];
     });
-    const nova = { primeira: visiveis[0] ?? 1, ultima: visiveis.at(-1) ?? 4, inicio: area.scrollLeft < 2, fim: area.scrollLeft + area.clientWidth >= area.scrollWidth - 2 };
+    const nova = { primeira: visiveis[0] ?? 1, ultima: visiveis.at(-1) ?? cards.length, inicio: area.scrollLeft < 2, fim: area.scrollLeft + area.clientWidth >= area.scrollWidth - 2 };
     setPosicao(atual => Object.keys(nova).every(key => atual[key as keyof typeof nova] === nova[key as keyof typeof nova]) ? atual : nova);
   }
 
@@ -45,8 +45,8 @@ export function CarrosselSolucoes({ children }: { children: ReactNode }) {
       {children}
     </div>
     <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
-      <p className="text-sm text-muted-foreground">Arraste para explorar os quatro perfis.</p>
-      <div className="flex min-w-0 flex-wrap items-center gap-3"><span aria-live="polite" aria-atomic="true" className="min-w-20 text-center text-xs text-brand-blue">{posicao.primeira}–{posicao.ultima} de 4</span>
+      <p className="text-sm text-muted-foreground">Arraste para explorar as três soluções.</p>
+      <div className="flex min-w-0 flex-wrap items-center gap-3"><span aria-live="polite" aria-atomic="true" className="min-w-20 text-center text-xs text-brand-blue">{posicao.primeira}–{posicao.ultima} de 3</span>
         <button type="button" aria-label="Solução anterior" aria-controls="solucoes-paineis" disabled={posicao.inicio} onClick={() => mover(-1)} className="carousel-control"><ArrowLeft aria-hidden="true" className="size-5" /></button>
         <button type="button" aria-label="Próxima solução" aria-controls="solucoes-paineis" disabled={posicao.fim} onClick={() => mover(1)} className="carousel-control"><ArrowRight aria-hidden="true" className="size-5" /></button>
       </div>

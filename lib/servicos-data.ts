@@ -13,14 +13,9 @@ const servicosBase = [
     beneficios: ["Horários de funcionamento da empresa", "Consumo dos equipamentos e variações de demanda", "Condições do imóvel e espaço disponível", "Planos de ampliação da operação"],
   },
   {
-    id: "rural", titulo: "Rural",
-    intro: "A rotina e a sazonalidade da propriedade orientam a conversa sobre energia solar.",
-    beneficios: ["Atividades e períodos de maior consumo", "Equipamentos e horários de utilização", "Variações do consumo ao longo do ano", "Área disponível e condições de instalação"],
-  },
-  {
-    id: "usina", titulo: "Usina de investimento",
-    intro: "Objetivo, localização e condições do projeto precisam de uma avaliação específica.",
-    beneficios: ["Objetivo do projeto de geração solar", "Localização e características da área", "Condições de conexão e implantação a avaliar", "Premissas, custos e responsabilidades a esclarecer"],
+    id: "industrial", titulo: "Autoconsumo Remoto - Industrial",
+    intro: "O cliente produz energia em sua propriedade rural e compensa o consumo de energia da sua indústria na cidade.",
+    beneficios: ["Local de geração na propriedade rural", "Consumo da indústria na cidade", "Informações dos dois locais", "Condições a esclarecer com a equipe"],
   },
 ] as const;
 
@@ -29,5 +24,4 @@ export const servicos = perfisSolares.map((perfil) => {
   if (!base) throw new Error("Perfil solar sem dados: " + perfil.id);
   return { ...base, ...perfil, ...detalhesSolares[perfil.id] };
 });
-
 export type Servico = (typeof servicos)[number];

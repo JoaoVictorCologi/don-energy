@@ -254,8 +254,8 @@ body {
 @container (min-width: 960px) { .hero-calculadora .azume-quadro { height: 600px; } }
 .site-button:focus-visible { outline-color: #171f32; box-shadow: 0 0 0 7px #ffffff; }
 
-/* Revisão R3: mesmo acabamento verde translúcido em toda a fotografia. */
-.hero-r3-overlay { background: rgba(23,59,49,.5); }
-/* Título branco sem caixa; sombra discreta para leitura sobre a fotografia. */
-
-.hero-r3-white { text-shadow: 0 1px 3px rgba(0,0,0,.8); }
+/* Teste R3: branco sobre verde escuro na área de leitura, foto mais livre à direita. */
+.hero-r3-overlay { background: rgba(23,59,49,.78); }
+@media (min-width:1280px) {
+  .hero-r3-overlay { background: linear-gradient(90deg, rgba(23,59,49,.78) 0%, rgba(23,59,49,.75) 48%, rgba(23,59,49,.25) 100%); }
+}

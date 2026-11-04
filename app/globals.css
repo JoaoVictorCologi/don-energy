@@ -254,18 +254,6 @@ body {
 @container (min-width: 960px) { .hero-calculadora .azume-quadro { height: 600px; } }
 .site-button:focus-visible { outline-color: #171f32; box-shadow: 0 0 0 7px #ffffff; }
 
-/* Teste R3: branco sobre verde escuro na área de leitura, foto mais livre à direita. */
-.hero-r3-overlay { background: rgba(23,59,49,.78); }
-@media (min-width:1280px) {
-  .hero-r3-overlay { background: linear-gradient(90deg, rgba(23,59,49,.78) 0%, rgba(23,59,49,.75) 48%, rgba(23,59,49,.25) 100%); }
-}
-
-/* R3: luz suave limitada à leitura; não avança sob a calculadora. */
-.hero-r3-reading { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; position: relative; isolation: isolate; max-width: 42rem; }
-.hero-r3-reading h1 { display: grid; grid-template-rows: subgrid; grid-column: 1; grid-row: 1 / 3; }
-.hero-r3-blue-body { grid-column: 1; grid-row: 3; }
-.hero-r3-wash { grid-column: 1; grid-row: 2 / 4; position: relative; z-index: -1; pointer-events: none; }
-.hero-r3-wash::before { content: ""; position: absolute; inset: -8px -24px -28px; background: linear-gradient(90deg, rgba(233,241,217,.96) 0%, rgba(233,241,217,.96) calc(100% - 24px), transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, black 56px, black calc(100% - 52px), transparent 100%); }
-@media (min-width:1280px) {
-  .hero-r3-wash::before { right: -40px; left: min(-40px, calc((1400px - 100vw) / 2 - 40px)); background: linear-gradient(90deg, rgba(233,241,217,.96) 0%, rgba(233,241,217,.96) calc(100% - 40px), transparent 100%); }
-}
+/* R3: sobreposição verde clara mantém contraste do azul sobre a fotografia. */
+.hero-r3-overlay { background: linear-gradient(90deg, rgba(232,241,218,.99), rgba(232,241,218,.97)); }
+@media (min-width:1280px) { .hero-r3-overlay { background: linear-gradient(90deg, rgba(232,241,218,.99) 0%, rgba(232,241,218,.97) 48%, rgba(148,185,74,.68) 76%, rgba(23,59,49,.5)); } }

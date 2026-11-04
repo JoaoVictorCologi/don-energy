@@ -8,7 +8,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
-    <footer className="bg-brand-blue text-white">
+    <footer className="bg-brand-logo-green text-brand-ink">
       <div className="site-shell py-14">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1.4fr_1fr]">
           <div>
@@ -22,10 +22,10 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading text-sm font-semibold tracking-wide text-white/90 uppercase">
+            <h3 className="font-heading text-sm font-semibold tracking-wide text-brand-ink/90 uppercase">
               Contato
             </h3>
-            <div className="mt-3 flex flex-col gap-2 text-sm text-white/90">
+            <div className="mt-3 flex flex-col gap-2 text-sm text-brand-ink/90">
               <div className="flex items-start gap-2">
                 <MapPin className="mt-0.5 size-4 shrink-0" />
                 <span>
@@ -47,10 +47,10 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading text-sm font-semibold tracking-wide text-white/90 uppercase">
+            <h3 className="font-heading text-sm font-semibold tracking-wide text-brand-ink/90 uppercase">
               Horário de funcionamento
             </h3>
-            <div className="mt-3 flex flex-col gap-2 text-sm text-white/90">
+            <div className="mt-3 flex flex-col gap-2 text-sm text-brand-ink/90">
               {contato.horarios.map((item) => (
                 <div key={item.dias} className="flex items-start gap-2">
                   <Clock className="mt-0.5 size-4 shrink-0" />
@@ -65,7 +65,7 @@ export function Footer() {
 
         <nav aria-label="Navegação no rodapé" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold"><Link prefetch={false} href="/servicos/" className="inline-flex min-h-11 items-center underline underline-offset-4">Soluções solares</Link><Link prefetch={false} href="/nossa-historia/" className="inline-flex min-h-11 items-center underline underline-offset-4">Nossa História</Link><Link prefetch={false} href="/obras/" className="inline-flex min-h-11 items-center underline underline-offset-4">Projetos e fotografias</Link><Link prefetch={false} href="/#calculadora" className="inline-flex min-h-11 items-center underline underline-offset-4">Calculadora solar</Link><Link prefetch={false} href="/contato/" className="inline-flex min-h-11 items-center underline underline-offset-4">Fale com a Don Energy</Link></nav>
 
-        <div className="mt-8 border-t border-white/20 pt-6 text-sm text-white/90">
+        <div className="mt-8 border-t border-brand-ink/20 pt-6 text-sm text-brand-ink/90">
           <Link href="/privacidade/" prefetch={false} className="mb-4 inline-flex min-h-11 items-center underline underline-offset-4">Política de privacidade</Link>
           <p>© {new Date().getFullYear()} Don Energy. Todos os direitos
           reservados.</p>

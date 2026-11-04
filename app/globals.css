@@ -259,3 +259,9 @@ body {
 @media (min-width:1280px) {
   .hero-r3-overlay { background: linear-gradient(90deg, rgba(23,59,49,.78) 0%, rgba(23,59,49,.75) 48%, rgba(23,59,49,.25) 100%); }
 }
+
+/* Um apoio visual contínuo acompanha o título, inclusive quando ele quebra no zoom. */
+.hero-r3-reading { max-width: 42rem; }
+.hero-r3-panel-surface { background: rgba(244,247,239,.88); }
+.hero-r3-blue-title { border-radius: 12px 12px 0 0; }
+.hero-r3-blue-body { border-radius: 0 0 12px 12px; }

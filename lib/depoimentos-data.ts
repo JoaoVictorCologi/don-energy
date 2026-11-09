@@ -28,6 +28,7 @@ export const depoimentos = [
 type Avaliacao = {
   id: string;
   nome: string;
+  tema: string;
   texto: string;
   perfilAutor?: string;
   linkAvaliacao?: string;
@@ -37,11 +38,14 @@ type Avaliacao = {
 
 export const perfilGoogle = "https://www.google.com/maps/place/Don+Energy+-+Energia+Solar/data=!4m2!3m1!1s0x0:0x63ac62916127a52f";
 
+export const notaGoogle = { media: 4.8, total: 100, consultadoEm: "2026-11-09" } as const;
+
 // O acervo acima permanece separado dos relatos liberados para reprodução.
 const avaliacoesRegistradas: readonly Avaliacao[] = [
   {
     id: "leandro",
     nome: "Leandro Franchi Valente",
+    tema: "Instalação",
     texto: "Destaca o profissionalismo da equipe e relata que o sistema instalado está funcionando como esperado.",
     perfilAutor: "https://www.google.com/maps/contrib/117834654240404896909/reviews?hl=pt-BR",
     verificada: true,
@@ -50,6 +54,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
   {
     id: "nei-nei",
     nome: "Nei Nei",
+    tema: "Preço e atendimento",
     texto: "Considerou o preço justo, elogiou a agilidade na execução e disse que teve todas as dúvidas esclarecidas.",
     perfilAutor: "https://www.google.com/maps/contrib/115213981795498009240/reviews?hl=pt-BR",
     verificada: true,
@@ -58,6 +63,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
   {
     id: "carlos",
     nome: "Carlos Moraes",
+    tema: "Execução do serviço",
     texto: "Descreve a experiência como muito satisfatória e elogia o atendimento e a execução do serviço.",
     perfilAutor: "https://www.google.com/maps/contrib/117779547553232165975/reviews?hl=pt-BR",
     verificada: true,
@@ -66,6 +72,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
   {
     id: "elisa",
     nome: "Elisa Mariah Brito Bazili",
+    tema: "Atendimento e prazo",
     texto: "Conta que recebeu esclarecimentos, que os prazos combinados foram cumpridos no caso dela e que considerou o preço bom.",
     perfilAutor: "https://www.google.com/maps/contrib/109284845181262759505/reviews?hl=pt-BR",
     verificada: true,
@@ -74,6 +81,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
   {
     id: "israel",
     nome: "Israel David Spalato",
+    tema: "Instalação e equipe",
     texto: "Elogia o trabalho de instalação e o atendimento dos colaboradores.",
     verificada: true,
     autorizada: false,

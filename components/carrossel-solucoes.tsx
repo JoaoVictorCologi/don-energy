@@ -18,6 +18,7 @@ export function Carrossel({ children, id, titulo, itens, anterior, proximo, indi
   const [inicio, setInicio] = useState(true);
   const [fim, setFim] = useState(false);
   const [ativo, setAtivo] = useState(0);
+  const [posicoes, setPosicoes] = useState(indicadores?.length ?? 0);
 
   useEffect(() => {
     const area = viewport.current;
@@ -26,21 +27,28 @@ export function Carrossel({ children, id, titulo, itens, anterior, proximo, indi
     function atualizar() {
       if (!area) return;
       setInicio(area.scrollLeft < 2);
-      setFim(area.scrollLeft + area.clientWidth >= area.scrollWidth - 2);
+      const limite = area.scrollWidth - area.clientWidth;
+      setFim(area.scrollLeft >= limite - 2);
       if (!indicadores) return;
 
       const slides = [...area.querySelectorAll<HTMLElement>("[data-slide]")];
       const left = area.getBoundingClientRect().left;
       let maisProximo = 0;
       let distancia = Infinity;
+      let acessiveis = 0;
       slides.forEach((slide, indice) => {
-        const atual = Math.abs(slide.getBoundingClientRect().left - left);
+        const deslocamento = slide.getBoundingClientRect().left - left;
+        // A última posição pode mostrar dois cartões em telas largas.
+        if (deslocamento + area.scrollLeft > limite + 2) return;
+        acessiveis++;
+        const atual = Math.abs(deslocamento);
         if (atual < distancia) {
           distancia = atual;
           maisProximo = indice;
         }
       });
       setAtivo(maisProximo);
+      setPosicoes(acessiveis);
     }
 
     atualizar();
@@ -92,11 +100,11 @@ export function Carrossel({ children, id, titulo, itens, anterior, proximo, indi
       >
         {children}
       </div>
-      {(!indicadores || indicadores.length > 1) && (
+      {(!indicadores || posicoes > 1) && (
         <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           {indicadores ? (
             <div role="group" aria-label="Escolher avaliação" className="flex flex-wrap">
-              {indicadores.map((nome, indice) => (
+              {indicadores.slice(0, posicoes).map((nome, indice) => (
                 <button
                   key={nome + indice}
                   type="button"

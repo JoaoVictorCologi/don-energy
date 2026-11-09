@@ -1,7 +1,7 @@
 import { ArrowUpRight, CalendarDays, PanelsTopLeft, UsersRound } from "lucide-react";
 import Link from "next/link";
 import { localBusiness } from "@/lib/site-config";
-import { avaliacoesPublicaveis } from "@/lib/depoimentos-data";
+import { avaliacoesVisiveis } from "@/lib/depoimentos-data";
 import { CalculadoraAzume } from "@/components/calculadora-azume";
 import { Depoimentos } from "@/components/depoimentos";
 import { Hero } from "@/components/hero";
@@ -50,7 +50,7 @@ export default function Home() {
 
       <Servicos />
       <ManutencaoSolar />
-      {avaliacoesPublicaveis.length > 0 ? <Depoimentos /> : <ObrasGallery />}
+      {avaliacoesVisiveis.length > 0 ? <Depoimentos /> : <ObrasGallery />}
 
       <section className="site-section bg-brand-soft">
         <div className="site-shell">

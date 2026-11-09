@@ -29,7 +29,8 @@ type Avaliacao = {
   id: string;
   nome: string;
   texto: string;
-  fonte: string;
+  perfilAutor?: string;
+  linkAvaliacao?: string;
   verificada: boolean;
   autorizada: boolean;
 };
@@ -37,5 +38,49 @@ type Avaliacao = {
 export const perfilGoogle = "https://www.google.com/maps/place/Don+Energy+-+Energia+Solar/data=!4m2!3m1!1s0x0:0x63ac62916127a52f";
 
 // O acervo acima permanece separado dos relatos liberados para reprodução.
-const avaliacoesRegistradas: readonly Avaliacao[] = [];
-export const avaliacoesPublicaveis = avaliacoesRegistradas.filter(item => item.verificada && item.autorizada);
+const avaliacoesRegistradas: readonly Avaliacao[] = [
+  {
+    id: "leandro",
+    nome: "Leandro Franchi Valente",
+    texto: "Destaca o profissionalismo da equipe e relata que o sistema instalado está funcionando como esperado.",
+    perfilAutor: "https://www.google.com/maps/contrib/117834654240404896909/reviews?hl=pt-BR",
+    verificada: true,
+    autorizada: false,
+  },
+  {
+    id: "nei-nei",
+    nome: "Nei Nei",
+    texto: "Considerou o preço justo, elogiou a agilidade na execução e disse que teve todas as dúvidas esclarecidas.",
+    perfilAutor: "https://www.google.com/maps/contrib/115213981795498009240/reviews?hl=pt-BR",
+    verificada: true,
+    autorizada: false,
+  },
+  {
+    id: "carlos",
+    nome: "Carlos Moraes",
+    texto: "Descreve a experiência como muito satisfatória e elogia o atendimento e a execução do serviço.",
+    perfilAutor: "https://www.google.com/maps/contrib/117779547553232165975/reviews?hl=pt-BR",
+    verificada: true,
+    autorizada: false,
+  },
+  {
+    id: "elisa",
+    nome: "Elisa Mariah Brito Bazili",
+    texto: "Conta que recebeu esclarecimentos, que os prazos combinados foram cumpridos no caso dela e que considerou o preço bom.",
+    perfilAutor: "https://www.google.com/maps/contrib/109284845181262759505/reviews?hl=pt-BR",
+    verificada: true,
+    autorizada: false,
+  },
+  {
+    id: "israel",
+    nome: "Israel David Spalato",
+    texto: "Elogia o trabalho de instalação e o atendimento dos colaboradores.",
+    verificada: true,
+    autorizada: false,
+  },
+];
+
+export const previaAvaliacoes = process.env.DON_ENERGY_PREVIA_AVALIACOES === "1";
+export const avaliacoesVisiveis = avaliacoesRegistradas.filter(
+  ({ verificada, autorizada }) => verificada && (autorizada || previaAvaliacoes),
+);

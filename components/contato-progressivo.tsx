@@ -6,7 +6,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function ContatoAlternativo() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-20 text-center">
+    <div className="rounded-md border border-border bg-background px-6 py-10 text-center text-foreground">
       <h2 className="font-heading text-3xl font-bold sm:text-4xl">Peça sua proposta</h2>
       <p className="mt-3 text-muted-foreground">Converse com a Don Energy sobre o seu projeto.</p>
       <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex min-h-12 items-center rounded-md bg-brand-blue px-5 font-semibold text-white">Falar no WhatsApp</a>
@@ -37,8 +37,8 @@ export function ContatoProgressivo() {
   }, []);
 
   return (
-    <section id="contato" ref={section} className="min-h-[760px] scroll-mt-[var(--header-height)] sm:min-h-[640px]">
-      {carregar ? <FormularioContato /> : <ContatoAlternativo />}
+    <section id="contato" ref={section} aria-label="Proposta pelo WhatsApp" className="min-h-[73rem] min-w-0 scroll-mt-4 min-[380px]:min-h-[65rem] sm:min-h-[46rem]">
+      {carregar ? <FormularioContato compacto /> : <ContatoAlternativo />}
     </section>
   );
 }

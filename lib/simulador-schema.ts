@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { estadosBrasileiros } from "@/lib/simulador-contexto";
+import { perfilSolarIds } from "@/lib/perfis-solares";
 
 // Valida somente a escrita de um valor declarado; não converte R$ em energia.
 export function valorDeclaradoValido(value: string) {
@@ -8,7 +9,7 @@ export function valorDeclaradoValido(value: string) {
 }
 
 export const simuladorSchema = z.object({
-  perfil: z.enum(["residencial", "comercial", "industrial"], "Selecione o perfil do projeto."),
+  perfil: z.enum(perfilSolarIds, "Selecione o perfil do projeto."),
   cidade: z.string().trim().min(2, "Informe a cidade.").max(100, "Use até 100 caracteres.").refine(v => /\p{L}/u.test(v), "Informe o nome da cidade."),
   uf: z.enum(estadosBrasileiros, "Selecione a UF."),
   tipoDado: z.enum(["nao-sei", "consumo", "conta"]),

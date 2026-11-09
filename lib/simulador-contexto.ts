@@ -13,6 +13,8 @@ export type ContextoSimulador = {
   perfil: PerfilSolarId;
   cidade: string;
   consumoOuConta: string;
+  valorConta: string;
+  consumoMensal: string;
   ligacao: string;
 };
 
@@ -22,6 +24,8 @@ export function contextoParaContato(dados: DadosSimulador): ContextoSimulador {
     perfil: dados.perfil,
     cidade: dados.cidade + " / " + dados.uf,
     consumoOuConta: dados.tipoDado === "nao-sei" ? "Não informado" : dados.tipoDado === "conta" ? "Conta informada: R$ " + valor + "/mês" : "Consumo informado: " + valor + " kWh/mês",
+    valorConta: dados.tipoDado === "conta" ? valor : "",
+    consumoMensal: dados.tipoDado === "consumo" ? valor : "",
     ligacao: ligacoes.find(item => item.id === dados.ligacao)!.titulo,
   };
 }

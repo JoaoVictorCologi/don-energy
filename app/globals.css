@@ -245,13 +245,12 @@ body {
 .azume-quadro { height: 1040px; }
 @media (min-width: 768px) { .solucoes-slide { flex-basis: calc((100% - 28px) / 2); } .azume-quadro { height: 700px; } }
 
-/* Ajuste solicitado: calculadora na primeira seção, à direita no desktop. */
+/* Primeira seção e quadro da calculadora externa. */
 .hero-shell { width: 100%; max-width: 1480px; margin-inline: auto; padding-inline: 24px; }
-.hero-calculadora { container-type: inline-size; }
-.hero-calculadora .azume-quadro { height: 900px; }
+.azume-card { container-type: inline-size; }
+.azume-card .azume-quadro { height: 900px; }
 @media (min-width: 768px) { .hero-shell { padding-inline: 40px; } }
-@container (min-width: 570px) { .hero-calculadora .azume-quadro { height: 800px; } }
-@container (min-width: 960px) { .hero-calculadora .azume-quadro { height: 600px; } }
+@container (min-width: 570px) { .azume-card .azume-quadro { height: 800px; } }
 .site-button:focus-visible { outline-color: #171f32; box-shadow: 0 0 0 7px #ffffff; }
 
 /* R3: branco sobre verde escuro na área de leitura, foto mais livre à direita. */

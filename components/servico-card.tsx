@@ -1,6 +1,6 @@
 import { ArrowUpRight as Seta } from "lucide-react";
 import Link from "next/link";
-import { FotoAcervo } from "@/components/foto-acervo";
+import { VisualServico } from "@/components/visual-servico";
 import type { Servico } from "@/lib/servicos-data";
 import { apresentacaoSolar } from "@/lib/apresentacao-solar";
 
@@ -8,7 +8,7 @@ export function ServicoCard({ servico, inicial = false, imagemInicial = false }:
   const Titulo = inicial ? "h3" : "h2";
   return (
     <article data-servico={servico.id} className="group relative overflow-hidden rounded-md border border-border bg-background focus-within:ring-2 focus-within:ring-brand-blue">
-      <FotoAcervo numero={apresentacaoSolar[servico.id].foto} loading={imagemInicial ? "eager" : "lazy"} className="aspect-[16/9] rounded-none" />
+      <VisualServico perfil={servico.id} loading={imagemInicial ? "eager" : "lazy"} className="aspect-[16/9] rounded-none" />
       <div className="p-6 sm:p-8"><p className="mb-4 text-xs leading-relaxed text-muted-foreground">{apresentacaoSolar[servico.id].legenda}</p>
         <Titulo className="font-heading text-2xl font-medium tracking-tight text-brand-blue">{inicial ? servico.titulo : servico.nome}</Titulo>
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">{inicial ? servico.intro : servico.resumo}</p>

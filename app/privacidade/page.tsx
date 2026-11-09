@@ -47,8 +47,8 @@ export default function Privacidade() {
             <p className="mt-3 text-muted-foreground">
               Coletamos apenas os dados que você mesmo nos fornece ao
               preencher o formulário de proposta na inicial: nome, telefone, cidade,
-              perfil solar e, opcionalmente, consumo mensal de energia ou
-              valor da conta de luz.
+              perfil solar e pelo menos um dado mensal de energia: o valor da
+              conta em reais ou o consumo em kWh. Você pode informar ambos.
             </p>
             <p className="mt-3 text-muted-foreground">
               O site não instala ferramentas próprias de publicidade ou análise de comportamento. Serviços externos integrados, como Azume, Google Maps e WhatsApp, podem utilizar cookies e receber informações técnicas da conexão, conforme suas próprias políticas.

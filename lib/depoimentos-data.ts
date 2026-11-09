@@ -24,3 +24,18 @@ export const depoimentos = [
       "Muito bom trabalho, gostei da instalação e do atendimento dos colaboradores. É uma empresa muito boa de se trabalhar, podem confiar. Obrigado!",
   },
 ] as const;
+
+type Avaliacao = {
+  id: string;
+  nome: string;
+  texto: string;
+  fonte: string;
+  verificada: boolean;
+  autorizada: boolean;
+};
+
+export const perfilGoogle = "https://www.google.com/maps/place/Don+Energy+-+Energia+Solar/data=!4m2!3m1!1s0x0:0x63ac62916127a52f";
+
+// O acervo acima permanece separado dos relatos liberados para reprodução.
+const avaliacoesRegistradas: readonly Avaliacao[] = [];
+export const avaliacoesPublicaveis = avaliacoesRegistradas.filter(item => item.verificada && item.autorizada);

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CanaisContato } from "@/components/canais-contato";
 import { siteConfig } from "@/lib/site-config";
 import { Clock, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
@@ -43,6 +44,7 @@ export function Footer() {
                 <Phone className="size-4 shrink-0" />
                 {contato.telefoneExibicao}
               </a>
+              <CanaisContato />
             </div>
           </div>
 

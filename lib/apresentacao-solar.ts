@@ -1,8 +1,11 @@
 import type { PerfilSolarId } from "@/lib/perfis-solares";
 
-// Residencial/rural informados em 26/10/2026. Demais fotos são composição, sem classificação inferida.
-export const apresentacaoSolar = {
+type Apresentacao = { foto?: string; legenda: string; abertura: string; contexto: string };
+
+// As legendas registram a identificação do acervo. O uso em um serviço é ilustrativo.
+export const apresentacaoSolar: Record<PerfilSolarId, Apresentacao> = {
   residencial: { foto: "12", legenda: "Projeto residencial · Limeira · SP", abertura: "O ponto de partida é a sua casa.", contexto: "Sua rotina vem antes do dimensionamento." },
   comercial: { foto: "01", legenda: "Fotografia do acervo Don Energy.", abertura: "Entenda o consumo do seu negócio.", contexto: "A operação ajuda a explicar a conta." },
-  industrial: { foto: "14", legenda: "Pão de Queijo Francini · Propriedade rural · Mococa · SP", abertura: "Autoconsumo Remoto - Industrial", contexto: "Geração na propriedade rural. Consumo na indústria." },
-} as const satisfies Record<PerfilSolarId, { foto: string; legenda: string; abertura: string; contexto: string }>;
+  industrial: { legenda: "Ilustração de aplicação industrial.", abertura: "Energia Solar Industrial", contexto: "Consumo e rotina da indústria." },
+  "autoconsumo-remoto": { foto: "14", legenda: "Pão de Queijo Francini · Propriedade rural · Mococa · SP", abertura: "Energia Solar Autoconsumo Remoto", contexto: "Geração e consumo em locais diferentes." },
+};

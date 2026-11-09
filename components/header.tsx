@@ -25,8 +25,8 @@ export function Header() {
     desktop.addEventListener("change", closeOnDesktop);
     return () => desktop.removeEventListener("change", closeOnDesktop);
   }, []);
-  return <>
-    <header data-header-surface="solid" className="fixed inset-x-0 top-0 z-50 bg-brand-green text-brand-ink shadow-sm">
+  return (
+    <header className={pathname === "/" ? "relative z-50 -mb-[var(--header-height)] shrink-0 bg-brand-green/90 text-brand-ink" : "relative z-50 shrink-0 bg-brand-green/90 text-brand-ink"}>
       <div className="site-shell flex items-center justify-between gap-4 py-[var(--header-py)]">
         <Link href="/" aria-label="Don Energy — página inicial" className="flex min-h-11 items-center rounded-sm"><Image src={siteConfig.logo.src} alt="Don Energy" width={siteConfig.logo.width} height={siteConfig.logo.height} loading="eager" className="h-[var(--header-logo-size)] w-auto object-contain" /></Link>
         <nav aria-label="Navegação principal" className="hidden items-center gap-5 text-sm lg:flex">{linksPrincipais.map(link => <a key={link.href} href={link.href} aria-current={linkAtivo(pathname,link.href)?"page":undefined} className="inline-flex min-h-11 items-center rounded-sm font-medium underline-offset-8 hover:underline aria-[current=page]:underline">{link.label}</a>)}</nav>
@@ -34,6 +34,5 @@ export function Header() {
         <div className="lg:hidden">{menuAtivado ? <MenuMobile open={open} onOpenChange={setOpen} links={linksPrincipais} /> : <button type="button" aria-haspopup="dialog" aria-expanded={false} aria-label="Abrir menu" onPointerEnter={() => {void import("./menu-mobile");}} onFocus={() => {void import("./menu-mobile");}} onClick={() => {setMenuAtivado(true);setOpen(true);}} className="flex size-11 items-center justify-center rounded-md border border-current"><Menu aria-hidden="true" className="size-5" /></button>}</div>
       </div>
     </header>
-    <div aria-hidden="true" className="h-[var(--header-height)] shrink-0" />
-  </>;
+  );
 }

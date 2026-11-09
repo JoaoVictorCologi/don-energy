@@ -13,12 +13,22 @@
     },
     {
       "source": "/servicos/solar-rural",
-      "destination": "/servicos/autoconsumo-remoto-industrial/",
+      "destination": "/servicos/autoconsumo-remoto/",
       "permanent": true
     },
     {
       "source": "/servicos/solar-rural/",
-      "destination": "/servicos/autoconsumo-remoto-industrial/",
+      "destination": "/servicos/autoconsumo-remoto/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/autoconsumo-remoto-industrial",
+      "destination": "/servicos/autoconsumo-remoto/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/autoconsumo-remoto-industrial/",
+      "destination": "/servicos/autoconsumo-remoto/",
       "permanent": true
     },
     {

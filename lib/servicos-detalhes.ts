@@ -21,7 +21,7 @@ export const detalhesSolares = {
       { titulo: "Conte sobre a rotina", texto: "Informe horários de uso e mudanças previstas, como novos equipamentos." },
     ],
     faq: [
-      { pergunta: "Preciso saber meu consumo para entrar em contato?", resposta: "Não. Esse dado é opcional no formulário. Uma conta de energia pode ajudar na análise, mas você pode começar a conversa apenas com seus dados de contato." },
+      { pergunta: "Preciso saber meu consumo para entrar em contato?", resposta: "Você pode conversar diretamente pelo WhatsApp. Para preparar uma mensagem pelo formulário de proposta, informe o valor da conta ou o consumo mensal." },
       { pergunta: "O mesmo sistema atende qualquer casa?", resposta: "O dimensionamento depende do consumo e das condições do imóvel. A proposta deve considerar o seu caso, em vez de partir de um tamanho único." },
       { pergunta: "Posso pedir uma proposta para uma casa em outra cidade?", resposta: "Informe a cidade no contato para que a equipe confirme a possibilidade de atendimento e as condições do projeto." },
     ],
@@ -43,17 +43,31 @@ export const detalhesSolares = {
     ],
   },
   industrial: {
-    resumo: "O cliente produz energia em sua propriedade rural e compensa o consumo de energia da sua indústria na cidade.",
-    necessidade: "O local de geração na propriedade rural e o consumo da indústria na cidade precisam ser considerados na conversa sobre o projeto.",
-    solucao: "Apresente as informações disponíveis sobre a propriedade e a indústria. Converse com a equipe para esclarecer as condições do projeto e o que precisa ser avaliado antes de uma proposta.",
-    pontos: ["Local de geração na propriedade rural", "Consumo da indústria na cidade", "Condições do projeto a esclarecer com a equipe"],
+    resumo: "Energia solar planejada para o consumo e as condições da operação industrial.",
+    necessidade: "Os turnos de produção, os equipamentos e as características do imóvel ajudam a entender a demanda de energia da indústria.",
+    solucao: "A equipe pode avaliar as contas de energia e as condições do local para conversar sobre o projeto e o planejamento da instalação.",
+    pontos: ["Consumo e turnos de produção", "Área disponível para instalação", "Planejamento de acesso e execução"],
     etapas: [
-      { titulo: "Apresente os dois locais", texto: "Informe onde ficam a propriedade rural e a indústria." },
+      { titulo: "Apresente a operação", texto: "Informe a cidade e descreva os turnos de produção." },
+      { titulo: "Separe as contas", texto: "Reúna as contas de energia e informações sobre mudanças previstas no consumo." },
+      { titulo: "Converse com a equipe", texto: "Apresente as condições do imóvel e as restrições da operação." },
+    ],
+    faq: [
+      { pergunta: "Quais informações ajudam na avaliação?", resposta: "As contas de energia, os horários de funcionamento e as condições do local ajudam a contextualizar o projeto." },
+    ],
+  },
+  "autoconsumo-remoto": {
+    resumo: "Geração de energia em um imóvel para compensar o consumo em outro, conforme as condições do projeto.",
+    necessidade: "O local disponível para geração e as unidades que consomem energia precisam ser avaliados em conjunto.",
+    solucao: "Apresente as informações disponíveis sobre os locais de geração e consumo. Converse com a equipe para esclarecer as condições do projeto e o que precisa ser avaliado antes de uma proposta.",
+    pontos: ["Local disponível para geração", "Contas das unidades de consumo", "Condições do projeto a esclarecer com a equipe"],
+    etapas: [
+      { titulo: "Apresente os dois locais", texto: "Informe onde ficam os imóveis de geração e consumo." },
       { titulo: "Reúna os dados disponíveis", texto: "Se possível, separe as contas de energia e as informações sobre o local de geração." },
       { titulo: "Converse sobre o projeto", texto: "Esclareça com a equipe as condições, o escopo e as próximas informações necessárias." },
     ],
     faq: [
-      { pergunta: "Qual é o cenário apresentado neste serviço?", resposta: "O cliente produz energia em sua propriedade rural e compensa o consumo de energia da sua indústria na cidade." },
+      { pergunta: "Qual é o cenário apresentado neste serviço?", resposta: "Um exemplo é gerar energia em uma propriedade rural para compensar o consumo de uma indústria na cidade, conforme a avaliação do projeto." },
       { pergunta: "O que posso levar para a primeira conversa?", resposta: "As cidades dos dois locais, as contas de energia disponíveis e suas dúvidas sobre o projeto ajudam a contextualizar o atendimento." },
       { pergunta: "Essa descrição confirma as condições de qualquer projeto?", resposta: "As condições do seu projeto precisam ser esclarecidas com a equipe. Esta apresentação não substitui uma avaliação específica nem apresenta projeções de economia." },
     ],

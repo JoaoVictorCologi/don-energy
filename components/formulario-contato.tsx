@@ -20,10 +20,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
-import { perfisSolares, type PerfilSolarId } from "@/lib/perfis-solares";
+import { perfisSolares, perfilSolarIds, type PerfilSolarId } from "@/lib/perfis-solares";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-const tiposImovel = perfisSolares.map((s) => ({ id: s.id, titulo: s.titulo }));
+const tiposImovel = perfisSolares;
+
+const medidaMensal = z.string().trim().max(24, "Use até 24 caracteres.").refine((valor) => {
+  if (valor === "") return true;
+  return /^\d+(?:[,.]\d+)?$/.test(valor) && Number(valor.replace(",", ".")) > 0;
+}, "Informe um número maior que zero, sem unidade nem separador de milhar.");
 
 const schema = z.object({
   nome: z.string().trim().min(2, "Informe seu nome"),
@@ -31,13 +36,14 @@ const schema = z.object({
     const digits = value.replace(/\D/g, "");
     return digits.length >= 10 && digits.length <= 13;
   }, "Informe um telefone válido com DDD"),
-  tipoImovel: z.enum(
-    ["residencial", "comercial", "industrial"],
-    "Selecione o perfil solar"
-  ),
-  consumoOuConta: z.string().trim().optional(),
+  tipoImovel: z.enum(perfilSolarIds, "Selecione o perfil solar"),
+  valorConta: medidaMensal,
+  consumoMensal: medidaMensal,
   cidade: z.string().trim().min(2, "Informe sua cidade"),
   consentimento: z.literal(true, "É necessário concordar com a política de privacidade para continuar."),
+}).refine(({ valorConta, consumoMensal }) => valorConta !== "" || consumoMensal !== "", {
+  path: ["valorConta"],
+  message: "Informe o valor da conta ou o consumo mensal.",
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -55,8 +61,11 @@ function montarMensagem(dados: FormValues, contexto?: ContextoSimulador) {
     `Perfil solar: ${tituloPorId[dados.tipoImovel]}`,
     `Cidade: ${dados.cidade}`,
   ];
-  if (dados.consumoOuConta) {
-    linhas.push(`Consumo/conta: ${dados.consumoOuConta}`);
+  if (dados.valorConta) {
+    linhas.push(`Valor mensal da conta: R$ ${dados.valorConta.replace(".", ",")}`);
+  }
+  if (dados.consumoMensal) {
+    linhas.push(`Consumo mensal: ${dados.consumoMensal.replace(".", ",")} kWh`);
   }
   if (contexto) {
     linhas.push("", "Origem: preparação no simulador — dados informados pelo visitante, sem estimativa calculada.", "Ligação informada: " + contexto.ligacao);
@@ -81,7 +90,8 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
       nome: "",
       telefone: "",
       tipoImovel: (contextoInicial?.perfil ?? perfilInicial ?? "") as FormValues["tipoImovel"],
-      consumoOuConta: contextoInicial?.consumoOuConta ?? "",
+      valorConta: contextoInicial?.valorConta ?? "",
+      consumoMensal: contextoInicial?.consumoMensal ?? "",
       cidade: contextoInicial?.cidade ?? "",
       consentimento: false as unknown as true,
     },
@@ -93,7 +103,8 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
     if (!contextoInicial) return;
     setValue("tipoImovel", contextoInicial.perfil);
     setValue("cidade", contextoInicial.cidade);
-    setValue("consumoOuConta", contextoInicial.consumoOuConta);
+    setValue("valorConta", contextoInicial.valorConta);
+    setValue("consumoMensal", contextoInicial.consumoMensal);
   }, [contextoInicial, setValue]);
 
   function onSubmitForm(event: React.FormEvent<HTMLFormElement>) {
@@ -166,7 +177,7 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
     // scroll específica — confirmado visualmente na Fase 1.13.
     <section
       id={sectionId}
-      className={compacto ? "rounded-md border border-border bg-background p-6 sm:p-8" : "site-section scroll-mt-[var(--header-height)] bg-brand-soft px-6 pb-24"}
+      className={compacto ? "rounded-md border border-border bg-background p-6 text-foreground sm:p-8" : "site-section scroll-mt-[var(--header-height)] bg-brand-soft px-6 pb-24"}
     >
       <div className="mx-auto max-w-3xl">
         <h2 className="font-heading text-2xl font-medium tracking-tight text-brand-blue sm:text-3xl">
@@ -175,8 +186,8 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Preencha os dados para preparar sua mensagem no WhatsApp. O envio é feito por você.
         </p>
-        <form onSubmit={onSubmitForm} noValidate className="mt-10">
-          <FieldGroup>
+        <form onSubmit={onSubmitForm} noValidate className="mt-6">
+          <FieldGroup className="gap-5">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field data-invalid={!!errors.nome}>
                 <FieldLabel htmlFor="nome">Nome</FieldLabel>
@@ -225,7 +236,7 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
                         <FieldLabel key={tipo.id} htmlFor={`tipo-${tipo.id}`}>
                           <Field orientation="horizontal">
                             <RadioGroupItem value={tipo.id} id={`tipo-${tipo.id}`} />
-                            {tipo.titulo}
+                            {tipo.rotulo}
                           </Field>
                         </FieldLabel>
                       );
@@ -236,25 +247,36 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
               <FieldError id="erro-tipoImovel" errors={[errors.tipoImovel]} />
             </FieldSet>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Field data-invalid={!!errors.cidade}>
-                <FieldLabel htmlFor="cidade">Cidade</FieldLabel>
-                <Input
-                  id="cidade"
-                  autoComplete="address-level2"
-                  aria-invalid={!!errors.cidade}
-                  aria-describedby={errors.cidade ? "erro-cidade" : undefined}
-                  {...register("cidade")}
-                />
-                <FieldError id="erro-cidade" errors={[errors.cidade]} />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="consumoOuConta">
-                  Consumo mensal (kWh) ou conta de energia (R$) — opcional
-                </FieldLabel>
-                <Input id="consumoOuConta" placeholder="Ex.: 450 kWh/mês ou R$ 350/mês" {...register("consumoOuConta")} />
-              </Field>
-            </div>
+            <Field data-invalid={!!errors.cidade}>
+              <FieldLabel htmlFor="cidade">Cidade</FieldLabel>
+              <Input
+                id="cidade"
+                autoComplete="address-level2"
+                aria-invalid={!!errors.cidade}
+                aria-describedby={errors.cidade ? "erro-cidade" : undefined}
+                {...register("cidade")}
+              />
+              <FieldError id="erro-cidade" errors={[errors.cidade]} />
+            </Field>
+
+            <FieldSet>
+              <FieldLegend variant="label">Conta ou consumo de energia</FieldLegend>
+              <p id="regra-medidas" className="text-sm text-muted-foreground">
+                Preencha pelo menos um dos campos. Se souber os dois valores, pode informar ambos.
+              </p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field data-invalid={!!errors.valorConta}>
+                  <FieldLabel htmlFor="valorConta">Valor mensal da conta (R$)</FieldLabel>
+                  <Input id="valorConta" inputMode="decimal" placeholder="Ex. 350,50" aria-invalid={!!errors.valorConta} aria-describedby={errors.valorConta ? "regra-medidas erro-valor-conta" : "regra-medidas"} {...register("valorConta")} />
+                  <FieldError id="erro-valor-conta" errors={[errors.valorConta]} />
+                </Field>
+                <Field data-invalid={!!errors.consumoMensal}>
+                  <FieldLabel htmlFor="consumoMensal">Consumo mensal (kWh)</FieldLabel>
+                  <Input id="consumoMensal" inputMode="decimal" placeholder="Ex. 450" aria-invalid={!!errors.consumoMensal} aria-describedby={errors.consumoMensal ? "regra-medidas erro-consumo" : "regra-medidas"} {...register("consumoMensal")} />
+                  <FieldError id="erro-consumo" errors={[errors.consumoMensal]} />
+                </Field>
+              </div>
+            </FieldSet>
 
             <Field
               orientation="horizontal"

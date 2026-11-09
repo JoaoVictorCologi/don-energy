@@ -15,7 +15,7 @@ export function Hero() {
         <div className="py-5 xl:pt-16">
           <p className="mb-6 text-sm font-semibold tracking-[0.15em] uppercase sm:text-base">Don Energy · Energia Solar</p>
           <h1 id="hero-titulo" className="max-w-2xl font-heading text-[clamp(2.4rem,4vw,4rem)] leading-[1.13] font-medium tracking-[-0.04em]">
-            Sua Energia <span className="text-[#a9c4ff]">pode custar menos.</span>
+            Sua Energia <span className="text-[#384c95] [-webkit-text-stroke:3px_#edf2ff] [paint-order:stroke_fill]">pode custar menos.</span>
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed">Engenharia especializada e projetos personalizados.</p>
           <div className="mt-6 flex flex-wrap gap-x-7 gap-y-2">

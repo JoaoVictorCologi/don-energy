@@ -49,7 +49,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
     texto: "Destaca o profissionalismo da equipe e relata que o sistema instalado está funcionando como esperado.",
     perfilAutor: "https://www.google.com/maps/contrib/117834654240404896909/reviews?hl=pt-BR",
     verificada: true,
-    autorizada: false,
+    autorizada: true,
   },
   {
     id: "nei-nei",
@@ -58,7 +58,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
     texto: "Considerou o preço justo, elogiou a agilidade na execução e disse que teve todas as dúvidas esclarecidas.",
     perfilAutor: "https://www.google.com/maps/contrib/115213981795498009240/reviews?hl=pt-BR",
     verificada: true,
-    autorizada: false,
+    autorizada: true,
   },
   {
     id: "carlos",
@@ -67,7 +67,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
     texto: "Descreve a experiência como muito satisfatória e elogia o atendimento e a execução do serviço.",
     perfilAutor: "https://www.google.com/maps/contrib/117779547553232165975/reviews?hl=pt-BR",
     verificada: true,
-    autorizada: false,
+    autorizada: true,
   },
   {
     id: "elisa",
@@ -76,7 +76,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
     texto: "Conta que recebeu esclarecimentos, que os prazos combinados foram cumpridos no caso dela e que considerou o preço bom.",
     perfilAutor: "https://www.google.com/maps/contrib/109284845181262759505/reviews?hl=pt-BR",
     verificada: true,
-    autorizada: false,
+    autorizada: true,
   },
   {
     id: "israel",
@@ -84,7 +84,7 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
     tema: "Instalação e equipe",
     texto: "Elogia o trabalho de instalação e o atendimento dos colaboradores.",
     verificada: true,
-    autorizada: false,
+    autorizada: true,
   },
 ];
 

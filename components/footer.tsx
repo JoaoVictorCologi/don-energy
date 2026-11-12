@@ -44,7 +44,7 @@ export function Footer() {
                 <Phone className="size-4 shrink-0" />
                 {contato.telefoneExibicao}
               </a>
-              <CanaisContato />
+              <CanaisContato mostrarIconesRedes />
             </div>
           </div>
 

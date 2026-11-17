@@ -4,13 +4,18 @@ import { useEffect, useRef, useState, type ReactNode, type KeyboardEvent } from 
 
 export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
   const lista = useRef<HTMLOListElement>(null);
-  const [permiteAnimacao, setPermiteAnimacao] = useState(false);
+  const [pronto, setPronto] = useState(false);
+  const [movimentoReduzido, setMovimentoReduzido] = useState(false);
 
   useEffect(() => {
     const area = lista.current;
     if (!area || !("IntersectionObserver" in window)) return;
     const movimento = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const atualizarPreferencia = () => setPermiteAnimacao(!movimento.matches);
+    const atualizarPreferencia = () => {
+      setMovimentoReduzido(movimento.matches);
+      area.removeAttribute("data-movimento");
+    };
+    setPronto(true);
     atualizarPreferencia();
     movimento.addEventListener("change", atualizarPreferencia);
     const observer = new IntersectionObserver(entries => {
@@ -22,7 +27,7 @@ export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
           if (!movimento.matches) marco.classList.add("trajetoria-entrada");
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.15 });
     area.querySelectorAll("[data-marco]").forEach(marco => observer.observe(marco));
     return () => {
       observer.disconnect();
@@ -47,8 +52,10 @@ export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
 
   function repetirAnimacao() {
     const area = lista.current;
-    if (!area || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const marcos = area.querySelectorAll<HTMLElement>("[data-visitado]");
+    if (!area) return;
+    // O clique é uma escolha explícita para testar o movimento nesta prévia.
+    area.dataset.movimento = "permitido";
+    const marcos = area.querySelectorAll<HTMLElement>("[data-marco]");
     marcos.forEach(marco => marco.classList.remove("trajetoria-entrada"));
     // Consolida a remoção antes de iniciar novamente as animações CSS.
     void area.offsetWidth;
@@ -56,7 +63,10 @@ export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
   }
 
   return <>
+    <div className="trajetoria-controles">
+      {pronto && <button type="button" onClick={repetirAnimacao} className="trajetoria-repetir">Reproduzir animação <span aria-hidden="true">↻</span></button>}
+      {pronto && movimentoReduzido && <p className="text-xs text-white">Seu navegador usa movimento reduzido. A animação só será reproduzida se você clicar no botão.</p>}
+    </div>
     <ol ref={lista} tabIndex={0} aria-label="Trajetória da Don Energy, de 2022 a 2025" onKeyDown={navegar} className="trajetoria-trilho">{children}</ol>
-    {permiteAnimacao && <button type="button" onClick={repetirAnimacao} className="trajetoria-repetir">Repetir animação <span aria-hidden="true">↻</span></button>}
   </>;
 }

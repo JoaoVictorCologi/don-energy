@@ -337,5 +337,18 @@ body {
   .trajetoria-entrada:nth-child(4) { --marco-atraso: 2100ms; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .trajetoria-entrada::before, .trajetoria-entrada .trajetoria-ano, .trajetoria-entrada .trajetoria-icone, .trajetoria-entrada .trajetoria-conteudo, .trajetoria-entrada .trajetoria-ponto { animation: none; }
+  .trajetoria-trilho:not([data-movimento="permitido"]) .trajetoria-entrada::before, .trajetoria-trilho:not([data-movimento="permitido"]) .trajetoria-entrada .trajetoria-ano, .trajetoria-trilho:not([data-movimento="permitido"]) .trajetoria-entrada .trajetoria-icone, .trajetoria-trilho:not([data-movimento="permitido"]) .trajetoria-entrada .trajetoria-conteudo, .trajetoria-trilho:not([data-movimento="permitido"]) .trajetoria-entrada .trajetoria-ponto { animation: none; }
+}
+
+/* Controle visível antes do mapa e tempo suficiente para acompanhar a sequência. */
+.trajetoria-controles { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; min-height: 44px; margin-top: 2rem; }
+.trajetoria-controles + .trajetoria-trilho { margin-top: 1.5rem; }
+.trajetoria-entrada { --marco-atraso: 300ms; }
+.trajetoria-entrada::before { animation-duration: 1100ms; }
+.trajetoria-entrada .trajetoria-ano, .trajetoria-entrada .trajetoria-icone { animation-duration: 900ms; }
+.trajetoria-entrada .trajetoria-conteudo { animation-duration: 1100ms; }
+@media (min-width: 1024px) {
+  .trajetoria-entrada:nth-child(2) { --marco-atraso: 1400ms; }
+  .trajetoria-entrada:nth-child(3) { --marco-atraso: 2500ms; }
+  .trajetoria-entrada:nth-child(4) { --marco-atraso: 3600ms; }
 }

@@ -6,12 +6,12 @@ export function Hero() {
   return (
     <section aria-labelledby="hero-titulo" className="relative isolate overflow-hidden bg-brand-green pb-10 pt-[calc(var(--header-height)+2rem)] text-white md:pb-14">
       <picture>
-        <source type="image/avif" srcSet="/obras/otimizadas/francini-hero-640.avif 640w, /obras/otimizadas/francini-hero-960.avif 960w, /obras/otimizadas/francini-hero-1440.avif 1440w" sizes="100vw" />
-        <img src="/obras/otimizadas/francini-hero-1440.webp" srcSet="/obras/otimizadas/francini-hero-640.webp 640w, /obras/otimizadas/francini-hero-960.webp 960w, /obras/otimizadas/francini-hero-1440.webp 1440w" sizes="100vw" width="1440" height="960" alt="" fetchPriority="high" loading="eager" className="absolute inset-x-0 top-0 -z-20 h-[720px] w-full object-cover object-[58%_center] xl:inset-0 xl:h-full" />
+        <source type="image/avif" srcSet="/obras/otimizadas/francini-hero-640.avif 640w, /obras/otimizadas/francini-hero-960.avif 960w, /obras/otimizadas/francini-hero-1440.avif 1440w, /obras/otimizadas/francini-hero-2160.avif 2160w" sizes="100vw" />
+        <img src="/obras/otimizadas/francini-hero-1440.webp" srcSet="/obras/otimizadas/francini-hero-640.webp 640w, /obras/otimizadas/francini-hero-960.webp 960w, /obras/otimizadas/francini-hero-1440.webp 1440w, /obras/otimizadas/francini-hero-2160.webp 2160w" sizes="100vw" width="1440" height="960" alt="" fetchPriority="high" loading="eager" className="absolute inset-x-0 top-0 -z-20 h-[720px] w-full object-cover object-[58%_center] xl:inset-0 xl:h-full" />
       </picture>
       <div aria-hidden="true" className="hero-r3-overlay absolute inset-x-0 top-0 -z-10 h-[720px] xl:inset-0 xl:h-full" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[var(--header-height)] bg-black/55" />
-      <div className="hero-shell grid items-start gap-8 xl:grid-cols-[0.9fr_1.1fr] xl:gap-12">
+      <div className="hero-shell grid items-start gap-8 xl:grid-cols-[1.1fr_0.9fr] xl:gap-12">
         <div className="py-5 xl:pt-16">
           <p className="mb-6 text-sm font-semibold tracking-[0.15em] uppercase sm:text-base">Don Energy · Energia Solar</p>
           <h1 id="hero-titulo" className="max-w-2xl font-heading text-[clamp(2.4rem,4vw,4rem)] leading-[1.13] font-medium tracking-[-0.04em]">

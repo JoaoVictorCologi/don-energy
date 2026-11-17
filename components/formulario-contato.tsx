@@ -177,7 +177,7 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
     // scroll específica — confirmado visualmente na Fase 1.13.
     <section
       id={sectionId}
-      className={compacto ? "rounded-md border border-border bg-background p-6 text-foreground sm:p-8" : "site-section scroll-mt-[var(--header-height)] bg-brand-soft px-6 pb-24"}
+      className={compacto ? "rounded-md border border-border bg-background p-5 text-foreground sm:p-6" : "site-section scroll-mt-[var(--header-height)] bg-brand-soft px-6 pb-24"}
     >
       <div className="mx-auto max-w-3xl">
         <h2 className="font-heading text-2xl font-medium tracking-tight text-brand-blue sm:text-3xl">
@@ -186,8 +186,8 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Preencha os dados para preparar sua mensagem no WhatsApp. O envio é feito por você.
         </p>
-        <form onSubmit={onSubmitForm} noValidate className="mt-6">
-          <FieldGroup className="gap-5">
+        <form onSubmit={onSubmitForm} noValidate className={compacto ? "mt-4" : "mt-6"}>
+          <FieldGroup className={compacto ? "gap-3" : "gap-5"}>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field data-invalid={!!errors.nome}>
                 <FieldLabel htmlFor="nome">Nome</FieldLabel>

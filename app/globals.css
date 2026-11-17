@@ -254,7 +254,7 @@ body {
 .site-button:focus-visible { outline-color: #171f32; box-shadow: 0 0 0 7px #ffffff; }
 
 /* R3: branco sobre verde escuro na área de leitura, foto mais livre à direita. */
-.hero-r3-overlay { background: rgba(23,59,49,.78); }
+.hero-r3-overlay { background: rgba(23,59,49,.68); }
 @media (min-width:1280px) {
-  .hero-r3-overlay { background: linear-gradient(90deg, rgba(23,59,49,.78) 0%, rgba(23,59,49,.75) 48%, rgba(23,59,49,.25) 100%); }
+  .hero-r3-overlay { background: linear-gradient(90deg, rgba(23,59,49,.78) 0%, rgba(23,59,49,.68) 40%, rgba(23,59,49,.12) 100%); }
 }

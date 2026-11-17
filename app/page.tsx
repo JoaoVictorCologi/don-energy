@@ -1,4 +1,4 @@
-import { ArrowUpRight, CalendarDays, PanelsTopLeft, UsersRound } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Hammer, HardHat } from "lucide-react";
 import Link from "next/link";
 import { localBusiness } from "@/lib/site-config";
 import { avaliacoesVisiveis } from "@/lib/depoimentos-data";
@@ -10,9 +10,9 @@ import { Servicos } from "@/components/servicos";
 import { FotoAcervo } from "@/components/foto-acervo";
 
 const topicos = [
-  { titulo: "Trajetória em energia solar", texto: "Uma história que começou em família, em Mococa.", Icone: CalendarDays },
-  { titulo: "Projetos fotovoltaicos", texto: "Soluções pensadas para o consumo e as condições de cada projeto.", Icone: PanelsTopLeft },
-  { titulo: "Equipe própria", texto: "Da engenharia à execução.", Icone: UsersRound },
+  { texto: "Mais de 4 anos no mercado!", Icone: CalendarDays },
+  { texto: "Projetos fotovoltaicos", Icone: Hammer },
+  { texto: "Equipe especializada", Icone: HardHat },
 ];
 
 export default function Home() {
@@ -26,13 +26,10 @@ export default function Home() {
           <div>
             <h2 id="sobre-titulo" className="site-title">A Don Energy</h2>
             <ul className="mt-7 divide-y divide-border">
-              {topicos.map(({ titulo, texto, Icone }) => (
-                <li key={titulo} className="flex items-start gap-4 py-4">
-                  <Icone aria-hidden="true" className="size-9 shrink-0 rounded-md bg-brand-soft p-2 text-brand-blue" />
-                  <div>
-                    <h3 className="font-semibold text-brand-blue">{titulo}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{texto}</p>
-                  </div>
+              {topicos.map(({ texto, Icone }) => (
+                <li key={texto} className="flex items-center gap-4 py-5">
+                  <Icone aria-hidden="true" className="size-12 shrink-0 rounded-md bg-brand-soft p-2.5 text-brand-blue" />
+                  <p className="font-heading text-xl leading-snug font-medium text-brand-blue sm:text-2xl">{texto}</p>
                 </li>
               ))}
             </ul>

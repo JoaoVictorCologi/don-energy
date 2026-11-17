@@ -318,3 +318,24 @@ body {
   .trajetoria-entrada .trajetoria-conteudo { animation: none; }
   .trajetoria-ponto { transition: none; }
 }
+
+/* Animação do mapa: avanço do eixo e chegada de cada marco, uma única vez. */
+@keyframes trajetoria-linha { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes trajetoria-chegada { from { opacity: .15; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes trajetoria-pulso { 0% { box-shadow: 0 0 0 0 #d0e99d99; } 100% { box-shadow: 0 0 0 16px #d0e99d00; } }
+.trajetoria-entrada { --marco-atraso: 0ms; }
+.trajetoria-entrada::before { transform-origin: left; animation: trajetoria-linha 700ms ease-out var(--marco-atraso) both; }
+.trajetoria-entrada .trajetoria-ano, .trajetoria-entrada .trajetoria-icone { animation: trajetoria-chegada 650ms ease-out calc(var(--marco-atraso) + 150ms) both; }
+.trajetoria-entrada .trajetoria-conteudo { animation: trajetoria-chegada 750ms ease-out calc(var(--marco-atraso) + 350ms) both; }
+.trajetoria-entrada .trajetoria-ponto { animation: trajetoria-pulso 1000ms ease-out calc(var(--marco-atraso) + 350ms) both; }
+.trajetoria-repetir { display: inline-flex; align-items: center; gap: .75rem; min-height: 44px; padding: .4rem .8rem; border: 1px solid #ffffff80; border-radius: 4px; font-size: .8rem; color: white; }
+.trajetoria-repetir:hover { background: #ffffff18; }
+.trajetoria-repetir:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+@media (min-width: 1024px) {
+  .trajetoria-entrada:nth-child(2) { --marco-atraso: 700ms; }
+  .trajetoria-entrada:nth-child(3) { --marco-atraso: 1400ms; }
+  .trajetoria-entrada:nth-child(4) { --marco-atraso: 2100ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trajetoria-entrada::before, .trajetoria-entrada .trajetoria-ano, .trajetoria-entrada .trajetoria-icone, .trajetoria-entrada .trajetoria-conteudo, .trajetoria-entrada .trajetoria-ponto { animation: none; }
+}

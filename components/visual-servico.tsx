@@ -10,7 +10,7 @@ export function VisualServico({ perfil, className, loading = "lazy" }: {
   className?: string;
   loading?: "lazy" | "eager";
 }) {
-  if (perfil === "manutencao") return <Image src="/servicos/manutencao.webp" width="960" height="640" alt="Pessoa limpando módulos solares. Fotografia ilustrativa." loading={loading} className={cn("w-full object-cover", className)} />;
+  if (perfil === "manutencao") return <Image src="/servicos/manutencao-enviada.webp" width="1200" height="801" alt="Pessoa com uniforme laranja limpando módulos solares com um rodo. Fotografia ilustrativa." loading={loading} className={cn("w-full object-cover", className)} />;
   const { foto } = apresentacaoSolar[perfil];
   if (foto) return <FotoAcervo numero={foto} loading={loading} className={className} />;
 

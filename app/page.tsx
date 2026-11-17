@@ -38,7 +38,7 @@ export default function Home() {
             </Link>
           </div>
           <figure>
-            <FotoAcervo numero="03" />
+            <FotoAcervo numero="04" />
             <figcaption className="mt-3 text-xs text-muted-foreground">Fotografia do acervo Don Energy.</figcaption>
           </figure>
         </div>

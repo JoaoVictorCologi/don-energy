@@ -22,6 +22,7 @@ const servicosBase = [
     intro: "Geração de energia em um imóvel para compensar o consumo em outro.",
     beneficios: ["Local de geração", "Unidades de consumo", "Informações dos imóveis", "Condições a esclarecer com a equipe"],
   },
+  { id: "manutencao", intro: "Conte como é seu sistema fotovoltaico e o que você precisa para avaliarmos o atendimento.", beneficios: ["Condições do sistema", "Necessidade de atendimento"] },
 ] as const;
 
 export const servicos = perfisSolares.map((perfil) => {

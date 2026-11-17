@@ -10,6 +10,7 @@ type Detalhe = {
 };
 
 export const detalhesSolares = {
+  manutencao: { resumo: "Conte como é seu sistema fotovoltaico e o que você precisa para avaliarmos o atendimento.", necessidade: "Descreva o sistema e a necessidade de limpeza ou manutenção.", solucao: "Converse com a equipe para avaliar o atendimento e esclarecer o escopo.", pontos: ["Localização do sistema", "Condições de acesso", "Necessidade de atendimento"], etapas: [{ titulo: "Apresente o sistema", texto: "Informe a cidade e as características da instalação." }, { titulo: "Conte o que precisa", texto: "Descreva sua necessidade." }, { titulo: "Converse com a equipe", texto: "Esclareça o atendimento e o escopo da proposta." }], faq: [{ pergunta: "Como solicitar atendimento?", resposta: "Entre em contato com a equipe e descreva seu sistema e o que você precisa." }] },
   residencial: {
     resumo: "Um projeto de energia solar pensado para o consumo e as características da sua casa.",
     necessidade: "Cada residência tem uma rotina de consumo. Antes de escolher um sistema, é importante conhecer a conta de energia, o espaço disponível e as condições do imóvel.",

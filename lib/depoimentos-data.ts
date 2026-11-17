@@ -30,6 +30,7 @@ type Avaliacao = {
   nome: string;
   tema: string;
   texto: string;
+  originalConferido?: boolean;
   perfilAutor?: string;
   linkAvaliacao?: string;
   verificada: boolean;
@@ -46,7 +47,8 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
     id: "leandro",
     nome: "Leandro Franchi Valente",
     tema: "Instalação",
-    texto: "Destaca o profissionalismo da equipe e relata que o sistema instalado está funcionando como esperado.",
+    texto: "Pessoal extremamente profissional. Sistema instalado e funcionando perfeitamente. Estou muito satisfeito com os resultados.",
+    originalConferido: true,
     perfilAutor: "https://www.google.com/maps/contrib/117834654240404896909/reviews?hl=pt-BR",
     verificada: true,
     autorizada: true,
@@ -64,7 +66,8 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
     id: "carlos",
     nome: "Carlos Moraes",
     tema: "Execução do serviço",
-    texto: "Descreve a experiência como muito satisfatória e elogia o atendimento e a execução do serviço.",
+    texto: "Muito satisfatória atendimento e execução do serviço nota dez",
+    originalConferido: true,
     perfilAutor: "https://www.google.com/maps/contrib/117779547553232165975/reviews?hl=pt-BR",
     verificada: true,
     autorizada: true,
@@ -73,7 +76,8 @@ const avaliacoesRegistradas: readonly Avaliacao[] = [
     id: "elisa",
     nome: "Elisa Mariah Brito Bazili",
     tema: "Atendimento e prazo",
-    texto: "Conta que recebeu esclarecimentos, que os prazos combinados foram cumpridos no caso dela e que considerou o preço bom.",
+    texto: "Gostei muito do atendimento prestado, estabeleceu prazos conforme a logística e cumpriu todos, o preço tbm é muito bom, estou feliz com minha aquisição. Esclareceram todas as minhas dúvidas.\nSuper indico essa empresa, aliás já indiquei para uns conhecidos.",
+    originalConferido: true,
     perfilAutor: "https://www.google.com/maps/contrib/109284845181262759505/reviews?hl=pt-BR",
     verificada: true,
     autorizada: true,

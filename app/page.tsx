@@ -5,7 +5,6 @@ import { avaliacoesVisiveis } from "@/lib/depoimentos-data";
 import { CalculadoraAzume } from "@/components/calculadora-azume";
 import { Depoimentos } from "@/components/depoimentos";
 import { Hero } from "@/components/hero";
-import { ManutencaoSolar } from "@/components/manutencao-solar";
 import { ObrasGallery } from "@/components/obras-gallery";
 import { Servicos } from "@/components/servicos";
 import { FotoAcervo } from "@/components/foto-acervo";
@@ -49,29 +48,15 @@ export default function Home() {
       </section>
 
       <Servicos />
-      <ManutencaoSolar />
       {avaliacoesVisiveis.length > 0 ? <Depoimentos /> : <ObrasGallery />}
 
-      <section className="site-section bg-brand-soft">
-        <div className="site-shell">
-          <p className="site-eyebrow">Antes da primeira conversa</p>
-          <h2 className="site-title">Comece pelo que você já sabe.</h2>
-          <div className="mt-12 grid gap-9 md:grid-cols-3">
-            {[
-              ["01", "Seu contexto", "Conte sua cidade, o perfil do projeto e as características do local."],
-              ["02", "Sua conta de energia", "Para pedir uma proposta, tenha em mãos o valor mensal da conta ou o consumo em kWh."],
-              ["03", "Suas dúvidas", "Anote o que deseja esclarecer sobre escopo, condições e próximos passos."],
-            ].map(([numero, titulo, texto]) => (
-              <article key={numero} className="border-t border-border pt-6">
-                <span aria-hidden="true" className="text-xs font-semibold text-brand-blue">{numero}</span>
-                <h3 className="mt-6 font-heading text-xl font-medium text-brand-blue">{titulo}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{texto}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
+
+      <div className="site-section bg-brand-soft">
+        <div className="site-shell max-w-[800px]">
+          <CalculadoraAzume />
+        </div>
+      </div>
       <section className="bg-brand-blue py-14 text-white">
         <div className="site-shell">
           <p className="mb-4 text-xs font-semibold tracking-widest uppercase">Vamos conversar</p>
@@ -81,11 +66,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <div className="site-section bg-brand-soft">
-        <div className="site-shell max-w-[800px]">
-          <CalculadoraAzume />
-        </div>
-      </div>
     </main>
   );
 }

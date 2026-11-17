@@ -32,7 +32,7 @@ export function Depoimentos() {
           proximo="Próxima avaliação"
           indicadores={avaliacoesVisiveis.map(({ nome }) => nome)}
         >
-          {avaliacoesVisiveis.map(({ id, nome, tema, texto, perfilAutor, linkAvaliacao }, indice) => (
+          {avaliacoesVisiveis.map(({ id, nome, tema, texto, originalConferido, perfilAutor, linkAvaliacao }, indice) => (
             <article
               key={id}
               data-slide
@@ -50,7 +50,7 @@ export function Depoimentos() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <h3 className="font-heading text-base leading-snug font-semibold">{nome}</h3>
-                  <p className="mt-1 text-xs leading-snug text-muted-foreground">Resumo da avaliação</p>
+                  {!originalConferido && <p className="mt-1 text-xs leading-snug text-muted-foreground">Resumo da avaliação</p>}
                 </div>
                 <a
                   href={perfilGoogle}
@@ -66,7 +66,7 @@ export function Depoimentos() {
               <p className="mt-4 inline-flex rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold text-brand-forest">
                 {tema}
               </p>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{texto}</p>
+              {originalConferido ? <blockquote className="mt-3 whitespace-pre-line leading-relaxed text-muted-foreground">{texto}</blockquote> : <p className="mt-3 leading-relaxed text-muted-foreground">{texto}</p>}
               {(linkAvaliacao || perfilAutor) && (
                 <footer className="mt-2 flex flex-wrap gap-x-4 text-xs font-semibold text-brand-blue">
                   {linkAvaliacao && (

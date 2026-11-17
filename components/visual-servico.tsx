@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Factory, Sun } from "lucide-react";
 import { FotoAcervo } from "@/components/foto-acervo";
 import { apresentacaoSolar } from "@/lib/apresentacao-solar";
@@ -9,6 +10,7 @@ export function VisualServico({ perfil, className, loading = "lazy" }: {
   className?: string;
   loading?: "lazy" | "eager";
 }) {
+  if (perfil === "manutencao") return <Image src="/servicos/manutencao.webp" width="960" height="640" alt="Pessoa limpando módulos solares. Fotografia ilustrativa." loading={loading} className={cn("w-full object-cover", className)} />;
   const { foto } = apresentacaoSolar[perfil];
   if (foto) return <FotoAcervo numero={foto} loading={loading} className={className} />;
 

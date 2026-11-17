@@ -258,3 +258,25 @@ body {
 @media (min-width:1280px) {
   .hero-r3-overlay { background: linear-gradient(90deg, rgba(23,59,49,.78) 0%, rgba(23,59,49,.68) 40%, rgba(23,59,49,.12) 100%); }
 }
+
+/* A linha do tempo permanece visível antes da melhoria por JavaScript. */
+.historia-trilho { position: relative; margin-top: 4rem; }
+.historia-trilho::before { content: ""; position: absolute; top: 0; bottom: 0; left: 10px; width: 2px; background: #c9d3c2; }
+.historia-marco { position: relative; padding: 0 0 2.5rem 2.75rem; }
+.historia-ponto { position: absolute; z-index: 1; left: 2px; top: 2rem; width: 18px; height: 18px; border: 3px solid #384c96; border-radius: 50%; background: white; transition: background-color 400ms, box-shadow 400ms; }
+.historia-cartao { border: 1px solid #d5dbd0; border-radius: 1rem; background: white; padding: 1.5rem; transition: border-color 400ms, box-shadow 400ms; }
+.historia-marco[data-ativo="true"] .historia-ponto { background: #384c96; box-shadow: 0 0 0 6px #384c9620; }
+.historia-marco[data-ativo="true"] .historia-cartao { border-color: #384c96; box-shadow: 0 8px 28px #1824470a; }
+@keyframes historia-entrada { from { opacity: .25; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.historia-entrada .historia-cartao { animation: historia-entrada 500ms ease-out both; }
+@media (min-width: 768px) {
+  .historia-trilho::before { left: calc(50% - 1px); }
+  .historia-marco { display: grid; grid-template-columns: 1fr 1fr; column-gap: 5rem; padding: 0 0 3rem; }
+  .historia-marco:nth-child(even) .historia-cartao { grid-column: 2; }
+  .historia-ponto { left: calc(50% - 9px); }
+  .historia-cartao { padding: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .historia-entrada .historia-cartao { animation: none; }
+  .historia-ponto, .historia-cartao { transition: none; }
+}

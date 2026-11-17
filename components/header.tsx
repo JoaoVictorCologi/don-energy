@@ -26,7 +26,7 @@ export function Header() {
     return () => desktop.removeEventListener("change", closeOnDesktop);
   }, []);
   return (
-    <header className={pathname === "/" ? "relative z-50 -mb-[var(--header-height)] shrink-0 bg-transparent text-white" : "relative z-50 shrink-0 bg-brand-forest text-white"}>
+    <header className={(pathname === "/" || pathname === "/nossa-historia" || pathname === "/nossa-historia/") ? "relative z-50 -mb-[var(--header-height)] shrink-0 bg-transparent text-white" : "relative z-50 shrink-0 bg-brand-forest text-white"}>
       <div className="site-shell flex items-center justify-between gap-4 py-[var(--header-py)]">
         <Link href="/" aria-label="Don Energy — página inicial" className="flex min-h-11 items-center rounded-sm"><Image src="/logo/don-energy-branca.png" alt="Don Energy" width={siteConfig.logo.width} height={siteConfig.logo.height} loading="eager" className="h-[var(--header-logo-size)] w-auto object-contain" /></Link>
         <nav aria-label="Navegação principal" className="hidden items-center gap-5 text-sm lg:flex">{linksPrincipais.map(link => <a key={link.href} href={link.href} aria-current={linkAtivo(pathname,link.href)?"page":undefined} className="inline-flex min-h-11 items-center rounded-sm font-medium underline-offset-8 hover:underline aria-[current=page]:underline">{link.label}</a>)}</nav>

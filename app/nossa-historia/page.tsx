@@ -1,4 +1,4 @@
-import { ArrowUpRight, ZoomIn } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { institucional } from "@/lib/institucional-data";
@@ -18,17 +18,12 @@ export const metadata: Metadata = {
 export default function NossaHistoriaPage() {
   return (
     <main id="conteudo" tabIndex={-1} className="flex-1">
-      <section aria-labelledby="historia-titulo" className="bg-brand-forest pt-[var(--header-height)]">
+      <section aria-labelledby="historia-titulo" className="bg-brand-forest bg-cover bg-top bg-no-repeat pt-[var(--header-height)]" style={{ backgroundImage: "url(/obras/trajetoria-don-energy.webp)" }}>
         <h1 id="historia-titulo" className="sr-only">Nossa História</h1>
         <a href="/obras/trajetoria-don-energy.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagem da trajetória da Don Energy" className="block">
           <Image src="/obras/trajetoria-don-energy.webp" width={1600} height={900} alt="Trajetória Don Energy. 2022, nossas raízes e abertura da empresa. 2023, identidade própria. 2024, expansão em São Paulo e Minas Gerais. 2025, indicadores de potência e economia ainda em conferência." priority sizes="100vw" className="h-auto w-full" />
         </a>
-        <div className="site-shell flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-4 text-white">
-          <p className="max-w-3xl text-xs leading-relaxed">Os indicadores de potência e economia apresentados na arte estão em conferência.</p>
-          <a href="/obras/trajetoria-don-energy.webp" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4">
-            Ampliar trajetória <ZoomIn aria-hidden="true" className="size-4" />
-          </a>
-        </div>
+
       </section>
       <section aria-labelledby="texto-historia-titulo" className="site-section">
         <div className="site-shell">
@@ -44,9 +39,10 @@ export default function NossaHistoriaPage() {
             <FotoAcervo numero="16" sizes="(min-width: 1200px) 1024px, 90vw" className="aspect-[16/9]" />
             <figcaption className="mt-3 text-center text-xs text-muted-foreground">Igreja Nossa Senhora da Luz · Acervo Don Energy</figcaption>
           </figure>
-          <div className="mx-auto mt-12 max-w-5xl">
+          <div className="relative z-10 mx-auto -mt-5 max-w-5xl">
             <ValoresInstitucionais />
           </div>
+          <p className="mt-6 text-center text-xs text-muted-foreground">Os indicadores de potência e economia na arte da trajetória seguem em conferência.</p>
         </div>
       </section>
       <section className="site-section">

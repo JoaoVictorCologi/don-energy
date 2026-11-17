@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { ContextoSimulador } from "@/lib/simulador-contexto";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 const tiposImovel = perfisSolares;
 
 const medidaMensal = z.string().trim().max(24, "Use até 24 caracteres.").refine((valor) => {
-  if (valor === "") return true;
+  if (valor === "") return false;
   return /^\d+(?:[,.]\d+)?$/.test(valor) && Number(valor.replace(",", ".")) > 0;
 }, "Informe um número maior que zero, sem unidade nem separador de milhar.");
 
@@ -37,13 +37,10 @@ const schema = z.object({
     return digits.length >= 10 && digits.length <= 13;
   }, "Informe um telefone válido com DDD"),
   tipoImovel: z.enum(perfilSolarIds, "Selecione o perfil solar"),
-  valorConta: medidaMensal,
-  consumoMensal: medidaMensal,
+  unidadeMedida: z.enum(["conta", "consumo"]),
+  valorMedida: medidaMensal,
   cidade: z.string().trim().min(2, "Informe sua cidade"),
   consentimento: z.literal(true, "É necessário concordar com a política de privacidade para continuar."),
-}).refine(({ valorConta, consumoMensal }) => valorConta !== "" || consumoMensal !== "", {
-  path: ["valorConta"],
-  message: "Informe o valor da conta ou o consumo mensal.",
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -61,12 +58,10 @@ function montarMensagem(dados: FormValues, contexto?: ContextoSimulador) {
     `Perfil solar: ${tituloPorId[dados.tipoImovel]}`,
     `Cidade: ${dados.cidade}`,
   ];
-  if (dados.valorConta) {
-    linhas.push(`Valor mensal da conta: R$ ${dados.valorConta.replace(".", ",")}`);
-  }
-  if (dados.consumoMensal) {
-    linhas.push(`Consumo mensal: ${dados.consumoMensal.replace(".", ",")} kWh`);
-  }
+  const valor = dados.valorMedida.replace(".", ",");
+  linhas.push(dados.unidadeMedida === "conta"
+    ? "Valor mensal da conta: R$ " + valor
+    : "Consumo mensal: " + valor + " kWh");
   if (contexto) {
     linhas.push("", "Origem: preparação no simulador — dados informados pelo visitante, sem estimativa calculada.", "Ligação informada: " + contexto.ligacao);
   }
@@ -90,12 +85,14 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
       nome: "",
       telefone: "",
       tipoImovel: (contextoInicial?.perfil ?? perfilInicial ?? "") as FormValues["tipoImovel"],
-      valorConta: contextoInicial?.valorConta ?? "",
-      consumoMensal: contextoInicial?.consumoMensal ?? "",
+      unidadeMedida: contextoInicial?.consumoMensal && !contextoInicial.valorConta ? "consumo" : "conta",
+      valorMedida: contextoInicial?.valorConta || contextoInicial?.consumoMensal || "",
       cidade: contextoInicial?.cidade ?? "",
       consentimento: false as unknown as true,
     },
   });
+
+  const unidadeMedida = useWatch({ control, name: "unidadeMedida" });
 
   // O contexto só muda por atualização explícita no simulador. Preservar nome,
   // telefone, consentimento e o rascunho quando a revisão é reaberta.
@@ -103,8 +100,8 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
     if (!contextoInicial) return;
     setValue("tipoImovel", contextoInicial.perfil);
     setValue("cidade", contextoInicial.cidade);
-    setValue("valorConta", contextoInicial.valorConta);
-    setValue("consumoMensal", contextoInicial.consumoMensal);
+    setValue("unidadeMedida", contextoInicial.consumoMensal && !contextoInicial.valorConta ? "consumo" : "conta");
+    setValue("valorMedida", contextoInicial.valorConta || contextoInicial.consumoMensal);
   }, [contextoInicial, setValue]);
 
   function onSubmitForm(event: React.FormEvent<HTMLFormElement>) {
@@ -261,19 +258,33 @@ export function FormularioContato({ perfilInicial, contextoInicial, sectionId = 
 
             <FieldSet>
               <FieldLegend variant="label">Conta ou consumo de energia</FieldLegend>
-              <p id="regra-medidas" className="text-sm text-muted-foreground">
-                Preencha pelo menos um dos campos. Se souber os dois valores, pode informar ambos.
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Field data-invalid={!!errors.valorConta}>
-                  <FieldLabel htmlFor="valorConta">Valor mensal da conta (R$)</FieldLabel>
-                  <Input id="valorConta" inputMode="decimal" placeholder="Ex. 350,50" aria-invalid={!!errors.valorConta} aria-describedby={errors.valorConta ? "regra-medidas erro-valor-conta" : "regra-medidas"} {...register("valorConta")} />
-                  <FieldError id="erro-valor-conta" errors={[errors.valorConta]} />
+              <div className="grid grid-cols-[100px_minmax(0,1fr)] items-start gap-3">
+                <Field>
+                  <FieldLabel htmlFor="unidadeMedida">Unidade</FieldLabel>
+                  <select
+                    id="unidadeMedida"
+                    className="h-12 w-full rounded-md border border-input bg-background px-3 text-sm"
+                    {...register("unidadeMedida", {
+                      onChange: () => setValue("valorMedida", "", { shouldValidate: false }),
+                    })}
+                  >
+                    <option value="conta">R$</option>
+                    <option value="consumo">kWh</option>
+                  </select>
                 </Field>
-                <Field data-invalid={!!errors.consumoMensal}>
-                  <FieldLabel htmlFor="consumoMensal">Consumo mensal (kWh)</FieldLabel>
-                  <Input id="consumoMensal" inputMode="decimal" placeholder="Ex. 450" aria-invalid={!!errors.consumoMensal} aria-describedby={errors.consumoMensal ? "regra-medidas erro-consumo" : "regra-medidas"} {...register("consumoMensal")} />
-                  <FieldError id="erro-consumo" errors={[errors.consumoMensal]} />
+                <Field data-invalid={!!errors.valorMedida}>
+                  <FieldLabel htmlFor="valorMedida">
+                    {unidadeMedida === "conta" ? "Valor mensal da conta" : "Consumo mensal"}
+                  </FieldLabel>
+                  <Input
+                    id="valorMedida"
+                    inputMode="decimal"
+                    placeholder={unidadeMedida === "conta" ? "Ex. 350,50" : "Ex. 450"}
+                    aria-invalid={!!errors.valorMedida}
+                    aria-describedby={errors.valorMedida ? "erro-medida" : undefined}
+                    {...register("valorMedida")}
+                  />
+                  <FieldError id="erro-medida" errors={[errors.valorMedida]} />
                 </Field>
               </div>
             </FieldSet>

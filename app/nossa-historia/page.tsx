@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Handshake, Award, TrendingUp, SolarPanel } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { institucional } from "@/lib/institucional-data";
@@ -6,6 +6,7 @@ import { ChamadaContato } from "@/components/chamada-contato";
 import { ValoresInstitucionais } from "@/components/valores-institucionais";
 import { FotoAcervo } from "@/components/foto-acervo";
 import Image from "next/image";
+import { LinhaTempoHistoria } from "@/components/linha-tempo-historia";
 
 const description = "Conheça a trajetória familiar da Don Energy, de seu início em Mococa à atuação em São Paulo e Minas Gerais.";
 export const metadata: Metadata = {
@@ -18,12 +19,47 @@ export const metadata: Metadata = {
 export default function NossaHistoriaPage() {
   return (
     <main id="conteudo" tabIndex={-1} className="flex-1">
-      <section aria-labelledby="historia-titulo" className="bg-brand-forest bg-cover bg-top bg-no-repeat pt-[var(--header-height)]" style={{ backgroundImage: "url(/obras/trajetoria-don-energy.webp)" }}>
-        <h1 id="historia-titulo" className="sr-only">Nossa História</h1>
-        <a href="/obras/trajetoria-don-energy.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagem da trajetória da Don Energy" className="block">
-          <Image src="/obras/trajetoria-don-energy.webp" width={1600} height={900} alt="Trajetória Don Energy. 2022, nossas raízes e abertura da empresa. 2023, identidade própria. 2024, expansão em São Paulo e Minas Gerais. 2025, indicadores de potência e economia ainda em conferência." priority sizes="100vw" className="h-auto w-full" />
-        </a>
-
+      <section aria-labelledby="historia-titulo" className="trajetoria-abertura">
+        <Image src="/obras/trajetoria-por-do-sol.webp" alt="" fill priority sizes="100vw" className="trajetoria-foto" />
+        <div aria-hidden="true" className="trajetoria-overlay" />
+        <div className="site-shell relative z-10">
+          <div className="trajetoria-introducao">
+            <h1 id="historia-titulo">Uma história de <span>crescimento,</span> inovação e compromisso.</h1>
+            <p>Ao longo da nossa trajetória, seguimos firmes no propósito de levar <strong>energia limpa, economia e sustentabilidade</strong> para mais pessoas e empresas.</p>
+          </div>
+          <p id="trajetoria-ajuda" className="mt-8 text-sm text-white lg:hidden">Deslize para acompanhar os marcos de 2022 a 2025. Pelo teclado, use as setas.</p>
+          <LinhaTempoHistoria>
+            <li data-marco className="trajetoria-marco">
+              <div className="trajetoria-ano">2022</div>
+              <Handshake aria-hidden="true" className="trajetoria-icone" strokeWidth={1.3} />
+              <span aria-hidden="true" className="trajetoria-ponto" />
+              <div className="trajetoria-conteudo"><h2>Nossas raízes</h2><p>Abertura da empresa.</p></div>
+            </li>
+            <li data-marco className="trajetoria-marco">
+              <div className="trajetoria-ano">2023</div>
+              <Award aria-hidden="true" className="trajetoria-icone" strokeWidth={1.3} />
+              <span aria-hidden="true" className="trajetoria-ponto" />
+              <div className="trajetoria-conteudo"><h2>Criação da identidade própria</h2><p>Mais autoridade e liberdade para crescer.</p></div>
+            </li>
+            <li data-marco className="trajetoria-marco">
+              <div className="trajetoria-ano">2024</div>
+              <TrendingUp aria-hidden="true" className="trajetoria-icone" strokeWidth={1.3} />
+              <span aria-hidden="true" className="trajetoria-ponto" />
+              <div className="trajetoria-conteudo"><h2>Expansão comercial</h2><p>Atendendo todo o estado de São Paulo e Minas Gerais.</p></div>
+            </li>
+            <li data-marco className="trajetoria-marco">
+              <div className="trajetoria-ano">2025</div>
+              <SolarPanel aria-hidden="true" className="trajetoria-icone" strokeWidth={1.3} />
+              <span aria-hidden="true" className="trajetoria-ponto" />
+              <div className="trajetoria-conteudo">
+                <h2><span className="trajetoria-numero">3 MW</span> de potência instalada</h2>
+                <p>Gerando mais de <strong>R$ 5 milhões</strong> em economia com energia elétrica todos os anos para nossos clientes e ajudando o planeta a se tornar mais sustentável.</p>
+                <p className="trajetoria-pendente">Indicadores de 2025 em conferência.</p>
+              </div>
+            </li>
+          </LinhaTempoHistoria>
+          <p className="trajetoria-credito">Fotografia ilustrativa: Michael Pointner / Pexels. Teste local de composição.</p>
+        </div>
       </section>
       <section aria-labelledby="texto-historia-titulo" className="site-section">
         <div className="site-shell">
@@ -42,7 +78,6 @@ export default function NossaHistoriaPage() {
           <div className="relative z-10 mx-auto -mt-5 max-w-5xl">
             <ValoresInstitucionais />
           </div>
-          <p className="mt-6 text-center text-xs text-muted-foreground">Os indicadores de potência e economia na arte da trajetória seguem em conferência.</p>
         </div>
       </section>
       <section className="site-section">

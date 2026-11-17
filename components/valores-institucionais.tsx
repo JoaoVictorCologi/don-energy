@@ -22,8 +22,8 @@ export function ValoresInstitucionais() {
   return (
     <div className="grid gap-5 md:grid-cols-3">
       {conteudos.map(({ titulo, texto, Icone }) => (
-        <article key={titulo} className="rounded-2xl bg-brand-deep px-6 py-8 text-center text-white lg:px-8 lg:py-10">
-          <span className="mx-auto mb-5 grid size-12 place-items-center rounded-full bg-brand-orange text-brand-deep"><Icone aria-hidden="true" className="size-6" strokeWidth={1.7} /></span>
+        <article key={titulo} className="rounded-2xl bg-brand-blue px-6 py-8 text-center text-white lg:px-8 lg:py-10">
+          <span className="mx-auto mb-5 grid size-12 place-items-center rounded-full bg-brand-green text-brand-blue"><Icone aria-hidden="true" className="size-6" strokeWidth={1.7} /></span>
           <h3 className="font-heading text-xl font-semibold text-white">{titulo}</h3>
           <p className="mt-4 text-[15px] leading-relaxed font-medium text-white">{texto}</p>
         </article>

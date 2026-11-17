@@ -280,3 +280,41 @@ body {
   .historia-entrada .historia-cartao { animation: none; }
   .historia-ponto, .historia-cartao { transition: none; }
 }
+
+/* Teste local: trajetória horizontal, texto real sobre fotografia licenciada. */
+.trajetoria-abertura { position: relative; isolation: isolate; overflow: hidden; padding: calc(var(--header-height) + 4.5rem) 0 2rem; color: white; background: #173b31; }
+.trajetoria-foto { object-fit: cover; object-position: center 35%; z-index: -2; }
+.trajetoria-overlay { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(14,35,31,.75), rgba(14,35,31,.68) 48%, rgba(14,35,31,.8)); }
+.trajetoria-introducao { display: grid; gap: 2rem; align-items: center; }
+.trajetoria-introducao h1 { max-width: 660px; font-size: clamp(2rem,3.7vw,3.4rem); line-height: 1.1; font-weight: 650; letter-spacing: -.035em; }
+.trajetoria-introducao h1 span, .trajetoria-introducao strong { color: #d0e99d; }
+.trajetoria-introducao p { border-left: 3px solid #94b94a; padding-left: 1.5rem; font-size: 1.125rem; line-height: 1.6; }
+.trajetoria-trilho { display: flex; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #d0e99d #173b31; margin-top: 2.5rem; padding: 8px 0 1.5rem; }
+.trajetoria-trilho:focus-visible { outline: 3px solid white; outline-offset: 5px; border-radius: 4px; }
+.trajetoria-marco { position: relative; flex: 0 0 88%; min-width: 0; scroll-snap-align: start; text-align: center; padding-inline: 1rem; }
+.trajetoria-ano { font-size: 2.5rem; line-height: 1; font-weight: 700; }
+.trajetoria-icone { width: 56px; height: 56px; margin: 1rem auto 1.75rem; }
+.trajetoria-ponto { display: block; position: relative; width: 18px; height: 18px; margin: 0 auto 1.5rem; border: 3px solid white; border-radius: 50%; background: #384c96; z-index: 1; transition: box-shadow 400ms; }
+.trajetoria-marco::before { content: ""; position: absolute; left: 0; right: 0; top: 148px; height: 2px; background: #d0e99d; }
+.trajetoria-marco[data-ativo="true"] .trajetoria-ponto { box-shadow: 0 0 0 6px #94b94a55; }
+.trajetoria-conteudo h2 { font-size: 1.2rem; font-weight: 650; line-height: 1.35; }
+.trajetoria-conteudo p { margin-top: .65rem; font-size: 1rem; line-height: 1.6; }
+.trajetoria-numero { color: #d0e99d; font-size: 1.8rem; white-space: nowrap; }
+.trajetoria-conteudo .trajetoria-pendente { font-size: .75rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.trajetoria-credito { margin-top: 1.5rem; font-size: .7rem; line-height: 1.5; color: white; }
+@keyframes trajetoria-revelar { from { opacity: .3; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.trajetoria-entrada .trajetoria-conteudo { animation: trajetoria-revelar 650ms ease-out both; }
+@media (min-width: 640px) { .trajetoria-marco { flex-basis: 48%; } }
+@media (min-width: 1024px) {
+  .trajetoria-introducao { grid-template-columns: 1.2fr 1fr; gap: 4rem; }
+  .trajetoria-introducao p { font-size: 1.25rem; }
+  .trajetoria-trilho { margin-top: 3.5rem; }
+  .trajetoria-marco { flex-basis: 25%; }
+  .trajetoria-entrada:nth-child(2) .trajetoria-conteudo { animation-delay: 100ms; }
+  .trajetoria-entrada:nth-child(3) .trajetoria-conteudo { animation-delay: 200ms; }
+  .trajetoria-entrada:nth-child(4) .trajetoria-conteudo { animation-delay: 300ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trajetoria-entrada .trajetoria-conteudo { animation: none; }
+  .trajetoria-ponto { transition: none; }
+}

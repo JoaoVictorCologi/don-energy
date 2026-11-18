@@ -57,6 +57,21 @@ export const detalhesSolares = {
       { pergunta: "Quais informações ajudam na avaliação?", resposta: "As contas de energia, os horários de funcionamento e as condições do local ajudam a contextualizar o projeto." },
     ],
   },
+  rural: {
+    resumo: "Energia solar planejada para o consumo e as condições da propriedade rural.",
+    necessidade: "As atividades da propriedade, o histórico de consumo e as condições do local ajudam a entender a necessidade de energia.",
+    solucao: "Reúna as contas de energia e informações sobre a área disponível. A equipe pode conversar sobre as possibilidades; o escopo e as condições de atendimento precisam ser definidos na proposta.",
+    pontos: ["Consumo e atividades da propriedade", "Área disponível para instalação", "Condições de acesso e planejamento"],
+    etapas: [
+      { titulo: "Apresente a propriedade", texto: "Informe a cidade e descreva as atividades desenvolvidas." },
+      { titulo: "Reúna o consumo", texto: "Separe as contas de energia e informe mudanças previstas na rotina." },
+      { titulo: "Converse com a equipe", texto: "Apresente as condições do local para esclarecer as possibilidades e a proposta." },
+    ],
+    faq: [
+      { pergunta: "O que informar na primeira conversa?", resposta: "Informe a cidade, as atividades da propriedade e, se possível, o histórico de consumo de energia." },
+      { pergunta: "Preciso saber a potência do sistema para pedir uma proposta?", resposta: "Você pode apresentar sua necessidade à equipe. O dimensionamento depende da análise do consumo e das condições da propriedade." },
+    ],
+  },
   "autoconsumo-remoto": {
     resumo: "Geração de energia em um imóvel para compensar o consumo em outro, conforme as condições do projeto.",
     necessidade: "O local disponível para geração e as unidades que consomem energia precisam ser avaliados em conjunto.",

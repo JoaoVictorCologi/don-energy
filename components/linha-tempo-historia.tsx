@@ -1,17 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useSyncExternalStore, type ReactNode, type KeyboardEvent } from "react";
-import { useMovimentoDoSite, definirMovimento } from "@/lib/preferencia-movimento";
-
-const assinarMontagem = () => () => {};
-const clienteDisponivel = () => true;
-const servidor = () => false;
+import { useEffect, useRef, type ReactNode, type KeyboardEvent } from "react";
+import { useMovimentoDoSite } from "@/lib/preferencia-movimento";
 
 export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
   const lista = useRef<HTMLOListElement>(null);
-  const reiniciar = useRef<(() => void) | null>(null);
   const ativo = useMovimentoDoSite();
-  const pronto = useSyncExternalStore(assinarMontagem, clienteDisponivel, servidor);
 
   useEffect(() => {
     const area = lista.current;
@@ -37,7 +31,6 @@ export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
         if (largura >= caixa.width * .15 && altura >= Math.min(64, caixa.height * .15)) marco.classList.add("trajetoria-entrada");
       });
     }
-    reiniciar.current = repetirVisiveis;
     // Abertura automática; marcos fora da tela aguardam a própria entrada,
     // inclusive no deslize horizontal. Assim o efeito não termina escondido.
     let observer: IntersectionObserver | undefined;
@@ -55,7 +48,6 @@ export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
     };
     window.addEventListener("pageshow", aoRetornar);
     return () => {
-      reiniciar.current = null;
       observer?.disconnect();
       window.removeEventListener("pageshow", aoRetornar);
       limpar();
@@ -77,16 +69,5 @@ export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
     }
   }
 
-  function repetirAnimacao() {
-    if (!ativo) definirMovimento(true);
-    else reiniciar.current?.();
-  }
-
-  return <>
-    <div className="trajetoria-controles">
-      {pronto && <button type="button" onClick={repetirAnimacao} className="trajetoria-repetir">{ativo ? "Repetir animação" : "Reproduzir animação"} <span aria-hidden="true">↻</span></button>}
-      {pronto && !ativo && <p className="text-xs text-white">As animações estão reduzidas. Reproduzir ativa o movimento nesta sessão.</p>}
-    </div>
-    <ol ref={lista} tabIndex={0} aria-label="Trajetória da Don Energy, de 2022 a 2025" onKeyDown={navegar} className="trajetoria-trilho">{children}</ol>
-  </>;
+  return <ol ref={lista} tabIndex={0} aria-label="Trajetória da Don Energy, de 2022 a 2025" onKeyDown={navegar} className="trajetoria-trilho">{children}</ol>;
 }

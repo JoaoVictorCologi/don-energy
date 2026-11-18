@@ -2,7 +2,7 @@
 export const siteConfig = {
   nome: "Don Energy",
   url: "https://don-energy.vercel.app",
-  descricao: "Energia solar residencial, comercial, industrial e autoconsumo remoto, com sede em Mococa-SP e atendimento em São Paulo e Minas Gerais.",
+  descricao: "Energia solar residencial, comercial, industrial, rural e autoconsumo remoto, além de limpeza e manutenção, com sede em Mococa-SP e atendimento em São Paulo e Minas Gerais.",
   telefoneExibicao: "(19) 99627-4747",
   telefoneInternacional: "+5519996274747",
   whatsapp: "5519996274747",
@@ -22,7 +22,7 @@ export const siteConfig = {
   logo: { src: "/logo/don-energy-logo-r3-nativa.png", width: 419, height: 286 },
   imagemSocial: { src: "/og-image.png", width: 1200, height: 630, alt: "Don Energy — Energia Solar" },
   numeros: {
-    obrasRealizadas: "<<PREENCHER>>",
+    obrasRealizadas: "+ 450 projetos instalados",
     potenciaInstaladaKwp: "<<PREENCHER>>",
     anosDeAtuacao: "<<PREENCHER>>",
   },
@@ -30,7 +30,7 @@ export const siteConfig = {
 
 export const SITE_URL = siteConfig.url;
 // Atualizar apenas quando houver alteração real da política.
-export const PRIVACIDADE_ATUALIZADA_EM = new Date("2026-11-09");
+export const PRIVACIDADE_ATUALIZADA_EM = new Date("2026-11-18");
 
 export const localBusiness = {
   "@context": "https://schema.org",

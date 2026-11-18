@@ -251,9 +251,6 @@ html[data-movimento="ativo"] .novo-hero h1 span { animation: narrativa-subir 130
 html[data-movimento="ativo"] .novo-hero h1 span:last-child { animation-delay: 200ms; }
 html[data-movimento="ativo"] .novo-hero #formulario-proposta { animation: proposta-chegar 1100ms ease-out; }
 html[data-movimento="ativo"] .visual-chamada.visual-entrada::after { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: #94b94a; transform-origin: left; animation: narrativa-linha 1800ms ease-out; }
-.preferencias-movimento { margin-top: 1.5rem; min-height: 44px; }
-.controle-movimento { min-height: 44px; padding: .5rem .8rem; border: 1px solid #173b3166; border-radius: 6px; font-size: .8rem; color: #171f32; background: transparent; }
-.controle-movimento:hover { background: #ffffff40; }
 @media (max-width: 767px) { html[data-movimento="ativo"] .novo-etapas-trilho.visual-entrada::before { animation-name: novo-eixo-vertical; } }
 html[data-movimento="reduzido"] *, html[data-movimento="reduzido"] *::before, html[data-movimento="reduzido"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 html[data-movimento="reduzido"] .novo-progresso-leitura { display: none; }
@@ -271,11 +268,10 @@ html[data-movimento="ativo"] .carrossel-foto-entrada > * { animation: carrossel-
 .solucoes-destaque-status > span > span { margin-left: .5rem; font-size: .9rem; color: #536177; }
 .solucoes-destaque-trilho { display: flex; gap: 24px; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #384c96 #e3ebd5; padding-bottom: 12px; border-radius: 22px; }
 .solucao-destaque-slide { flex: 0 0 100%; min-width: 0; display: grid; grid-template-columns: minmax(0,1.35fr) minmax(0,1fr); overflow: hidden; scroll-snap-align: start; scroll-snap-stop: always; border-radius: 22px; background: #384c96; color: white; }
-.solucao-destaque-visual { display: flex; flex-direction: column; min-width: 0; background: #173b31; }
+.solucao-destaque-visual { display: flex; flex-direction: column; min-width: 0; }
 .solucao-destaque-foto { flex: 1; display: grid; overflow: hidden; min-height: 380px; }
 .solucao-destaque-foto > *, .solucao-destaque-foto picture, .solucao-destaque-foto img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 0; }
 .solucao-destaque-foto > div { display: grid; }
-.solucao-destaque-visual figcaption { padding: .85rem 1.5rem; color: #fff; font-size: .7rem; line-height: 1.6; }
 .solucao-destaque-conteudo { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.5rem,3vw,3rem); }
 .solucao-destaque-rotulo { width: 100%; display: flex; justify-content: space-between; gap: .5rem; margin-bottom: 2rem; color: #d0e99d; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; }
 .solucao-destaque-conteudo h3 { font: 500 clamp(1.8rem,2.7vw,2.6rem)/1.22 var(--font-sora),sans-serif; letter-spacing: -.035em; text-wrap: balance; }
@@ -284,7 +280,7 @@ html[data-movimento="ativo"] .carrossel-foto-entrada > * { animation: carrossel-
 .solucao-destaque-link svg { color: #d0e99d; transition: transform 250ms ease; }
 .solucao-destaque-link:hover { text-decoration: underline; text-underline-offset: 5px; }
 .solucao-destaque-link:hover svg { transform: translate(3px,-3px); }
-.solucoes-destaque-seletores { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: .6rem; margin-top: 1rem; }
+.solucoes-destaque-seletores { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: .6rem; margin-top: 1rem; }
 .solucoes-destaque-seletores button { display: flex; align-items: center; gap: .65rem; min-height: 64px; padding: .8rem; border: 1px solid #cbd6be; border-radius: 10px; text-align: left; font-size: .8rem; line-height: 1.5; color: #384c96; background: white; transition: background 200ms ease,color 200ms ease,border-color 200ms ease; }
 .solucoes-destaque-seletores button > span { flex-shrink: 0; font-size: .65rem; font-variant-numeric: tabular-nums; }
 .solucoes-destaque-seletores button:hover { border-color: #384c96; }
@@ -300,7 +296,7 @@ html[data-movimento="ativo"] .solucao-em-destaque .solucao-destaque-conteudo > *
 html[data-movimento="ativo"] .solucao-em-destaque .solucao-destaque-conteudo > :nth-child(2) { animation-delay: 80ms; }
 html[data-movimento="ativo"] .solucao-em-destaque .solucao-destaque-conteudo > :nth-child(3) { animation-delay: 160ms; }
 @media (max-width: 899px) { .solucao-destaque-slide { grid-template-columns: minmax(0,1fr); } .solucao-destaque-foto { min-height: 0; height: clamp(210px,48vw,380px); flex: none; } .solucao-destaque-conteudo { padding: 1.75rem; } .solucao-destaque-rotulo { margin-bottom: 1rem; } .solucao-destaque-conteudo h3 { font-size: clamp(1.7rem,5vw,2.3rem); } .solucao-destaque-descricao { margin-block: 1rem 1.5rem; } .solucoes-destaque-seletores { grid-template-columns: repeat(3,minmax(0,1fr)); } }
-@media (max-width: 479px) { .solucao-destaque-conteudo { padding: 1.4rem; } .solucao-destaque-visual figcaption { padding-inline: 1.4rem; } .solucoes-destaque-seletores { grid-template-columns: repeat(2,minmax(0,1fr)); } .solucoes-destaque-seletores button:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+@media (max-width: 479px) { .solucao-destaque-conteudo { padding: 1.4rem; } .solucoes-destaque-seletores { grid-template-columns: repeat(2,minmax(0,1fr)); } .solucoes-destaque-seletores button:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 @media (prefers-reduced-motion: reduce) { html:not([data-movimento="ativo"]) .solucao-em-destaque .solucao-destaque-foto > *, html:not([data-movimento="ativo"]) .solucao-em-destaque .solucao-destaque-conteudo > * { animation: none; } .solucoes-destaque-seletores button, .solucao-destaque-link svg { transition: none; } }
 
 .solucoes-destaque-barra { min-height: 48px; }
@@ -317,3 +313,5 @@ html[data-movimento="ativo"] .trajetoria-introducao p.visual-entrada { animation
   html[data-movimento="ativo"] .historia-valor.visual-entrada:nth-child(2) { animation-delay: 120ms; }
   html[data-movimento="ativo"] .historia-valor.visual-entrada:nth-child(3) { animation-delay: 240ms; }
 }
+
+.solucao-destaque-legenda { margin-top: 1rem; color: #edf2e7; font-size: .7rem; line-height: 1.6; }

@@ -57,7 +57,7 @@ export default function Privacidade() {
 
           <section>
             <h2 className="font-heading text-xl font-semibold text-foreground">Preferência de movimento</h2>
-            <p className="mt-3 text-muted-foreground">A preferência de animações escolhida no rodapé pode ser guardada apenas durante a sessão de navegação, sem incluir os dados do formulário.</p>
+            <p className="mt-3 text-muted-foreground">O site adapta as animações à preferência de movimento reduzido do navegador ou sistema. Não é criada uma preferência própria no armazenamento do navegador.</p>
           </section>
 
           <section>

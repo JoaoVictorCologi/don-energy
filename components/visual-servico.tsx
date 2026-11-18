@@ -1,3 +1,6 @@
+import { imagemIndustrial } from "@/lib/imagem-industrial";
+import { ImagemPortfolio } from "@/components/imagem-portfolio";
+import { fotoPorId } from "@/lib/fotos-data";
 import Image from "next/image";
 import { Factory, Sun } from "lucide-react";
 import { FotoAcervo } from "@/components/foto-acervo";
@@ -11,6 +14,12 @@ export function VisualServico({ perfil, className, loading = "lazy" }: {
   loading?: "lazy" | "eager";
 }) {
   if (perfil === "manutencao") return <Image src="/servicos/manutencao-enviada.webp" width="1200" height="801" alt="Pessoa com uniforme laranja limpando módulos solares com um rodo. Fotografia ilustrativa." loading={loading} className={cn("w-full object-cover", className)} />;
+  // Variantes locais mantêm nitidez sem depender de otimizador de servidor.
+  if (perfil === "industrial") return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={imagemIndustrial.src} srcSet={imagemIndustrial.srcSet} sizes="(min-width: 1200px) 650px, (min-width: 900px) 55vw, calc(100vw - 48px)" width={1440} height={810} alt={imagemIndustrial.alt} loading={loading} decoding="async" className={cn("w-full object-cover", className)} />
+  );
+  if (perfil === "rural") return <ImagemPortfolio foto={fotoPorId("foto-11")} loading={loading} sizes="(min-width: 1200px) 650px, (min-width: 900px) 55vw, calc(100vw - 48px)" className={className} />;
   const { foto } = apresentacaoSolar[perfil];
   if (foto) return <FotoAcervo numero={foto} loading={loading} className={className} />;
 

@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { ServicoCard } from "@/components/servico-card";
 import { servicos } from "@/lib/servicos-data";
 
-const description = "Conheça as soluções residenciais, comerciais, industriais e de autoconsumo remoto, além de limpeza e manutenção de energia solar.";
+const description = "Conheça as soluções residenciais, comerciais, industriais, rurais e de autoconsumo remoto, além de limpeza e manutenção de energia solar.";
 export const metadata: Metadata = {
   title: "Soluções em energia solar — Don Energy", description,
   alternates: { canonical: "/servicos/" },

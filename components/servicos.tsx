@@ -11,15 +11,15 @@ export function Servicos() {
       <div data-revelar className="novo-cabecalho-secao"><div><p className="site-eyebrow">Soluções solares</p><h2 className="site-title">Qual é a sua necessidade?</h2></div><div><p>Necessidades diferentes. Conheça o que considerar em cada solução.</p><Link prefetch={false} href="/servicos/" className="site-link mt-4">Explore as soluções <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></Link></div></div>
       <CarrosselDestaque opcoes={servicos.map(servico => servico.rotulo)}>
         {servicos.map((servico, indice) => <article key={servico.id} id={"solucao-destaque-" + indice} data-solucao-slide data-servico={servico.id} className="solucao-destaque-slide" aria-labelledby={"solucao-titulo-" + servico.id}>
-          <figure className="solucao-destaque-visual">
+          <figure className="solucao-destaque-visual" aria-describedby={"legenda-solucao-" + servico.id}>
             <div className="solucao-destaque-foto"><VisualServico perfil={servico.id} className="solucao-destaque-imagem" /></div>
-            <figcaption>{apresentacaoSolar[servico.id].legenda}</figcaption>
           </figure>
           <div className="solucao-destaque-conteudo">
             <p className="solucao-destaque-rotulo">Soluções Don Energy <span aria-hidden="true">/ {String(indice + 1).padStart(2, "0")}</span></p>
             <h3 id={"solucao-titulo-" + servico.id}>{servico.titulo}</h3>
             <p className="solucao-destaque-descricao">{servico.intro}</p>
             <Link prefetch={false} href={"/servicos/" + servico.slug + "/"} className="solucao-destaque-link" aria-label={"Conhecer solução — " + servico.nome.toLowerCase()}>Conhecer solução <ArrowUpRight aria-hidden="true" className="size-5" /></Link>
+            <p id={"legenda-solucao-" + servico.id} className="solucao-destaque-legenda">{apresentacaoSolar[servico.id].legenda}</p>
           </div>
         </article>)}
       </CarrosselDestaque>

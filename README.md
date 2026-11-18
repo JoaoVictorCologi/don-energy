@@ -1,3 +1,7 @@
+## Atualização de 18/11/2026
+
+Seis serviços: Residencial, Comercial, Industrial, Rural, Autoconsumo Remoto e Limpeza e Manutenção. Rural usa fotografia 11 do acervo sem presumir identidade de obra. Industrial usa foto ilustrativa licenciada de Nova lv/Pexels (29923348), otimizada localmente. Carrossel sem faixa verde inferior. Indicador “+ 450 projetos instalados” informado pelo usuário. Animações automáticas respeitam movimento reduzido do sistema, sem controles de reprodução ou armazenamento próprio de preferência. Demais registros abaixo são históricos.
+
 # Estado vigente R3 — 04/11/2026
 
 R3 local em ajustes/r3-logo-botoes, sobre R2 publicada 38dde75; aguarda aceite, sem push/merge/deploy/Hostinger/DNS. Nova marca recebida, botões azuis e flutuante WhatsApp verde. Hero verde, trecho do título/textos próprios azuis, sem CTA redundante da calculadora. Catálogo: residencial, comercial e Autoconsumo Remoto - Industrial. Solar-rural redireciona ao novo serviço; usina-de-investimento redireciona a /servicos/, sem oferta/formulários/sitemap correspondentes. Histórico factual rural da obra Francini e todas as fotografias preservados, sem classificação industrial presumida. Iframe Azume interno inalterado; Q10-A/Q07-A, E3 parcial e M02/M03 mantidos. Detalhes/evidências/rollback no vault: Materiais/Referencias/R3-implementacao-2026-11-04/. Estados anteriores abaixo são históricos e não devem reintroduzir o catálogo antigo.

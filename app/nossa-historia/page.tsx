@@ -58,7 +58,7 @@ export default function NossaHistoriaPage() {
               </div>
             </li>
           </LinhaTempoHistoria>
-          <p className="trajetoria-credito">Fotografia ilustrativa: Michael Pointner / Pexels. Teste local de composição.</p>
+          <p className="trajetoria-credito">Fotografia ilustrativa: Michael Pointner / Pexels.</p>
         </div>
       </section>
       <section aria-labelledby="texto-historia-titulo" className="site-section">

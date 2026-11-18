@@ -18,6 +18,11 @@ const servicosBase = [
     beneficios: ["Rotina de produção", "Histórico de consumo", "Condições de instalação"],
   },
   {
+    id: "rural",
+    intro: "Energia solar para o consumo e as atividades da sua propriedade rural.",
+    beneficios: ["Consumo de energia da propriedade", "Rotina das atividades rurais", "Área disponível e condições de instalação"],
+  },
+  {
     id: "autoconsumo-remoto",
     intro: "Geração de energia em um imóvel para compensar o consumo em outro.",
     beneficios: ["Local de geração", "Unidades de consumo", "Informações dos imóveis", "Condições a esclarecer com a equipe"],

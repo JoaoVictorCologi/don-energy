@@ -4,7 +4,7 @@ import { perfisSolares } from "@/lib/perfis-solares";
 import { PRIVACIDADE_ATUALIZADA_EM, SITE_URL } from "@/lib/site-config";
 
 export const dynamic = "force-static";
-const REVISAO_ATUALIZADA_EM = new Date("2026-11-09");
+const REVISAO_ATUALIZADA_EM = new Date("2026-11-18");
 const R1_ATUALIZADA_EM = new Date("2026-10-26");
 
 

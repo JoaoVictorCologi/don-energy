@@ -1,3 +1,4 @@
+import { imagemIndustrial } from "@/lib/imagem-industrial";
 import { todasFotos } from "@/lib/fotos-data";
 import type { PerfilSolarId } from "@/lib/perfis-solares";
 
@@ -18,11 +19,11 @@ export const fundoPorDoSol: FundoVisual = {
 };
 
 export function fundoServico(perfil: PerfilSolarId): FundoVisual {
-  if (perfil === "industrial") return fundoPorDoSol;
+  if (perfil === "industrial") return { src: imagemIndustrial.src, srcSet: imagemIndustrial.srcSet, credito: imagemIndustrial.credito, posicao: "center 55%" };
   if (perfil === "manutencao") return {
     src: "/servicos/manutencao-enviada.webp",
     credito: "Fotografia ilustrativa de limpeza de módulos solares.",
     posicao: "center 45%",
   };
-  return fundoAcervo({ residencial: "12", comercial: "01", "autoconsumo-remoto": "14" }[perfil]);
+  return fundoAcervo({ residencial: "12", comercial: "01", rural: "11", "autoconsumo-remoto": "14" }[perfil]);
 }

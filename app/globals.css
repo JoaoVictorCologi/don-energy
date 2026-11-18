@@ -328,9 +328,6 @@ body {
 .trajetoria-entrada .trajetoria-ano, .trajetoria-entrada .trajetoria-icone { animation: trajetoria-chegada 650ms ease-out calc(var(--marco-atraso) + 150ms) both; }
 .trajetoria-entrada .trajetoria-conteudo { animation: trajetoria-chegada 750ms ease-out calc(var(--marco-atraso) + 350ms) both; }
 .trajetoria-entrada .trajetoria-ponto { animation: trajetoria-pulso 1000ms ease-out calc(var(--marco-atraso) + 350ms) both; }
-.trajetoria-repetir { display: inline-flex; align-items: center; gap: .75rem; min-height: 44px; padding: .4rem .8rem; border: 1px solid #ffffff80; border-radius: 4px; font-size: .8rem; color: white; }
-.trajetoria-repetir:hover { background: #ffffff18; }
-.trajetoria-repetir:focus-visible { outline: 3px solid white; outline-offset: 4px; }
 @media (min-width: 1024px) {
   .trajetoria-entrada:nth-child(2) { --marco-atraso: 700ms; }
   .trajetoria-entrada:nth-child(3) { --marco-atraso: 1400ms; }
@@ -341,8 +338,6 @@ body {
 }
 
 /* Controle visível antes do mapa e tempo suficiente para acompanhar a sequência. */
-.trajetoria-controles { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; min-height: 44px; margin-top: 2rem; }
-.trajetoria-controles + .trajetoria-trilho { margin-top: 1.5rem; }
 .trajetoria-entrada { --marco-atraso: 300ms; }
 .trajetoria-entrada::before { animation-duration: 1100ms; }
 .trajetoria-entrada .trajetoria-ano, .trajetoria-entrada .trajetoria-icone { animation-duration: 900ms; }

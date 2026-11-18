@@ -1,6 +1,6 @@
 import { ArrowUpRight, CalendarDays, Hammer, HardHat } from "lucide-react";
 import Link from "next/link";
-import { localBusiness } from "@/lib/site-config";
+import { localBusiness, siteConfig } from "@/lib/site-config";
 import { institucional } from "@/lib/institucional-data";
 import { avaliacoesVisiveis } from "@/lib/depoimentos-data";
 import { CalculadoraAzume } from "@/components/calculadora-azume";
@@ -14,7 +14,7 @@ import { fundoPorDoSol } from "@/lib/visual-site";
 
 const topicos = [
   { texto: "Mais de 4 anos no mercado!", Icone: CalendarDays },
-  { texto: "Projetos fotovoltaicos", Icone: Hammer },
+  { texto: siteConfig.numeros.obrasRealizadas, Icone: Hammer },
   { texto: "Equipe especializada", Icone: HardHat },
 ];
 

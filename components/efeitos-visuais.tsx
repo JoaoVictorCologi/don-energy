@@ -1,23 +1,14 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
-import { createPortal } from "react-dom";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-import { useMovimentoDoSite, definirMovimento, inicializarMovimento } from "@/lib/preferencia-movimento";
+import { useMovimentoDoSite } from "@/lib/preferencia-movimento";
 
-const semMovimentoNoServidor = () => false;
-const clienteDisponivel = () => true;
-const assinarMontagem = () => () => {};
-
-// Conteúdo legível antes do JavaScript; a preferência fica somente nesta sessão.
+// Conteúdo legível antes do JavaScript; movimento adaptado à preferência do sistema.
 export function EfeitosVisuais() {
   const pathname = usePathname();
   const ativo = useMovimentoDoSite();
-  const montado = useSyncExternalStore(assinarMontagem, clienteDisponivel, semMovimentoNoServidor);
-  const destino = montado ? document.getElementById("preferencias-movimento") : null;
-
-  useEffect(inicializarMovimento, []);
 
   useEffect(() => {
     document.documentElement.dataset.movimento = ativo ? "ativo" : "reduzido";
@@ -37,7 +28,5 @@ export function EfeitosVisuais() {
     return () => observer.disconnect();
   }, [pathname, ativo]);
 
-  function alternar() { definirMovimento(!ativo); }
-
-  return destino ? createPortal(<button type="button" onClick={alternar} className="controle-movimento">{ativo ? "Reduzir animações" : "Ativar animações"}</button>, destino) : null;
+  return null;
 }

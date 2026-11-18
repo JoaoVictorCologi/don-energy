@@ -218,3 +218,45 @@ figure[data-revelar].visual-entrada { animation-name: foto-revelar-lateral; }
 .contato-mapa > div:has(iframe) { height: 380px; }
 @media (max-width: 1023px) { .contato-apoio--mapa { grid-template-columns: minmax(0,1fr); } }
 @media (max-width: 639px) { .contato-redes--vertical { padding: 1.4rem; } .contato-mapa > div:has(iframe) { height: 320px; } }
+
+/* Revisão: composição espelhada, preservando a ordem de leitura do HTML. */
+.novo-sobre-composicao { grid-template-columns: .85fr 1.45fr; }
+.novo-sobre-painel { margin: 0 -4rem 0 0; }
+.contato-apoio--mapa { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); }
+@media (max-width: 1023px) { .novo-sobre-painel { margin-right: -2rem; } .contato-apoio--mapa { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 767px) { .novo-sobre-composicao { grid-template-columns: minmax(0,1fr); } .novo-sobre-painel { margin: 0 0 -1.5rem; } }
+/* Movimento de narrativa: eixo, ícones, texto e imagem chegam em etapas. */
+@keyframes narrativa-subir { from { opacity: .4; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+@keyframes narrativa-lateral { from { opacity: .4; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+@keyframes narrativa-foto { from { clip-path: inset(0 12% 0 0 round 20px); transform: scale(.98); } to { clip-path: inset(0 0 0 0); transform: scale(1); } }
+@keyframes narrativa-linha { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes narrativa-icone { 0% { transform: scale(.8); } 65% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes proposta-chegar { from { opacity: .65; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+html[data-movimento="ativo"] .visual-entrada { animation: narrativa-subir 1000ms cubic-bezier(.2,.7,.2,1) both; }
+html[data-movimento="ativo"] figure[data-revelar].visual-entrada { animation: narrativa-foto 1300ms ease-out both; }
+html[data-movimento="ativo"] .novo-sobre-painel.visual-entrada { animation: narrativa-lateral 1000ms ease-out both; }
+html[data-movimento="ativo"] .novo-sobre-painel.visual-entrada li { animation: narrativa-lateral 800ms ease-out both; }
+html[data-movimento="ativo"] .novo-sobre-painel.visual-entrada li:nth-child(1) { animation-delay: 150ms; }
+html[data-movimento="ativo"] .novo-sobre-painel.visual-entrada li:nth-child(2) { animation-delay: 350ms; }
+html[data-movimento="ativo"] .novo-sobre-painel.visual-entrada li:nth-child(3) { animation-delay: 550ms; }
+html[data-movimento="ativo"] .visual-entrada .novo-icone-circulo, html[data-movimento="ativo"] .contato-canal.visual-entrada .contato-canal-icone { animation: narrativa-icone 1000ms ease-out; }
+html[data-movimento="ativo"] .visual-entrada .site-eyebrow::before { content: ""; position: absolute; left: 0; top: .55em; width: 28px; height: 2px; background: #94b94a; transform-origin: left; animation: narrativa-linha 1100ms ease-out; }
+html[data-movimento="ativo"] .novo-etapas-trilho.visual-entrada { animation: none; }
+html[data-movimento="ativo"] .novo-etapas-trilho.visual-entrada::before { animation: novo-eixo-horizontal 1800ms ease-out; }
+html[data-movimento="ativo"] .contato-canal.visual-entrada { animation: narrativa-subir 1000ms ease-out both; }
+html[data-movimento="ativo"] .visual-abertura .visual-fundo { animation: novo-foto-entrada 2000ms ease-out; }
+html[data-movimento="ativo"] .visual-abertura-texto { animation: narrativa-subir 1200ms ease-out; }
+html[data-movimento="ativo"] .novo-hero-foto { animation: novo-foto-entrada 2000ms ease-out; }
+html[data-movimento="ativo"] .novo-hero h1 span { animation: narrativa-subir 1300ms ease-out both; }
+html[data-movimento="ativo"] .novo-hero h1 span:last-child { animation-delay: 200ms; }
+html[data-movimento="ativo"] .novo-hero #formulario-proposta { animation: proposta-chegar 1100ms ease-out; }
+html[data-movimento="ativo"] .visual-chamada.visual-entrada::after { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: #94b94a; transform-origin: left; animation: narrativa-linha 1800ms ease-out; }
+.preferencias-movimento { margin-top: 1.5rem; min-height: 44px; }
+.controle-movimento { min-height: 44px; padding: .5rem .8rem; border: 1px solid #173b3166; border-radius: 6px; font-size: .8rem; color: #171f32; background: transparent; }
+.controle-movimento:hover { background: #ffffff40; }
+@media (max-width: 767px) { html[data-movimento="ativo"] .novo-etapas-trilho.visual-entrada::before { animation-name: novo-eixo-vertical; } }
+html[data-movimento="reduzido"] *, html[data-movimento="reduzido"] *::before, html[data-movimento="reduzido"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+html[data-movimento="reduzido"] .novo-progresso-leitura { display: none; }
+
+[data-revelar] .site-eyebrow { position: relative; padding-left: 40px; }
+[data-revelar] .site-eyebrow::before { content: ""; position: absolute; left: 0; top: .55em; width: 28px; height: 2px; background: #94b94a; }

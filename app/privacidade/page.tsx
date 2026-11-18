@@ -56,6 +56,11 @@ export default function Privacidade() {
           </section>
 
           <section>
+            <h2 className="font-heading text-xl font-semibold text-foreground">Preferência de movimento</h2>
+            <p className="mt-3 text-muted-foreground">A preferência de animações escolhida no rodapé pode ser guardada apenas durante a sessão de navegação, sem incluir os dados do formulário.</p>
+          </section>
+
+          <section>
             <h2 className="font-heading text-xl font-semibold text-foreground">3. Calculadora externa da Azume</h2>
             <p className="mt-3 text-muted-foreground">A inicial integra a calculadora Azume em um quadro de outro domínio, carregado quando você se aproxima dessa seção. Ao utilizar o quadro, seu navegador se conecta à Azume e os dados inseridos são tratados pelo serviço externo. O site da Don Energy não controla os campos, as premissas, o armazenamento ou o encaminhamento interno dessa ferramenta.</p>
             <p className="mt-3 text-muted-foreground">Consulte as informações de privacidade do fornecedor antes de preencher ou enviar dados. Você também pode optar por falar diretamente com a Don Energy pelos contatos do site. Resultados da ferramenta externa não substituem a avaliação específica do projeto.</p>

@@ -67,6 +67,7 @@ export function Footer() {
 
         <nav aria-label="Navegação no rodapé" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold"><Link prefetch={false} href="/servicos/" className="inline-flex min-h-11 items-center underline underline-offset-4">Soluções solares</Link><Link prefetch={false} href="/nossa-historia/" className="inline-flex min-h-11 items-center underline underline-offset-4">Nossa História</Link><Link prefetch={false} href="/obras/" className="inline-flex min-h-11 items-center underline underline-offset-4">Projetos e fotografias</Link><Link prefetch={false} href="/#calculadora" className="inline-flex min-h-11 items-center underline underline-offset-4">Calculadora solar</Link><Link prefetch={false} href="/contato/" className="inline-flex min-h-11 items-center underline underline-offset-4">Fale com a Don Energy</Link></nav>
 
+        <div id="preferencias-movimento" className="preferencias-movimento" />
         <div className="mt-8 border-t border-brand-ink/20 pt-6 text-sm text-brand-ink/90">
           <Link href="/privacidade/" prefetch={false} className="mb-4 inline-flex min-h-11 items-center underline underline-offset-4">Política de privacidade</Link>
           <p>© {new Date().getFullYear()} Don Energy. Todos os direitos

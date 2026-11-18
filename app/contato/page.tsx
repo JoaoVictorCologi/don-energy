@@ -45,6 +45,7 @@ export default function ContatoPage() {
       </div>
     </section>
     <section id="formulario-proposta" tabIndex={-1} aria-labelledby="contato-apoio-titulo" className="site-shell contato-apoio contato-apoio--mapa">
+      <MapaContato embutido />
       <div className="contato-lateral">
         <div data-revelar><p className="site-eyebrow">Seu próximo passo começa por aqui</p><h2 id="contato-apoio-titulo" className="site-title">Vamos falar sobre sua energia?</h2><p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">Comece uma conversa com a equipe pelo WhatsApp, sem preencher um formulário.</p></div>
         <aside aria-labelledby="contato-redes-titulo" className="contato-redes contato-redes--vertical" data-revelar>
@@ -54,7 +55,6 @@ export default function ContatoPage() {
           <CanaisContato mostrarIconesRedes mostrarEmail={false} vertical />
         </aside>
       </div>
-      <MapaContato embutido />
     </section>
   </main>;
 }

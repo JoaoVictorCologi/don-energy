@@ -30,14 +30,14 @@ export default function Home() {
             <p>{institucional.historia[0]}</p>
           </div>
           <div className="novo-sobre-composicao">
-            <figure data-revelar className="novo-foto-principal">
-              <FotoAcervo numero="04" sizes="(min-width: 1024px) 65vw, 100vw" />
-              <figcaption>Fotografia do acervo Don Energy.</figcaption>
-            </figure>
             <div className="novo-sobre-painel" data-revelar>
               <ul>{topicos.map(({ texto, Icone }) => <li key={texto}><span className="novo-icone-circulo"><Icone aria-hidden="true" className="size-6" strokeWidth={1.6} /></span><p>{texto}</p></li>)}</ul>
               <Link prefetch={false} href="/nossa-historia/" className="novo-link-branco">Nossa História <ArrowUpRight aria-hidden="true" className="size-4" /></Link>
             </div>
+            <figure data-revelar className="novo-foto-principal">
+              <FotoAcervo numero="04" sizes="(min-width: 1024px) 65vw, 100vw" />
+              <figcaption>Fotografia do acervo Don Energy.</figcaption>
+            </figure>
           </div>
         </div>
       </section>

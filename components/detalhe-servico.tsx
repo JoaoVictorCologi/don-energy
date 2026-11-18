@@ -1,8 +1,10 @@
-import { ArrowUpRight as Seta } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import Link from "next/link";
 import type { Servico } from "@/lib/servicos-data";
 import { apresentacaoSolar } from "@/lib/apresentacao-solar";
 import { AberturaPagina } from "@/components/abertura-pagina";
+import { EtapasProposta } from "@/components/etapas-proposta";
+import { VisualServico } from "@/components/visual-servico";
 import { fundoServico } from "@/lib/visual-site";
 import { ChamadaContato } from "@/components/chamada-contato";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -10,12 +12,16 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 export function DetalheServico({ servico }: { servico: Servico }) {
   const visual = apresentacaoSolar[servico.id];
   return <>
-    <AberturaPagina titulo={visual.abertura} rotulo={servico.nome} introducao={servico.resumo} fundo={fundoServico(servico.id)} caminho={[{ titulo: "Início", href: "/" }, { titulo: "Soluções", href: "/servicos/" }]}>
-      <Link prefetch={false} href="/contato/#fale-conosco" className="visual-botao-claro">Conversar sobre meu projeto <Seta aria-hidden="true" className="size-4 shrink-0" /></Link>
-    </AberturaPagina>
-    <section data-revelar className="site-section bg-brand-soft"><div className="site-shell grid gap-12 md:grid-cols-2 lg:gap-24"><div><p className="site-eyebrow">O que considerar</p><h2 className="site-title">{visual.contexto}</h2><p className="mt-7 leading-relaxed text-muted-foreground">{servico.necessidade}</p></div><div><h3 className="font-heading text-xl font-medium text-brand-blue">Informações para avaliar o projeto</h3><p className="mt-5 leading-relaxed text-muted-foreground">{servico.solucao}</p><ul className="mt-7 divide-y border-y border-border">{servico.pontos.map(ponto => <li key={ponto} className="py-4 text-sm text-brand-blue">{ponto}</li>)}</ul></div></div></section>
-    <section className="site-section"><div className="site-shell"><p className="site-eyebrow">Antes da proposta</p><h2 className="site-title">Informações para a primeira conversa.</h2><ol className="mt-12 grid gap-9 md:grid-cols-3">{servico.etapas.map((etapa,i) => <li key={etapa.titulo} className="border-t border-border pt-6"><span aria-hidden="true" className="text-xs font-semibold text-brand-blue">0{i+1}</span><h3 className="mt-6 font-heading text-xl font-medium text-brand-blue">{etapa.titulo}</h3><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{etapa.texto}</p></li>)}</ol><p className="mt-7 text-sm leading-relaxed text-muted-foreground">Escopo, prazos e responsabilidades precisam ser esclarecidos na proposta do projeto.</p></div></section>
-    <section className="site-section bg-brand-soft"><div className="site-shell grid gap-10 md:grid-cols-[1fr_1.2fr] lg:gap-20"><div><p className="site-eyebrow">Dúvidas deste perfil</p><h2 className="site-title">Para começar<br /> com mais clareza.</h2></div><div>{servico.faq.map(item => <details key={item.pergunta} className="mb-5 border-b border-border pb-3"><summary className="min-h-12 cursor-pointer rounded-sm py-3 font-semibold text-brand-blue">{item.pergunta}</summary><p className="py-3 text-sm leading-relaxed text-muted-foreground">{item.resposta}</p></details>)}</div></div></section>
-    <ChamadaContato slug={servico.slug} /><div className="site-shell flex flex-wrap gap-x-8 py-7"><Link prefetch={false} href="/servicos/" className="site-link">Conhecer os outros perfis solares</Link><a href={buildWhatsAppUrl(servico.mensagem)} target="_blank" rel="noopener noreferrer" className="site-link">Conversar direto no WhatsApp <Seta aria-hidden="true" className="size-4 shrink-0" /></a></div>
+    <AberturaPagina titulo={visual.abertura} rotulo={servico.nome} introducao={servico.resumo} fundo={fundoServico(servico.id)} caminho={[{ titulo: "Início", href: "/" }, { titulo: "Soluções", href: "/servicos/" }]}><Link prefetch={false} href="/contato/#fale-conosco" className="visual-botao-claro">Conversar sobre meu projeto <ArrowUpRight aria-hidden="true" className="size-4" /></Link></AberturaPagina>
+    <section className="site-section novo-contexto-servico"><div className="site-shell">
+      <div className="novo-cabecalho-secao" data-revelar><div><p className="site-eyebrow">O que considerar</p><h2 className="site-title">{visual.contexto}</h2></div><p>{servico.necessidade}</p></div>
+      <div className="novo-contexto-grid">
+        <figure data-revelar className="novo-contexto-midia"><VisualServico perfil={servico.id} className="aspect-[4/3]" /><figcaption>{visual.legenda}</figcaption></figure>
+        <div data-revelar className="novo-info-projeto"><p className="visual-rotulo">Seu contexto importa</p><h3>Informações para avaliar o projeto</h3><p>{servico.solucao}</p><ul>{servico.pontos.map(ponto => <li key={ponto}><Check aria-hidden="true" className="size-5 shrink-0" /><span>{ponto}</span></li>)}</ul></div>
+      </div>
+    </div></section>
+    <EtapasProposta etapas={servico.etapas} />
+    <section className="site-section novo-perguntas"><div className="site-shell grid gap-10 md:grid-cols-[1fr_1.2fr] lg:gap-20"><div data-revelar><p className="site-eyebrow">Dúvidas deste perfil</p><h2 className="site-title">Para começar com mais clareza.</h2></div><div>{servico.faq.map(item => <details key={item.pergunta}><summary>{item.pergunta}</summary><p>{item.resposta}</p></details>)}</div></div></section>
+    <ChamadaContato slug={servico.slug} /><div className="site-shell flex flex-wrap gap-x-8 py-7"><Link prefetch={false} href="/servicos/" className="site-link">Conhecer os outros perfis solares</Link><a href={buildWhatsAppUrl(servico.mensagem)} target="_blank" rel="noopener noreferrer" className="site-link">Conversar direto no WhatsApp <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></a></div>
   </>;
 }

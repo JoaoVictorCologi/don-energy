@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function ObrasPage() {
-  return <main id="conteudo" tabIndex={-1} className="flex-1"><AberturaPagina rotulo="Portfólio · Acervo Don Energy" titulo="A energia solar em imagens." introducao="Projetos com nome e contexto, fotografias em diferentes perspectivas. Explore as instalações e conheça também as imagens do nosso acervo." fundo={fundoAcervo("13")} /><div className="visual-conteudo"><PortfolioObras /><ChamadaContato /></div></main>;
+  return <main id="conteudo" tabIndex={-1} className="flex-1"><AberturaPagina rotulo="Portfólio · Acervo Don Energy" titulo="A energia solar em imagens." introducao="Projetos com nome e contexto, fotografias em diferentes perspectivas. Explore as instalações e conheça também as imagens do nosso acervo." fundo={fundoAcervo("13")} /><PortfolioObras /><ChamadaContato /></main>;
 }

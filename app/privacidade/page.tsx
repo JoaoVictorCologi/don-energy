@@ -23,7 +23,7 @@ export default function Privacidade() {
   return (
     <main id="conteudo" tabIndex={-1} className="flex-1">
       <AberturaPagina titulo="Política de Privacidade" rotulo="Informação e transparência" introducao="Como a Don Energy usa os dados fornecidos pelo site." fundo={fundoPorDoSol} />
-      <article className="mx-auto max-w-3xl px-6 py-16">
+      <article className="novo-texto-legal mx-auto max-w-3xl px-6 py-16">
         <p className="mt-2 text-sm text-muted-foreground">
           Última atualização: {ultimaAtualizacaoExibicao}
         </p>
@@ -48,7 +48,7 @@ export default function Privacidade() {
               Coletamos apenas os dados que você mesmo nos fornece ao
               preencher o formulário de proposta na inicial: nome, telefone, cidade,
               perfil solar e pelo menos um dado mensal de energia: o valor da
-              conta em reais ou o consumo em kWh. Você pode informar ambos.
+              conta em reais ou o consumo em kWh. Selecione a unidade e informe o valor correspondente.
             </p>
             <p className="mt-3 text-muted-foreground">
               O site não instala ferramentas próprias de publicidade ou análise de comportamento. Serviços externos integrados, como Azume, Google Maps e WhatsApp, podem utilizar cookies e receber informações técnicas da conexão, conforme suas próprias políticas.

@@ -8,9 +8,9 @@ export function Depoimentos() {
   const variasAvaliacoes = avaliacoesVisiveis.length > 1;
 
   return (
-    <section id="depoimentos" aria-labelledby="depoimentos-titulo" className="site-section scroll-mt-4 bg-brand-soft py-8 md:py-24">
+    <section id="depoimentos" aria-labelledby="depoimentos-titulo" className="site-section novo-depoimentos scroll-mt-4">
       <div className="site-shell grid min-w-0 items-start gap-4 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)] lg:gap-8">
-        <div data-revelar className="rounded-2xl bg-brand-blue p-4 text-white sm:p-6 lg:p-8">
+        <div data-revelar className="novo-depoimentos-painel rounded-2xl bg-brand-blue p-4 text-white sm:p-6 lg:p-8">
           <h2 id="depoimentos-titulo" className="font-heading text-2xl leading-tight font-medium tracking-tight sm:text-3xl lg:text-4xl">
             O que nossos clientes dizem
           </h2>
@@ -37,7 +37,7 @@ export function Depoimentos() {
               key={id}
               data-slide
               className={
-                "min-w-0 flex-[0_0_100%] snap-start rounded-xl border border-border bg-white p-5 text-brand-ink sm:p-6" +
+                "novo-avaliacao-card min-w-0 flex-[0_0_100%] snap-start rounded-xl border border-border bg-white p-5 text-brand-ink sm:p-6" +
                 (variasAvaliacoes ? " lg:basis-[calc((100%-28px)/2)]" : "")
               }
             >

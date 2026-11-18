@@ -369,23 +369,12 @@ body {
 .visual-botao-claro { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 1.25rem; padding: .9rem 1.4rem; border: 1px solid #d0e99d; border-radius: 6px; color: #182447; background: #d0e99d; font-size: .875rem; font-weight: 650; transition: background-color 180ms; }
 .visual-botao-claro:hover { background: white; }
 .visual-botao-claro:focus-visible { outline: 3px solid white; outline-offset: 5px; }
-.visual-card { transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease; }
-.visual-card:hover, .visual-card:focus-within { border-color: #94b94a; box-shadow: 0 16px 40px #18244712; }
-.visual-card:hover { transform: translateY(-4px); }
-.visual-card img { border-radius: 0; }
-.visual-institucional { background: radial-gradient(ellipse at right, #e6eddc 0%, #f4f7ef 42%, white 82%); }
-.visual-foto-institucional { position: relative; }
-.visual-foto-institucional::before { content: ""; position: absolute; inset: -12px 12px 30px -12px; z-index: 0; border: 1px solid #94b94a; border-radius: 20px; }
-.visual-foto-institucional img { position: relative; border-radius: 16px; box-shadow: 0 20px 50px #18244718; }
-.visual-topicos { display: grid; gap: .7rem; }
-.visual-topicos li { padding: 1rem; background: #ffffffd9; border: 1px solid #d7dfcf; border-radius: 10px; }
-.visual-chamada, .visual-calculadora { position: relative; isolation: isolate; overflow: hidden; color: white; background: #182447; }
+.visual-chamada { position: relative; isolation: isolate; overflow: hidden; color: white; background: #182447; }
 .visual-chamada { padding-block: 5rem; }
-.visual-chamada::before, .visual-calculadora::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, #182447ed, #173b31d9); }
+.visual-chamada::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, #182447ed, #173b31d9); }
 .visual-painel-contato { box-shadow: 0 16px 48px #18244712; border-top: 4px solid #94b94a; }
-.visual-calculadora .azume-card { box-shadow: 0 28px 80px #0004; border-radius: 20px; }
 @keyframes visual-revelar { from { opacity: .45; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 .visual-entrada { animation: visual-revelar 650ms ease-out; }
 @media (min-width: 1024px) { .visual-abertura { padding-top: calc(var(--header-height) + 5rem); } .visual-abertura-texto { min-height: 340px; } }
 @media (max-width: 639px) { .visual-abertura { padding-top: calc(var(--header-height) + 2.5rem); } .visual-sobreposicao { background: #0e231fc7; } .visual-introducao { font-size: 1rem; } .visual-abertura-texto { padding-bottom: 2.5rem; } .visual-conteudo { padding-top: 3rem; } .visual-chamada { padding-block: 3.5rem; } }
-@media (prefers-reduced-motion: reduce) { .visual-entrada { animation: none; } .visual-card, .visual-botao-claro { transition: none; } .visual-card:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .visual-entrada { animation: none; } .visual-botao-claro { transition: none; } }

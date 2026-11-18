@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AberturaPagina } from "@/components/abertura-pagina";
 import { fundoAcervo } from "@/lib/visual-site";
 import { ChamadaContato } from "@/components/chamada-contato";
@@ -15,5 +16,11 @@ export const metadata: Metadata = {
 };
 
 export default function ServicosPage() {
-  return <main id="conteudo" tabIndex={-1} className="flex-1"><AberturaPagina rotulo="Soluções solares" titulo="Qual é a sua necessidade?" introducao="Explore o que considerar em cada projeto e conheça o atendimento para sistemas já instalados." fundo={fundoAcervo("01")} /><div className="visual-conteudo"><section aria-label="Soluções solares" className="site-shell pb-20"><div className="grid gap-7 md:grid-cols-2">{servicos.map((servico, index) => <ServicoCard key={servico.id} servico={servico} imagemInicial={index === 0} />)}</div><p className="mt-5 text-xs leading-relaxed text-muted-foreground">Fotografias do acervo Don Energy e ilustrações de aplicação.</p></section><ManutencaoSolar /><section className="site-section"><div className="site-shell"><p className="site-eyebrow">O contexto orienta a conversa</p><h2 className="site-title">Necessidades diferentes.<br />Um ponto de partida próprio.</h2><div className="mt-10">{servicos.map(servico => <article key={servico.id} className="grid gap-4 border-t border-border py-7 md:grid-cols-[1fr_1.6fr] md:gap-20"><h3 className="font-heading text-xl font-medium text-brand-blue">{servico.titulo}</h3><p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">{servico.necessidade}</p></article>)}</div></div></section><ChamadaContato /></div></main>;
+  return <main id="conteudo" tabIndex={-1} className="flex-1">
+    <AberturaPagina rotulo="Soluções solares" titulo="Qual é a sua necessidade?" introducao="Explore o que considerar em cada projeto e conheça o atendimento para sistemas já instalados." fundo={fundoAcervo("01")} />
+    <section aria-label="Soluções solares" className="site-section novo-catalogo"><div className="site-shell"><div className="novo-catalogo-grid">{servicos.map(servico => <ServicoCard key={servico.id} servico={servico} />)}</div><p className="mt-6 text-xs text-muted-foreground">Fotografias do acervo Don Energy e ilustrações de aplicação.</p></div></section>
+    <ManutencaoSolar />
+    <section className="site-section novo-necessidades"><div className="site-shell"><div className="novo-cabecalho-secao" data-revelar><div><p className="site-eyebrow">O contexto orienta a conversa</p><h2 className="site-title">Necessidades diferentes. Um ponto de partida próprio.</h2></div></div><div className="novo-necessidades-grid">{servicos.map(servico => <article key={servico.id} data-revelar><h3>{servico.titulo}</h3><p>{servico.necessidade}</p><Link prefetch={false} href={"/servicos/" + servico.slug + "/"} className="site-link">Conhecer solução</Link></article>)}</div></div></section>
+    <ChamadaContato />
+  </main>;
 }

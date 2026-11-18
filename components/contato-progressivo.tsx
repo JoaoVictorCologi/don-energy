@@ -37,7 +37,7 @@ export function ContatoProgressivo() {
   }, []);
 
   return (
-    <section id="contato" ref={section} aria-label="Proposta pelo WhatsApp" className="min-h-[68rem] min-w-0 scroll-mt-4 min-[380px]:min-h-[59rem] sm:min-h-[41rem] xl:ml-auto xl:w-full xl:max-w-[560px]">
+    <section id="contato" tabIndex={-1} ref={section} aria-label="Proposta pelo WhatsApp" className="min-h-[68rem] min-w-0 scroll-mt-4 min-[380px]:min-h-[59rem] sm:min-h-[41rem] xl:ml-auto xl:w-full xl:max-w-[560px]">
       {carregar ? <FormularioContato compacto /> : <ContatoAlternativo />}
     </section>
   );

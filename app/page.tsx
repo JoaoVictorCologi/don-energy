@@ -1,13 +1,18 @@
-import { ArrowUpRight, CalendarDays, Hammer, HardHat } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Hammer, HardHat, Phone } from "lucide-react";
 import Link from "next/link";
-import { localBusiness } from "@/lib/site-config";
+import { localBusiness, siteConfig } from "@/lib/site-config";
+import { contato } from "@/lib/contato-data";
+import { institucional } from "@/lib/institucional-data";
 import { avaliacoesVisiveis } from "@/lib/depoimentos-data";
 import { CalculadoraAzume } from "@/components/calculadora-azume";
+import { ContatoProgressivo } from "@/components/contato-progressivo";
 import { Depoimentos } from "@/components/depoimentos";
+import { FundoFotografico } from "@/components/fundo-fotografico";
 import { Hero } from "@/components/hero";
 import { ObrasGallery } from "@/components/obras-gallery";
 import { Servicos } from "@/components/servicos";
 import { FotoAcervo } from "@/components/foto-acervo";
+import { fundoAcervo, fundoPorDoSol } from "@/lib/visual-site";
 
 const topicos = [
   { texto: "Mais de 4 anos no mercado!", Icone: CalendarDays },
@@ -17,53 +22,51 @@ const topicos = [
 
 export default function Home() {
   return (
-    <main id="conteudo" tabIndex={-1} className="flex flex-1 flex-col">
+    <main id="conteudo" tabIndex={-1} className="novo-inicio flex flex-1 flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness).replace(/</g, "\\u003c") }} />
       <Hero />
-
-      <section aria-labelledby="sobre-titulo" className="site-section visual-institucional">
-        <div className="site-shell grid items-center gap-10 md:grid-cols-2 lg:gap-24">
-          <div data-revelar>
-            <h2 id="sobre-titulo" className="site-title">A Don Energy</h2>
-            <ul className="visual-topicos mt-7">
-              {topicos.map(({ texto, Icone }) => (
-                <li key={texto} className="flex items-center gap-4 py-5">
-                  <Icone aria-hidden="true" className="size-12 shrink-0 rounded-md bg-brand-soft p-2.5 text-brand-blue" />
-                  <p className="font-heading text-xl leading-snug font-medium text-brand-blue sm:text-2xl">{texto}</p>
-                </li>
-              ))}
-            </ul>
-            <Link prefetch={false} href="/nossa-historia/" className="site-button mt-5">
-              Nossa História <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" />
-            </Link>
+      <section id="sobre" tabIndex={-1} aria-labelledby="sobre-titulo" className="site-section novo-sobre">
+        <div className="site-shell">
+          <div className="novo-cabecalho-secao" data-revelar>
+            <div><p className="site-eyebrow">Nossa origem, nosso jeito de trabalhar</p><h2 id="sobre-titulo" className="site-title">A Don Energy</h2></div>
+            <p>{institucional.historia[0]}</p>
           </div>
-          <figure data-revelar className="visual-foto-institucional">
-            <FotoAcervo numero="04" />
-            <figcaption className="mt-3 text-xs text-muted-foreground">Fotografia do acervo Don Energy.</figcaption>
-          </figure>
+          <div className="novo-sobre-composicao">
+            <figure data-revelar className="novo-foto-principal">
+              <FotoAcervo numero="04" sizes="(min-width: 1024px) 65vw, 100vw" />
+              <figcaption>Fotografia do acervo Don Energy.</figcaption>
+            </figure>
+            <div className="novo-sobre-painel" data-revelar>
+              <ul>{topicos.map(({ texto, Icone }) => <li key={texto}><span className="novo-icone-circulo"><Icone aria-hidden="true" className="size-6" strokeWidth={1.6} /></span><p>{texto}</p></li>)}</ul>
+              <Link prefetch={false} href="/nossa-historia/" className="novo-link-branco">Nossa História <ArrowUpRight aria-hidden="true" className="size-4" /></Link>
+            </div>
+          </div>
         </div>
       </section>
-
       <Servicos />
       {avaliacoesVisiveis.length > 0 ? <Depoimentos /> : <ObrasGallery />}
-
-
-
-      <div className="site-section visual-calculadora">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/obras/trajetoria-por-do-sol-1280.webp" srcSet="/obras/trajetoria-por-do-sol-640.webp 640w, /obras/trajetoria-por-do-sol-1280.webp 1280w, /obras/trajetoria-por-do-sol-1920.webp 1920w, /obras/trajetoria-por-do-sol.webp 2400w" sizes="100vw" width={2400} height={1600} alt="" loading="lazy" className="visual-fundo" />
-        <div className="site-shell relative z-10 max-w-[800px]">
+      <section aria-labelledby="conversa-titulo" className="site-section novo-proposta">
+        <div className="site-shell novo-proposta-grid">
+          <div data-revelar className="novo-proposta-contexto">
+            <FundoFotografico fundo={fundoAcervo("14")} />
+            <p className="visual-rotulo">Vamos conversar</p>
+            <h2 id="conversa-titulo">Vamos falar sobre sua energia?</h2>
+            <p>Cada projeto começa por entender o contexto, as necessidades e as dúvidas de quem procura a Don Energy.</p>
+            <a href={"tel:" + siteConfig.telefoneInternacional} className="novo-link-branco"><Phone aria-hidden="true" className="size-4" />{contato.telefoneExibicao}</a>
+            <p className="novo-proposta-horarios">{contato.horarios.map(item => <span key={item.dias}>{item.dias} · {item.horario}</span>)}</p>
+          </div>
+          <ContatoProgressivo />
+        </div>
+      </section>
+      <section aria-label="Calculadora solar" className="site-section novo-calculadora">
+        <FundoFotografico fundo={fundoPorDoSol} />
+        <div className="site-shell novo-calculadora-grid">
+          <div data-revelar className="novo-calculadora-contexto"><p className="visual-rotulo">Explore as possibilidades</p><h2>Conheça a calculadora solar da Azume.</h2><p>Calculadora externa da Azume. Resultado sujeito às premissas do fornecedor e à avaliação do projeto.</p><p>Você também pode conversar com a nossa equipe sobre o seu projeto.</p><Link href="/contato/" prefetch={false} className="novo-link-branco">Falar com a equipe <ArrowUpRight aria-hidden="true" className="size-4" /></Link></div>
           <CalculadoraAzume />
         </div>
-      </div>
-      <section data-revelar className="visual-chamada">
-        <div className="site-shell relative z-10">
-          <p className="mb-4 text-xs font-semibold tracking-widest text-[#d0e99d] uppercase">Vamos conversar</p>
-          <h2 className="max-w-2xl font-heading text-3xl leading-snug font-medium">Seu projeto começa com uma conversa.</h2>
-          <Link prefetch={false} href="/contato/" className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm font-semibold underline underline-offset-8">
-            Veja contatos e localização <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" />
-          </Link>
-        </div>
+      </section>
+      <section data-revelar className="novo-faixa-final">
+        <div className="site-shell"><p className="visual-rotulo">Vamos conversar</p><div><h2>Seu projeto começa com uma conversa.</h2><Link prefetch={false} href="/contato/" className="visual-botao-claro">Veja contatos e localização <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></Link></div></div>
       </section>
     </main>
   );

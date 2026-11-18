@@ -1,3 +1,4 @@
+import { FundoFotografico } from "@/components/fundo-fotografico";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { FundoVisual } from "@/lib/visual-site";
@@ -15,9 +16,7 @@ type Props = {
 export function AberturaPagina({ titulo, introducao, rotulo, fundo, id = "pagina-titulo", caminho, children }: Props) {
   return (
     <section aria-labelledby={id} className="visual-abertura">
-      {/* Imagem decorativa com srcSet local, sem otimizador em produção estática. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={fundo.src} srcSet={fundo.srcSet} sizes="100vw" width={1920} height={1080} alt="" fetchPriority="high" loading="eager" className="visual-fundo" style={{ objectPosition: fundo.posicao }} />
+      <FundoFotografico fundo={fundo} prioridade />
       <div aria-hidden="true" className="visual-sobreposicao" />
       <div className="site-shell relative z-10">
         {caminho && <nav aria-label="Caminho da página" className="visual-caminho">

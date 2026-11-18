@@ -3,7 +3,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function ManutencaoSolar() {
   return (
-    <section id="manutencao" aria-labelledby="manutencao-titulo" className="site-section bg-brand-soft">
+    <section id="manutencao" aria-labelledby="manutencao-titulo" className="site-section novo-manutencao">
       <div className="site-shell">
         <div className="grid items-center gap-6 rounded-xl border border-border bg-background p-6 md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-9">
           <Wrench aria-hidden="true" className="size-11 rounded-lg bg-brand-soft p-2.5 text-brand-blue" />

@@ -17,13 +17,13 @@ const iconesRedes = {
   ),
 };
 
-export function CanaisContato({ mostrarIconesRedes = false }: { mostrarIconesRedes?: boolean }) {
+export function CanaisContato({ mostrarIconesRedes = false, mostrarEmail = true }: { mostrarIconesRedes?: boolean; mostrarEmail?: boolean }) {
   return (
     <div className="flex flex-col items-start text-sm">
-      <a href={"mailto:" + contato.email} className="inline-flex min-h-11 items-center gap-2 underline-offset-4 hover:underline">
+      {mostrarEmail && <a href={"mailto:" + contato.email} className="inline-flex min-h-11 items-center gap-2 underline-offset-4 hover:underline">
         <Mail aria-hidden="true" className="size-4 shrink-0" />
         <span>{contato.email}</span>
-      </a>
+      </a>}
       <ul aria-label="Redes sociais" className="flex flex-wrap gap-x-5">
         {contato.redesSociais.map(({ nome, url }) => (
           <li key={nome}>

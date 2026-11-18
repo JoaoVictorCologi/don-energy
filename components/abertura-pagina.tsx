@@ -11,11 +11,12 @@ type Props = {
   id?: string;
   caminho?: readonly { titulo: string; href: string }[];
   children?: ReactNode;
+  centralizada?: boolean;
 };
 
-export function AberturaPagina({ titulo, introducao, rotulo, fundo, id = "pagina-titulo", caminho, children }: Props) {
+export function AberturaPagina({ titulo, introducao, rotulo, fundo, id = "pagina-titulo", caminho, children, centralizada = false }: Props) {
   return (
-    <section aria-labelledby={id} className="visual-abertura">
+    <section aria-labelledby={id} className={"visual-abertura" + (centralizada ? " visual-abertura--centralizada" : "")}>
       <FundoFotografico fundo={fundo} prioridade />
       <div aria-hidden="true" className="visual-sobreposicao" />
       <div className="site-shell relative z-10">

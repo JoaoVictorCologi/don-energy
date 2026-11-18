@@ -145,3 +145,56 @@
 @media (max-width: 1023px) { .novo-hero-grid { grid-template-columns: minmax(0,1fr); max-width: 850px; } .novo-hero-apresentacao { padding-top: 1rem; } .novo-hero-grid > #contato { min-height: 63rem; } }
 @media (max-width: 639px) { .novo-hero { padding-top: calc(var(--header-height) + 1.5rem); } .novo-hero-apresentacao { padding-top: 0; } .novo-hero h1 { font-size: 2.65rem; } .novo-hero-descricao { margin-top: 1.4rem; } .novo-hero-acoes { margin-top: 1.4rem; } .novo-hero-grid #formulario-proposta h2 { font-size: 1.75rem; } .novo-hero-grid > #contato { min-height: 68rem; } }
 .novo-hero label[for="consentimento"] { display: block; line-height: 1.55; }
+
+/* Contato: abertura central e quatro canais com a identidade Don Energy. */
+.contato-renovado .visual-abertura--centralizada { padding-bottom: 7rem; }
+.contato-renovado .visual-sobreposicao { background: linear-gradient(180deg,#182447df,#173b31d9); }
+.visual-abertura--centralizada .visual-abertura-texto { min-height: 0; max-width: 850px; margin-inline: auto; padding-bottom: 1rem; text-align: center; }
+.visual-abertura--centralizada h1 { margin-inline: auto; font-size: clamp(2.2rem,4vw,3.5rem); }
+.visual-abertura--centralizada .visual-introducao { margin-inline: auto; border: 0; padding-left: 0; font-size: 1rem; }
+.visual-abertura--centralizada .visual-credito { margin: 1.5rem auto 0; text-align: center; }
+.contato-canais { position: relative; z-index: 2; margin-top: -4rem; scroll-margin-top: 1rem; }
+.contato-canais-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; }
+.contato-canal { position: relative; display: flex; min-width: 0; flex-direction: column; align-items: center; min-height: 270px; padding: 1.7rem 1.2rem 1.3rem; text-align: center; border: 1px solid #ffffff25; border-radius: 18px; background: #384c96; color: white; box-shadow: 0 18px 45px #18244715; transition: transform 250ms ease,box-shadow 250ms ease; }
+.contato-canal--principal { background: #94b83a; color: #182447; border-color: #94b83a; }
+.contato-canal-icone { display: grid; width: 58px; height: 58px; margin-bottom: 1.25rem; place-items: center; border-radius: 50%; background: #d0e99d; color: #384c96; }
+.contato-canal-icone > svg { width: 28px; height: 28px; }
+.contato-canal--principal .contato-canal-icone { color: #182447; background: #ffffffa6; }
+.contato-canal h3 { font-family: var(--font-sora),sans-serif; font-size: 1.1rem; font-weight: 600; }
+.contato-canal-valor { margin-top: .75rem; font-size: .9rem; line-height: 1.6; overflow-wrap: anywhere; }
+.contato-canal-horarios { margin-block: .75rem; font-size: .875rem; line-height: 1.8; }
+.contato-canal-endereco { margin-block: .75rem; font-size: .8rem; font-style: normal; line-height: 1.7; }
+.contato-canal-link { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; margin-top: auto; font-size: .75rem; font-weight: 650; text-decoration: underline; text-underline-offset: 5px; }
+.contato-canal-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.contato-canal-nota { margin-top: auto; padding-block: .75rem; font-size: .7rem; }
+.contato-canal:focus-within { outline: 3px solid #182447; outline-offset: 5px; }
+.contato-canal-link:focus-visible { outline: none; }
+.contato-apoio { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem 5rem; padding-block: 4.5rem; }
+.contato-redes { padding: 2rem; border: 1px solid #d8e0d0; border-radius: 18px; background: #f4f7ef; }
+.contato-redes .site-eyebrow { margin-bottom: .5rem; }
+/* Os próximos destinos pertencem ao conteúdo do serviço, antes da chamada final. */
+.servico-proximos { padding-block: 2rem 4rem; background: #f4f7ef; }
+.servico-proximos-grid { display: grid; grid-template-columns: .85fr 1fr 1fr; align-items: center; gap: 1.25rem; }
+.servico-proximos .site-eyebrow { margin-bottom: .6rem; }
+.servico-proximos h2 { font: 500 1.4rem/1.4 var(--font-sora),sans-serif; color: #384c96; }
+.servico-proximo-link { display: flex; gap: 1rem; align-items: center; justify-content: space-between; min-height: 88px; padding: 1.3rem 1.5rem; border: 1px solid #c9d4c0; border-radius: 14px; color: #384c96; background: white; font-size: .875rem; line-height: 1.6; font-weight: 600; transition: border-color 200ms ease,background-color 200ms ease; }
+.servico-proximo-link--principal { color: white; background: #384c96; border-color: #384c96; }
+.servico-proximo-link--principal svg { color: #d0e99d; }
+.servico-proximo-link:hover { border-color: #384c96; background: #e3ebd5; }
+.servico-proximo-link--principal:hover { background: #182447; }
+/* Efeitos finitos: sem loops, travas de rolagem ou conteúdo dependente de animação. */
+@keyframes contato-cartao-entrada { from { opacity: .5; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes foto-revelar-lateral { from { opacity: .5; transform: translateX(-18px); } to { opacity: 1; transform: none; } }
+.contato-canal.visual-entrada { animation-name: contato-cartao-entrada; animation-duration: 750ms; animation-fill-mode: both; }
+figure[data-revelar].visual-entrada { animation-name: foto-revelar-lateral; }
+.visual-abertura .visual-fundo { animation: novo-foto-entrada 1400ms ease-out; }
+.visual-abertura-texto { animation: novo-titulo-entrada 800ms ease-out; }
+.nav-link-animado { position: relative; }
+.nav-link-animado::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 2px; background: #d0e99d; transform: scaleX(0); transform-origin: left; transition: transform 250ms ease; }
+.nav-link-animado:hover::after, .nav-link-animado:focus-visible::after, .nav-link-animado[aria-current="page"]::after { transform: scaleX(1); }
+.visual-botao-claro svg, .site-button svg, .novo-projeto-link svg { transition: transform 250ms ease; }
+@media (hover: hover) and (pointer: fine) { .contato-canal:has(a):hover { transform: translateY(-5px); box-shadow: 0 24px 50px #18244724; } .visual-botao-claro:hover svg, .site-button:hover svg, .novo-projeto-card:hover .novo-projeto-link svg { transform: translate(2px,-2px); } }
+@media (min-width: 1024px) { .novo-catalogo-grid > .visual-entrada:nth-child(even), .novo-projetos-grid > .visual-entrada:nth-child(even) { animation-delay: 100ms; } }
+@media (max-width: 1099px) { .contato-canais-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .servico-proximos-grid { grid-template-columns: 1fr 1fr; } .servico-proximos-grid > div { grid-column: 1 / -1; } }
+@media (max-width: 639px) { .contato-canais-grid { grid-template-columns: minmax(0,1fr); } .contato-canal { min-height: 245px; } .contato-renovado .visual-abertura--centralizada { padding-bottom: 6rem; } .contato-canais { margin-top: -3rem; } .contato-apoio { grid-template-columns: 1fr; padding-block: 3rem; } .servico-proximos-grid { grid-template-columns: 1fr; } .servico-proximo-link { min-height: 76px; } }
+@media (prefers-reduced-motion: reduce) { .contato-canal.visual-entrada, figure[data-revelar].visual-entrada, .visual-abertura .visual-fundo, .visual-abertura-texto { animation: none; } .contato-canal, .nav-link-animado::after, .visual-botao-claro svg, .site-button svg, .novo-projeto-link svg, .servico-proximo-link { transition: none; } .contato-canal:has(a):hover, .visual-botao-claro:hover svg, .site-button:hover svg, .novo-projeto-card:hover .novo-projeto-link svg { transform: none; } }

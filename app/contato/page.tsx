@@ -1,7 +1,7 @@
 import { AberturaPagina } from "@/components/abertura-pagina";
-import { fundoPorDoSol } from "@/lib/visual-site";
+import { fundoAcervo } from "@/lib/visual-site";
 import type { Metadata } from "next";
-import { ArrowUpRight, Clock, MapPin, Phone, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Clock, MapPin, Phone, MessageCircle, Mail } from "lucide-react";
 import { CanaisContato } from "@/components/canais-contato";
 import { MapaContato } from "@/components/mapa-contato";
 import { contato } from "@/lib/contato-data";
@@ -16,8 +16,37 @@ export const metadata: Metadata = {
 };
 
 export default function ContatoPage() {
-  return <main id="conteudo" tabIndex={-1} className="flex-1"><AberturaPagina rotulo="Vamos conversar" titulo="Seu próximo passo começa por aqui." introducao="Fale com a Don Energy sobre o seu projeto solar. Nossa equipe pode conversar com você sobre necessidades, possibilidades e próximos passos." fundo={fundoPorDoSol} /><section id="fale-conosco" className="site-shell visual-conteudo novo-contato scroll-mt-6 pb-16">
-    <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16"><div data-revelar id="formulario-proposta" className="scroll-mt-[calc(var(--header-height)+1rem)] visual-painel-contato rounded-2xl bg-brand-blue p-7 text-white sm:p-10"><MessageCircle aria-hidden="true" className="mb-5 size-7 text-brand-green" /><h2 className="font-heading text-2xl font-medium">Vamos falar sobre sua energia?</h2><p className="mt-4 text-sm leading-relaxed text-white/90">Comece uma conversa com a equipe pelo WhatsApp, sem preencher um formulário.</p><a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="visual-botao-claro mt-7">Falar no WhatsApp <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></a><p className="mt-5 text-sm text-white/90">Ou ligue: <a href={"tel:"+siteConfig.telefoneInternacional} className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4">{contato.telefoneExibicao}</a></p></div>
-      <div className="novo-contato-info"><div data-revelar><MapPin aria-hidden="true" className="mb-4 size-5 text-brand-blue" /><h2 className="font-heading text-xl font-medium text-brand-blue">Encontre a gente</h2><address className="mt-3 text-sm leading-relaxed text-muted-foreground not-italic">{contato.endereco.linha1}<br />{contato.endereco.linha2}</address></div><div data-revelar><Clock aria-hidden="true" className="mb-4 size-5 text-brand-blue" /><h2 className="font-heading text-xl font-medium text-brand-blue">Atendimento</h2><dl className="mt-3 text-sm">{contato.horarios.map(item => <div key={item.dias}><dt className="font-medium">{item.dias}</dt><dd className="mt-1 text-muted-foreground">{item.horario}</dd></div>)}</dl><a href={"tel:"+siteConfig.telefoneInternacional} className="site-link mt-3"><Phone aria-hidden="true" className="size-4" />{contato.telefoneExibicao}</a><CanaisContato mostrarIconesRedes /></div></div>
-    </div></section><MapaContato /></main>;
+  return <main id="conteudo" tabIndex={-1} className="flex-1 contato-renovado">
+    <AberturaPagina centralizada rotulo="Contato Don Energy" titulo="Vamos conversar sobre sua energia?" introducao="Fale com a Don Energy sobre o seu projeto solar. Nossa equipe pode conversar com você sobre necessidades, possibilidades e próximos passos." fundo={fundoAcervo("13")} />
+    <section id="fale-conosco" tabIndex={-1} aria-labelledby="canais-titulo" className="site-shell contato-canais">
+      <h2 id="canais-titulo" className="sr-only">Canais de contato</h2>
+      <div className="contato-canais-grid">
+        <article data-revelar className="contato-canal contato-canal--principal">
+          <span className="contato-canal-icone"><MessageCircle aria-hidden="true" strokeWidth={1.6} /></span>
+          <h3>WhatsApp</h3><p className="contato-canal-valor">{contato.telefoneExibicao}</p>
+          <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="contato-canal-link">Falar com a equipe <ArrowUpRight aria-hidden="true" className="size-4" /></a>
+        </article>
+        <article data-revelar className="contato-canal" style={{ animationDelay: "100ms" }}>
+          <span className="contato-canal-icone"><Mail aria-hidden="true" strokeWidth={1.6} /></span>
+          <h3>E-mail</h3><p className="contato-canal-valor">{contato.email}</p>
+          <a href={"mailto:" + contato.email} className="contato-canal-link">Enviar e-mail <ArrowUpRight aria-hidden="true" className="size-4" /></a>
+        </article>
+        <article data-revelar className="contato-canal" style={{ animationDelay: "200ms" }}>
+          <span className="contato-canal-icone"><Clock aria-hidden="true" strokeWidth={1.6} /></span>
+          <h3>Atendimento</h3><dl className="contato-canal-horarios">{contato.horarios.map(item => <div key={item.dias}><dt>{item.dias}</dt><dd>{item.horario}</dd></div>)}</dl>
+          <p className="contato-canal-nota">Horário de funcionamento</p>
+        </article>
+        <article data-revelar className="contato-canal" style={{ animationDelay: "300ms" }}>
+          <span className="contato-canal-icone"><MapPin aria-hidden="true" strokeWidth={1.6} /></span>
+          <h3>Endereço</h3><address className="contato-canal-endereco">{contato.endereco.linha1}<br />{contato.endereco.linha2}</address>
+          <a href="#localizacao" className="contato-canal-link">Ver localização <ArrowUpRight aria-hidden="true" className="size-4" /></a>
+        </article>
+      </div>
+    </section>
+    <section id="formulario-proposta" tabIndex={-1} aria-labelledby="contato-apoio-titulo" className="site-shell contato-apoio">
+      <div data-revelar><p className="site-eyebrow">Seu próximo passo começa por aqui</p><h2 id="contato-apoio-titulo" className="site-title">Vamos falar sobre sua energia?</h2><p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">Comece uma conversa com a equipe pelo WhatsApp, sem preencher um formulário.</p></div>
+      <div className="contato-redes" data-revelar><p className="site-eyebrow">Outras formas de conversar</p><a href={"tel:" + siteConfig.telefoneInternacional} className="site-link"><Phone aria-hidden="true" className="size-4" />Ligue: {contato.telefoneExibicao}</a><CanaisContato mostrarIconesRedes mostrarEmail={false} /></div>
+    </section>
+    <MapaContato />
+  </main>;
 }

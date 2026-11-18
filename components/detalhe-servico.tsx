@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import Link from "next/link";
 import type { Servico } from "@/lib/servicos-data";
 import { apresentacaoSolar } from "@/lib/apresentacao-solar";
@@ -22,6 +22,11 @@ export function DetalheServico({ servico }: { servico: Servico }) {
     </div></section>
     <EtapasProposta etapas={servico.etapas} />
     <section className="site-section novo-perguntas"><div className="site-shell grid gap-10 md:grid-cols-[1fr_1.2fr] lg:gap-20"><div data-revelar><p className="site-eyebrow">Dúvidas deste perfil</p><h2 className="site-title">Para começar com mais clareza.</h2></div><div>{servico.faq.map(item => <details key={item.pergunta}><summary>{item.pergunta}</summary><p>{item.resposta}</p></details>)}</div></div></section>
-    <ChamadaContato slug={servico.slug} /><div className="site-shell flex flex-wrap gap-x-8 py-7"><Link prefetch={false} href="/servicos/" className="site-link">Conhecer os outros perfis solares</Link><a href={buildWhatsAppUrl(servico.mensagem)} target="_blank" rel="noopener noreferrer" className="site-link">Conversar direto no WhatsApp <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" /></a></div>
+    <nav aria-label="Próximos caminhos deste serviço" className="servico-proximos"><div className="site-shell servico-proximos-grid">
+      <div><p className="site-eyebrow">Continue por aqui</p><h2>O próximo passo é seu.</h2></div>
+      <Link prefetch={false} href="/servicos/" className="servico-proximo-link"><ArrowLeft aria-hidden="true" className="size-5 shrink-0" /><span>Conhecer os outros perfis solares</span></Link>
+      <a href={buildWhatsAppUrl(servico.mensagem)} target="_blank" rel="noopener noreferrer" className="servico-proximo-link servico-proximo-link--principal"><span>Conversar direto no WhatsApp</span><ArrowUpRight aria-hidden="true" className="size-5 shrink-0" /></a>
+    </div></nav>
+    <ChamadaContato slug={servico.slug} />
   </>;
 }

@@ -52,16 +52,9 @@
 .novo-depoimentos-painel { position: relative; overflow: hidden; }
 .novo-depoimentos-painel::before { content: ""; display: block; width: 44px; height: 3px; margin-bottom: 1.5rem; background: #d0e99d; }
 .novo-avaliacao-card { box-shadow: 0 10px 35px #18244708; }
-.novo-proposta { background: #f4f7ef; }
-.novo-proposta-grid { display: grid; align-items: start; grid-template-columns: .85fr 1.15fr; gap: 2rem; }
-.novo-proposta-contexto { position: relative; isolation: isolate; overflow: hidden; padding: 3rem; border-radius: 22px; color: white; background: #173b31; }
-.novo-proposta-contexto::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #0e231fe6; }
-.novo-proposta-contexto h2, .novo-calculadora-contexto h2 { font-family: var(--font-sora),sans-serif; font-size: clamp(1.8rem,3vw,2.7rem); line-height: 1.25; font-weight: 500; letter-spacing: -.035em; }
-.novo-proposta-contexto > p:not(.visual-rotulo), .novo-calculadora-contexto > p:not(.visual-rotulo) { margin-top: 1.5rem; font-size: 1rem; line-height: 1.8; }
-.novo-proposta-contexto .novo-link-branco, .novo-calculadora-contexto .novo-link-branco { margin-top: 1.5rem; }
-.novo-proposta-horarios { border-top: 1px solid #ffffff40; padding-top: 1.5rem; font-size: .8rem !important; }
-.novo-proposta-grid > #contato { min-height: 63rem; width: 100%; max-width: none; }
-.novo-proposta-grid #formulario-proposta { border-radius: 20px; box-shadow: 0 16px 48px #1824470b; }
+.novo-calculadora-contexto h2 { font-family: var(--font-sora),sans-serif; font-size: clamp(1.8rem,3vw,2.7rem); line-height: 1.25; font-weight: 500; letter-spacing: -.035em; }
+.novo-calculadora-contexto > p:not(.visual-rotulo) { margin-top: 1.5rem; font-size: 1rem; line-height: 1.8; }
+.novo-calculadora-contexto .novo-link-branco { margin-top: 1.5rem; }
 .novo-calculadora { position: relative; isolation: isolate; overflow: hidden; color: white; background: #173b31; }
 .novo-calculadora::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg,#182447ed,#173b31e3); }
 .novo-calculadora-grid { display: grid; grid-template-columns: .75fr 1.25fr; align-items: start; gap: 4rem; }
@@ -125,16 +118,11 @@
 @keyframes novo-indicar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 @keyframes novo-progresso { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @supports (animation-timeline: scroll()) { .novo-progresso-leitura { display: block; position: fixed; inset: 0 0 auto; z-index: 100; height: 3px; pointer-events: none; background: #94b94a; transform-origin: left; animation: novo-progresso linear both; animation-timeline: scroll(); } }
-@media (min-width: 1280px) { .novo-proposta-grid > #contato { min-height: 51rem; } }
-@media (max-width: 1023px) { .novo-calculadora-grid { grid-template-columns: 1fr; gap: 2rem; max-width: 850px; } .novo-calculadora-contexto { max-width: 650px; } .novo-foto-principal img { height: 480px; } .novo-sobre-painel { margin-left: -2rem; padding: 2rem; } .novo-proposta-grid { grid-template-columns: 1fr; } .novo-proposta-contexto { padding: 2rem; } .novo-proposta-grid > #contato { max-width: 750px; margin-inline: auto; min-height: 63rem; } }
+@media (max-width: 1023px) { .novo-calculadora-grid { grid-template-columns: 1fr; gap: 2rem; max-width: 850px; } .novo-calculadora-contexto { max-width: 650px; } .novo-foto-principal img { height: 480px; } .novo-sobre-painel { margin-left: -2rem; padding: 2rem; } }
 @media (max-width: 767px) { .novo-cabecalho-secao { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; } .novo-sobre-composicao { grid-template-columns: 1fr; } .novo-foto-principal img { height: auto; aspect-ratio: 4/3; } .novo-sobre-painel { margin: -2rem 1rem 0; } .novo-catalogo-grid, .novo-necessidades-grid, .novo-contexto-grid, .novo-projetos-grid { grid-template-columns: 1fr; } .novo-catalogo-grid > article:last-child:nth-child(odd) { display: flex; } .novo-etapas-trilho { grid-template-columns: 1fr; gap: 2rem; } .novo-etapas-trilho::before { top: 0; bottom: 1rem; left: 27px; right: auto; width: 2px; height: auto; } .novo-etapas-trilho li { padding-left: 80px; } .novo-etapa-numero { position: absolute; left: 0; top: 0; } .novo-etapas-trilho h3 { margin-top: 0; } .novo-faixa-final .site-shell > div { flex-direction: column; align-items: flex-start; } .novo-projetos-grid > article:first-child img { aspect-ratio: 16/10; } .novo-hero { min-height: 0; padding-top: calc(var(--header-height) + 4rem); } .novo-hero-foto { object-position: 62% center; } .novo-hero-overlay { background: #0e231fc4; } .novo-hero-descricao { font-size: 1.1rem; } .novo-hero-base { margin-top: 3rem; } .novo-info-projeto { padding: 2rem; } .novo-projeto-foto-completa { padding: .7rem; } .novo-texto-legal { margin: 2rem 1rem; padding: 1.4rem; } }
-@media (max-width: 479px) { .novo-servico-corpo { padding: 1.5rem; min-height: 0; } .novo-servico-corpo h2, .novo-servico-corpo h3 { font-size: 1.5rem; } .novo-sobre-painel { padding: 1.5rem; margin-inline: 0; } .novo-sobre-painel li p { font-size: 1.15rem; } .novo-projeto-legenda { padding: 1.4rem; } .novo-projeto-legenda h3 { font-size: 1.2rem; } .novo-proposta-contexto { padding: 1.5rem; } .novo-calculadora .azume-card { padding: .5rem; } .novo-hero-acoes { gap: 1rem; } .novo-contato-info > div { padding: 1.5rem; } }
+@media (max-width: 479px) { .novo-servico-corpo { padding: 1.5rem; min-height: 0; } .novo-servico-corpo h2, .novo-servico-corpo h3 { font-size: 1.5rem; } .novo-sobre-painel { padding: 1.5rem; margin-inline: 0; } .novo-sobre-painel li p { font-size: 1.15rem; } .novo-projeto-legenda { padding: 1.4rem; } .novo-projeto-legenda h3 { font-size: 1.2rem; } .novo-calculadora .azume-card { padding: .5rem; } .novo-hero-acoes { gap: 1rem; } .novo-contato-info > div { padding: 1.5rem; } }
 @media (prefers-reduced-motion: reduce) { .novo-hero-foto, .novo-hero h1 span, .novo-explorar svg { animation: none; } .novo-progresso-leitura { display: none; } .novo-servico-card, .novo-servico-foto img, .novo-card-link > span, .novo-projeto-imagem img { transition: none; } .novo-servico-card:hover, .novo-servico-card:hover img, .novo-servico-card:hover .novo-card-link > span, .novo-projeto-card:hover img { transform: none; } }
 
-.novo-manutencao { background: white; }
-.novo-manutencao .site-shell > div { padding: clamp(1.5rem,4vw,3rem); border: 0; border-radius: 20px; background: #384c96; color: white; }
-.novo-manutencao .site-title, .novo-manutencao .site-link { color: white; }
-.novo-manutencao p { color: #f1f4fb; }
 .novo-chamada h2 { font-size: clamp(2rem,3.2vw,3rem); letter-spacing: -.035em; }
 
 @keyframes novo-eixo-horizontal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -143,3 +131,17 @@
 .novo-etapas-trilho.visual-entrada::before { transform-origin: left top; animation: novo-eixo-horizontal 1600ms ease-out; }
 @media (max-width: 767px) { .novo-etapas-trilho.visual-entrada::before { animation-name: novo-eixo-vertical; } }
 @media (prefers-reduced-motion: reduce) { .novo-etapas-trilho.visual-entrada::before { animation: none; } }
+
+/* Ajuste do proprietário: proposta novamente em destaque no primeiro bloco. */
+.novo-hero { align-items: flex-start; padding-top: calc(var(--header-height) + 2rem); }
+.novo-hero-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.05fr); align-items: start; gap: 2rem 3rem; max-width: 1320px; }
+.novo-hero-apresentacao { min-width: 0; padding-top: 2.5rem; }
+.novo-hero h1 { font-size: clamp(2.65rem,4.3vw,4rem); }
+.novo-hero-acoes { gap: 1rem 1.5rem; }
+.novo-hero-grid > #contato { width: 100%; max-width: none; margin: 0; min-height: 55rem; }
+.novo-hero-grid #formulario-proposta { border: 1px solid #d8e0d0; border-top: 4px solid #94b94a; border-radius: 20px; box-shadow: 0 24px 70px #0003; }
+.novo-hero-grid #formulario-proposta h2 { font-size: 2rem; }
+.novo-hero-base { grid-column: 1 / -1; margin-top: 0; }
+@media (max-width: 1023px) { .novo-hero-grid { grid-template-columns: minmax(0,1fr); max-width: 850px; } .novo-hero-apresentacao { padding-top: 1rem; } .novo-hero-grid > #contato { min-height: 63rem; } }
+@media (max-width: 639px) { .novo-hero { padding-top: calc(var(--header-height) + 1.5rem); } .novo-hero-apresentacao { padding-top: 0; } .novo-hero h1 { font-size: 2.65rem; } .novo-hero-descricao { margin-top: 1.4rem; } .novo-hero-acoes { margin-top: 1.4rem; } .novo-hero-grid #formulario-proposta h2 { font-size: 1.75rem; } .novo-hero-grid > #contato { min-height: 68rem; } }
+.novo-hero label[for="consentimento"] { display: block; line-height: 1.55; }

@@ -1,18 +1,16 @@
-import { ArrowUpRight, CalendarDays, Hammer, HardHat, Phone } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Hammer, HardHat } from "lucide-react";
 import Link from "next/link";
-import { localBusiness, siteConfig } from "@/lib/site-config";
-import { contato } from "@/lib/contato-data";
+import { localBusiness } from "@/lib/site-config";
 import { institucional } from "@/lib/institucional-data";
 import { avaliacoesVisiveis } from "@/lib/depoimentos-data";
 import { CalculadoraAzume } from "@/components/calculadora-azume";
-import { ContatoProgressivo } from "@/components/contato-progressivo";
 import { Depoimentos } from "@/components/depoimentos";
 import { FundoFotografico } from "@/components/fundo-fotografico";
 import { Hero } from "@/components/hero";
 import { ObrasGallery } from "@/components/obras-gallery";
 import { Servicos } from "@/components/servicos";
 import { FotoAcervo } from "@/components/foto-acervo";
-import { fundoAcervo, fundoPorDoSol } from "@/lib/visual-site";
+import { fundoPorDoSol } from "@/lib/visual-site";
 
 const topicos = [
   { texto: "Mais de 4 anos no mercado!", Icone: CalendarDays },
@@ -45,19 +43,6 @@ export default function Home() {
       </section>
       <Servicos />
       {avaliacoesVisiveis.length > 0 ? <Depoimentos /> : <ObrasGallery />}
-      <section aria-labelledby="conversa-titulo" className="site-section novo-proposta">
-        <div className="site-shell novo-proposta-grid">
-          <div data-revelar className="novo-proposta-contexto">
-            <FundoFotografico fundo={fundoAcervo("14")} />
-            <p className="visual-rotulo">Vamos conversar</p>
-            <h2 id="conversa-titulo">Vamos falar sobre sua energia?</h2>
-            <p>Cada projeto começa por entender o contexto, as necessidades e as dúvidas de quem procura a Don Energy.</p>
-            <a href={"tel:" + siteConfig.telefoneInternacional} className="novo-link-branco"><Phone aria-hidden="true" className="size-4" />{contato.telefoneExibicao}</a>
-            <p className="novo-proposta-horarios">{contato.horarios.map(item => <span key={item.dias}>{item.dias} · {item.horario}</span>)}</p>
-          </div>
-          <ContatoProgressivo />
-        </div>
-      </section>
       <section aria-label="Calculadora solar" className="site-section novo-calculadora">
         <FundoFotografico fundo={fundoPorDoSol} />
         <div className="site-shell novo-calculadora-grid">

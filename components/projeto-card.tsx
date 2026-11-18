@@ -5,7 +5,7 @@ import { fotoPorId } from "@/lib/fotos-data";
 import { ImagemPortfolio } from "@/components/imagem-portfolio";
 
 export function ProjetoCard({ obra }: { obra: ObraConfirmada }) {
-  return <article data-projeto-id={obra.id} className="group relative overflow-hidden rounded-md border border-border bg-background focus-within:ring-2 focus-within:ring-brand-blue">
+  return <article data-revelar data-projeto-id={obra.id} className="visual-card group relative overflow-hidden rounded-2xl border border-border bg-background focus-within:ring-2 focus-within:ring-brand-blue">
     <ImagemPortfolio foto={fotoPorId(obra.capaFotoId)} />
     <div className="p-6"><h3 className="font-heading text-xl leading-snug font-medium text-brand-blue">{obra.titulo}</h3>
       {obra.cidade && <p className="mt-3 text-sm text-muted-foreground">{obra.cidade}{obra.uf ? " · " + obra.uf : ""}</p>}

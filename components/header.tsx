@@ -18,7 +18,6 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [menuAtivado, setMenuAtivado] = useState(false);
   const pathname = usePathname();
-  const sobreImagem = pathname === "/" || pathname === "/nossa-historia" || pathname === "/nossa-historia/";
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 1024px)");
     const closeOnDesktop = () => { if (desktop.matches) setOpen(false); };
@@ -26,7 +25,7 @@ export function Header() {
     return () => desktop.removeEventListener("change", closeOnDesktop);
   }, []);
   return (
-    <header className={sobreImagem ? "relative z-50 -mb-[var(--header-height)] shrink-0 bg-transparent text-white" : "relative z-50 shrink-0 bg-transparent text-brand-blue"}>
+    <header className="relative z-50 -mb-[var(--header-height)] shrink-0 bg-transparent text-white">
       <div className="site-shell flex items-center justify-between gap-4 py-[var(--header-py)]">
         <Link href="/" aria-label="Don Energy — página inicial" className="flex min-h-11 items-center rounded-sm"><span aria-hidden="true" className="block h-[var(--header-logo-size)] bg-current [mask-image:url(/logo/don-energy-branca.png)] [mask-repeat:no-repeat] [mask-size:contain]" style={{ aspectRatio: siteConfig.logo.width + " / " + siteConfig.logo.height }} /></Link>
         <nav aria-label="Navegação principal" className="hidden items-center gap-5 text-sm lg:flex">{linksPrincipais.map(link => <a key={link.href} href={link.href} aria-current={linkAtivo(pathname,link.href)?"page":undefined} className="inline-flex min-h-11 items-center rounded-sm font-medium underline-offset-8 hover:underline aria-[current=page]:underline">{link.label}</a>)}</nav>

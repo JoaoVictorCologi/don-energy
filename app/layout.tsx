@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
+import { EfeitosVisuais } from "@/components/efeitos-visuais";
 import { Header } from "@/components/header";
 import { WhatsappFlutuante } from "@/components/whatsapp-flutuante";
 import { cn } from "@/lib/utils";
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col wrap-anywhere">
         <a href="#conteudo" className="sr-only fixed top-2 left-2 z-[100] rounded-md bg-white px-4 py-3 text-brand-blue focus:not-sr-only">Pular para o conteúdo</a>
         <Header />
+        <EfeitosVisuais />
         {children}
         <Footer />
         <WhatsappFlutuante />

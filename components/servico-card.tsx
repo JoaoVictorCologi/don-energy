@@ -7,7 +7,7 @@ import { apresentacaoSolar } from "@/lib/apresentacao-solar";
 export function ServicoCard({ servico, inicial = false, imagemInicial = false }: { servico: Servico; inicial?: boolean; imagemInicial?: boolean }) {
   const Titulo = inicial ? "h3" : "h2";
   return (
-    <article data-servico={servico.id} className="group relative overflow-hidden rounded-md border border-border bg-background focus-within:ring-2 focus-within:ring-brand-blue">
+    <article data-revelar data-servico={servico.id} className="visual-card group relative overflow-hidden rounded-2xl border border-border bg-background focus-within:ring-2 focus-within:ring-brand-blue">
       <VisualServico perfil={servico.id} loading={imagemInicial ? "eager" : "lazy"} className="aspect-[16/9] rounded-none" />
       <div className="p-6 sm:p-8"><p className="mb-4 text-xs leading-relaxed text-muted-foreground">{apresentacaoSolar[servico.id].legenda}</p>
         <Titulo className="font-heading text-2xl font-medium tracking-tight text-brand-blue">{inicial ? servico.titulo : servico.nome}</Titulo>

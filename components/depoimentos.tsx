@@ -10,7 +10,7 @@ export function Depoimentos() {
   return (
     <section id="depoimentos" aria-labelledby="depoimentos-titulo" className="site-section scroll-mt-4 bg-brand-soft py-8 md:py-24">
       <div className="site-shell grid min-w-0 items-start gap-4 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)] lg:gap-8">
-        <div className="rounded-2xl bg-brand-blue p-4 text-white sm:p-6 lg:p-8">
+        <div data-revelar className="rounded-2xl bg-brand-blue p-4 text-white sm:p-6 lg:p-8">
           <h2 id="depoimentos-titulo" className="font-heading text-2xl leading-tight font-medium tracking-tight sm:text-3xl lg:text-4xl">
             O que nossos clientes dizem
           </h2>

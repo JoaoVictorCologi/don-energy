@@ -1,3 +1,5 @@
+import { AberturaPagina } from "@/components/abertura-pagina";
+import { fundoPorDoSol } from "@/lib/visual-site";
 import type { Metadata } from "next";
 
 import { contato } from "@/lib/contato-data";
@@ -20,10 +22,8 @@ const ultimaAtualizacaoExibicao = PRIVACIDADE_ATUALIZADA_EM.toLocaleDateString(
 export default function Privacidade() {
   return (
     <main id="conteudo" tabIndex={-1} className="flex-1">
+      <AberturaPagina titulo="Política de Privacidade" rotulo="Informação e transparência" introducao="Como a Don Energy usa os dados fornecidos pelo site." fundo={fundoPorDoSol} />
       <article className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="font-heading text-3xl font-medium text-brand-blue tracking-tight sm:text-4xl">
-          Política de Privacidade
-        </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Última atualização: {ultimaAtualizacaoExibicao}
         </p>

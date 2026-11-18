@@ -263,3 +263,47 @@ html[data-movimento="reduzido"] .novo-progresso-leitura { display: none; }
 
 @keyframes carrossel-imagem-chegar { from { opacity: .6; transform: scale(1.05); } to { opacity: 1; transform: scale(1); } }
 html[data-movimento="ativo"] .carrossel-foto-entrada > * { animation: carrossel-imagem-chegar 1000ms ease-out; }
+
+/* Alternativa local: uma solução em destaque, fotografia ampla e escolha por nome. */
+.solucoes-destaque { min-width: 0; }
+.solucoes-destaque-barra { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.solucoes-destaque-status { color: #384c96; font: 500 1.5rem/1 var(--font-sora),sans-serif; font-variant-numeric: tabular-nums; }
+.solucoes-destaque-status > span > span { margin-left: .5rem; font-size: .9rem; color: #536177; }
+.solucoes-destaque-trilho { display: flex; gap: 24px; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #384c96 #e3ebd5; padding-bottom: 12px; border-radius: 22px; }
+.solucao-destaque-slide { flex: 0 0 100%; min-width: 0; display: grid; grid-template-columns: minmax(0,1.35fr) minmax(0,1fr); overflow: hidden; scroll-snap-align: start; scroll-snap-stop: always; border-radius: 22px; background: #384c96; color: white; }
+.solucao-destaque-visual { display: flex; flex-direction: column; min-width: 0; background: #173b31; }
+.solucao-destaque-foto { flex: 1; display: grid; overflow: hidden; min-height: 380px; }
+.solucao-destaque-foto > *, .solucao-destaque-foto picture, .solucao-destaque-foto img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 0; }
+.solucao-destaque-foto > div { display: grid; }
+.solucao-destaque-visual figcaption { padding: .85rem 1.5rem; color: #fff; font-size: .7rem; line-height: 1.6; }
+.solucao-destaque-conteudo { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.5rem,3vw,3rem); }
+.solucao-destaque-rotulo { width: 100%; display: flex; justify-content: space-between; gap: .5rem; margin-bottom: 2rem; color: #d0e99d; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; }
+.solucao-destaque-conteudo h3 { font: 500 clamp(1.8rem,2.7vw,2.6rem)/1.22 var(--font-sora),sans-serif; letter-spacing: -.035em; text-wrap: balance; }
+.solucao-destaque-descricao { margin-block: 1.5rem 2rem; font-size: 1rem; line-height: 1.8; color: #f1f4fb; }
+.solucao-destaque-link { display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 1rem; min-height: 48px; margin-top: auto; padding-top: 1rem; border-top: 1px solid #ffffff50; font-size: .9rem; font-weight: 600; color: white; }
+.solucao-destaque-link svg { color: #d0e99d; transition: transform 250ms ease; }
+.solucao-destaque-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+.solucao-destaque-link:hover svg { transform: translate(3px,-3px); }
+.solucoes-destaque-seletores { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: .6rem; margin-top: 1rem; }
+.solucoes-destaque-seletores button { display: flex; align-items: center; gap: .65rem; min-height: 64px; padding: .8rem; border: 1px solid #cbd6be; border-radius: 10px; text-align: left; font-size: .8rem; line-height: 1.5; color: #384c96; background: white; transition: background 200ms ease,color 200ms ease,border-color 200ms ease; }
+.solucoes-destaque-seletores button > span { flex-shrink: 0; font-size: .65rem; font-variant-numeric: tabular-nums; }
+.solucoes-destaque-seletores button:hover { border-color: #384c96; }
+.solucoes-destaque-seletores button[aria-current="true"] { color: white; background: #384c96; border-color: #384c96; }
+.solucoes-destaque-seletores button[aria-current="true"] > span { color: #d0e99d; }
+.solucoes-destaque-ajuda { margin-top: .85rem; color: #536177; font-size: .75rem; line-height: 1.6; }
+.solucoes-destaque-trilho:focus-visible, .solucoes-destaque button:focus-visible { outline: 3px solid #384c96; outline-offset: 4px; }
+.solucao-destaque-link:focus-visible { outline: 3px solid #d0e99d; outline-offset: 5px; }
+@keyframes solucao-foto-destaque { from { opacity: .65; transform: scale(1.045); } to { opacity: 1; transform: scale(1); } }
+@keyframes solucao-texto-destaque { from { opacity: .5; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+html[data-movimento="ativo"] .solucao-em-destaque .solucao-destaque-foto > * { animation: solucao-foto-destaque 1100ms ease-out; }
+html[data-movimento="ativo"] .solucao-em-destaque .solucao-destaque-conteudo > * { animation: solucao-texto-destaque 700ms ease-out both; }
+html[data-movimento="ativo"] .solucao-em-destaque .solucao-destaque-conteudo > :nth-child(2) { animation-delay: 80ms; }
+html[data-movimento="ativo"] .solucao-em-destaque .solucao-destaque-conteudo > :nth-child(3) { animation-delay: 160ms; }
+@media (max-width: 899px) { .solucao-destaque-slide { grid-template-columns: minmax(0,1fr); } .solucao-destaque-foto { min-height: 0; height: clamp(210px,48vw,380px); flex: none; } .solucao-destaque-conteudo { padding: 1.75rem; } .solucao-destaque-rotulo { margin-bottom: 1rem; } .solucao-destaque-conteudo h3 { font-size: clamp(1.7rem,5vw,2.3rem); } .solucao-destaque-descricao { margin-block: 1rem 1.5rem; } .solucoes-destaque-seletores { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media (max-width: 479px) { .solucao-destaque-conteudo { padding: 1.4rem; } .solucao-destaque-visual figcaption { padding-inline: 1.4rem; } .solucoes-destaque-seletores { grid-template-columns: repeat(2,minmax(0,1fr)); } .solucoes-destaque-seletores button:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+@media (prefers-reduced-motion: reduce) { html:not([data-movimento="ativo"]) .solucao-em-destaque .solucao-destaque-foto > *, html:not([data-movimento="ativo"]) .solucao-em-destaque .solucao-destaque-conteudo > * { animation: none; } .solucoes-destaque-seletores button, .solucao-destaque-link svg { transition: none; } }
+
+.solucoes-destaque-barra { min-height: 48px; }
+.solucoes-destaque-seletores button { overflow-wrap: normal; }
+@media (max-width: 899px) { .solucao-destaque-slide { grid-template-rows: auto minmax(0,1fr); } }
+@media (max-width: 479px) { .solucoes-destaque-seletores button > span { display: none; } }

@@ -1,7 +1,8 @@
+import { IconeWhatsApp } from "@/components/icone-whatsapp";
 import { AberturaPagina } from "@/components/abertura-pagina";
 import { fundoAcervo } from "@/lib/visual-site";
 import type { Metadata } from "next";
-import { ArrowUpRight, Clock, MapPin, Phone, MessageCircle, Mail } from "lucide-react";
+import { ArrowUpRight, Clock, MapPin, Phone, Mail } from "lucide-react";
 import { CanaisContato } from "@/components/canais-contato";
 import { MapaContato } from "@/components/mapa-contato";
 import { contato } from "@/lib/contato-data";
@@ -22,7 +23,7 @@ export default function ContatoPage() {
       <h2 id="canais-titulo" className="sr-only">Canais de contato</h2>
       <div className="contato-canais-grid">
         <article data-revelar className="contato-canal contato-canal--principal">
-          <span className="contato-canal-icone"><MessageCircle aria-hidden="true" strokeWidth={1.6} /></span>
+          <span className="contato-canal-icone"><IconeWhatsApp /></span>
           <h3>WhatsApp</h3><p className="contato-canal-valor">{contato.telefoneExibicao}</p>
           <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="contato-canal-link">Falar com a equipe <ArrowUpRight aria-hidden="true" className="size-4" /></a>
         </article>
@@ -43,10 +44,17 @@ export default function ContatoPage() {
         </article>
       </div>
     </section>
-    <section id="formulario-proposta" tabIndex={-1} aria-labelledby="contato-apoio-titulo" className="site-shell contato-apoio">
-      <div data-revelar><p className="site-eyebrow">Seu próximo passo começa por aqui</p><h2 id="contato-apoio-titulo" className="site-title">Vamos falar sobre sua energia?</h2><p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">Comece uma conversa com a equipe pelo WhatsApp, sem preencher um formulário.</p></div>
-      <div className="contato-redes" data-revelar><p className="site-eyebrow">Outras formas de conversar</p><a href={"tel:" + siteConfig.telefoneInternacional} className="site-link"><Phone aria-hidden="true" className="size-4" />Ligue: {contato.telefoneExibicao}</a><CanaisContato mostrarIconesRedes mostrarEmail={false} /></div>
+    <section id="formulario-proposta" tabIndex={-1} aria-labelledby="contato-apoio-titulo" className="site-shell contato-apoio contato-apoio--mapa">
+      <div className="contato-lateral">
+        <div data-revelar><p className="site-eyebrow">Seu próximo passo começa por aqui</p><h2 id="contato-apoio-titulo" className="site-title">Vamos falar sobre sua energia?</h2><p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">Comece uma conversa com a equipe pelo WhatsApp, sem preencher um formulário.</p></div>
+        <aside aria-labelledby="contato-redes-titulo" className="contato-redes contato-redes--vertical" data-revelar>
+          <h3 id="contato-redes-titulo" className="site-eyebrow">Outras formas de conversar</h3>
+          <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="contato-whatsapp-direto"><span className="contato-whatsapp-icone"><IconeWhatsApp /></span><span>Falar no WhatsApp</span></a>
+          <a href={"tel:" + siteConfig.telefoneInternacional} className="site-link"><Phone aria-hidden="true" className="size-5 shrink-0" /><span>Ligue: {contato.telefoneExibicao}</span></a>
+          <CanaisContato mostrarIconesRedes mostrarEmail={false} vertical />
+        </aside>
+      </div>
+      <MapaContato embutido />
     </section>
-    <MapaContato />
   </main>;
 }

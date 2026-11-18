@@ -1,45 +1,50 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode, type KeyboardEvent } from "react";
+import { useEffect, useRef, useSyncExternalStore, type ReactNode, type KeyboardEvent } from "react";
+import { useMovimentoDoSite, definirMovimento } from "@/lib/preferencia-movimento";
+
+const assinarMontagem = () => () => {};
+const clienteDisponivel = () => true;
+const servidor = () => false;
+
+function iniciarTrajetoria(area: HTMLOListElement) {
+  const marcos = area.querySelectorAll<HTMLElement>("[data-marco]");
+  area.dataset.movimento = "permitido";
+  marcos.forEach(marco => marco.classList.remove("trajetoria-entrada"));
+  // Consolida o reinício da sequência em uma única leitura de layout.
+  void area.offsetWidth;
+  marcos.forEach(marco => marco.classList.add("trajetoria-entrada"));
+}
 
 export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
   const lista = useRef<HTMLOListElement>(null);
-  const [pronto, setPronto] = useState(false);
-  const [movimentoReduzido, setMovimentoReduzido] = useState(false);
+  const ativo = useMovimentoDoSite();
+  const pronto = useSyncExternalStore(assinarMontagem, clienteDisponivel, servidor);
 
   useEffect(() => {
     const area = lista.current;
-    if (!area || !("IntersectionObserver" in window)) return;
-    const movimento = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const atualizarPreferencia = () => {
-      setMovimentoReduzido(movimento.matches);
+    if (!area) return;
+    if (!ativo) {
       area.removeAttribute("data-movimento");
+      area.querySelectorAll("[data-marco]").forEach(marco => marco.classList.remove("trajetoria-entrada"));
+      return;
+    }
+    // Início na montagem da página: não depende de visibilidade ou rolagem.
+    const frame = requestAnimationFrame(() => iniciarTrajetoria(area));
+    const aoRetornar = (event: PageTransitionEvent) => {
+      if (event.persisted) iniciarTrajetoria(area);
     };
-    setPronto(true);
-    atualizarPreferencia();
-    movimento.addEventListener("change", atualizarPreferencia);
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const marco = entry.target as HTMLElement;
-        marco.dataset.ativo = String(entry.isIntersecting);
-        if (entry.isIntersecting && !marco.dataset.visitado) {
-          marco.dataset.visitado = "true";
-          if (!movimento.matches) marco.classList.add("trajetoria-entrada");
-        }
-      });
-    }, { threshold: 0.15 });
-    area.querySelectorAll("[data-marco]").forEach(marco => observer.observe(marco));
+    window.addEventListener("pageshow", aoRetornar);
     return () => {
-      observer.disconnect();
-      movimento.removeEventListener("change", atualizarPreferencia);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("pageshow", aoRetornar);
     };
-  }, []);
+  }, [ativo]);
 
   function navegar(event: KeyboardEvent<HTMLOListElement>) {
     const area = lista.current;
     if (!area || event.target !== area || area.scrollWidth <= area.clientWidth) return;
-    const reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const behavior = reduzido ? "auto" : "smooth";
+    const behavior = ativo ? "smooth" : "auto";
     const passo = area.querySelector("li")?.getBoundingClientRect().width ?? area.clientWidth;
     if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
       event.preventDefault();
@@ -51,21 +56,14 @@ export function LinhaTempoHistoria({ children }: { children: ReactNode }) {
   }
 
   function repetirAnimacao() {
-    const area = lista.current;
-    if (!area) return;
-    // O clique é uma escolha explícita para testar o movimento nesta prévia.
-    area.dataset.movimento = "permitido";
-    const marcos = area.querySelectorAll<HTMLElement>("[data-marco]");
-    marcos.forEach(marco => marco.classList.remove("trajetoria-entrada"));
-    // Consolida a remoção antes de iniciar novamente as animações CSS.
-    void area.offsetWidth;
-    marcos.forEach(marco => marco.classList.add("trajetoria-entrada"));
+    if (!ativo) definirMovimento(true);
+    else if (lista.current) iniciarTrajetoria(lista.current);
   }
 
   return <>
     <div className="trajetoria-controles">
-      {pronto && <button type="button" onClick={repetirAnimacao} className="trajetoria-repetir">Reproduzir animação <span aria-hidden="true">↻</span></button>}
-      {pronto && movimentoReduzido && <p className="text-xs text-white">Seu navegador usa movimento reduzido. A animação só será reproduzida se você clicar no botão.</p>}
+      {pronto && <button type="button" onClick={repetirAnimacao} className="trajetoria-repetir">{ativo ? "Repetir animação" : "Reproduzir animação"} <span aria-hidden="true">↻</span></button>}
+      {pronto && !ativo && <p className="text-xs text-white">As animações estão reduzidas. Reproduzir ativa o movimento nesta sessão.</p>}
     </div>
     <ol ref={lista} tabIndex={0} aria-label="Trajetória da Don Energy, de 2022 a 2025" onKeyDown={navegar} className="trajetoria-trilho">{children}</ol>
   </>;

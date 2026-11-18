@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode, type KeyboardEvent } from "react";
+import { useMovimentoDoSite } from "@/lib/preferencia-movimento";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 type CarrosselProps = {
@@ -15,6 +16,7 @@ type CarrosselProps = {
 
 export function Carrossel({ children, id, titulo, itens, anterior, proximo, indicadores }: CarrosselProps) {
   const viewport = useRef<HTMLDivElement>(null);
+  const movimentoAtivo = useMovimentoDoSite();
   const [inicio, setInicio] = useState(true);
   const [fim, setFim] = useState(false);
   const [ativo, setAtivo] = useState(0);
@@ -61,8 +63,47 @@ export function Carrossel({ children, id, titulo, itens, anterior, proximo, indi
     };
   }, [indicadores]);
 
+  useEffect(() => {
+    const area = viewport.current;
+    if (!area || !movimentoAtivo) return;
+    let timer: number | undefined;
+    let ultimaPosicao = Math.round(area.scrollLeft);
+
+    function animarVisiveis() {
+      if (!area) return;
+      const posicao = Math.round(area.scrollLeft);
+      if (Math.abs(posicao - ultimaPosicao) < 2) return;
+      ultimaPosicao = posicao;
+      const quadro = area.getBoundingClientRect();
+      const fotos = [...area.querySelectorAll<HTMLElement>(".novo-servico-foto")].filter(foto => {
+        const limite = foto.getBoundingClientRect();
+        const larguraVisivel = Math.min(limite.right, quadro.right) - Math.max(limite.left, quadro.left);
+        return larguraVisivel >= limite.width * 0.5;
+      });
+      fotos.forEach(foto => foto.classList.remove("carrossel-foto-entrada"));
+      if (fotos.length) {
+        void area.offsetWidth;
+        fotos.forEach(foto => foto.classList.add("carrossel-foto-entrada"));
+      }
+    }
+
+    function agendar() {
+      window.clearTimeout(timer);
+      // Fallback para navegadores sem scrollend; também atende arraste por toque.
+      timer = window.setTimeout(animarVisiveis, 120);
+    }
+    area.addEventListener("scroll", agendar, { passive: true });
+    area.addEventListener("scrollend", animarVisiveis);
+    return () => {
+      window.clearTimeout(timer);
+      area.removeEventListener("scroll", agendar);
+      area.removeEventListener("scrollend", animarVisiveis);
+      area.querySelectorAll(".carrossel-foto-entrada").forEach(foto => foto.classList.remove("carrossel-foto-entrada"));
+    };
+  }, [movimentoAtivo]);
+
   function rolar(area: HTMLDivElement, left: number) {
-    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth";
+    const behavior = movimentoAtivo ? "smooth" : "instant";
     area.scrollTo({ left, behavior });
   }
 

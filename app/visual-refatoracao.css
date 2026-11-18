@@ -260,3 +260,6 @@ html[data-movimento="reduzido"] .novo-progresso-leitura { display: none; }
 
 [data-revelar] .site-eyebrow { position: relative; padding-left: 40px; }
 [data-revelar] .site-eyebrow::before { content: ""; position: absolute; left: 0; top: .55em; width: 28px; height: 2px; background: #94b94a; }
+
+@keyframes carrossel-imagem-chegar { from { opacity: .6; transform: scale(1.05); } to { opacity: 1; transform: scale(1); } }
+html[data-movimento="ativo"] .carrossel-foto-entrada > * { animation: carrossel-imagem-chegar 1000ms ease-out; }

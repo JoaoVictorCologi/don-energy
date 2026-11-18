@@ -24,8 +24,8 @@ export default function NossaHistoriaPage() {
         <div aria-hidden="true" className="trajetoria-overlay" />
         <div className="site-shell relative z-10">
           <div className="trajetoria-introducao">
-            <h1 id="historia-titulo">Uma história de <span>crescimento,</span> inovação e compromisso.</h1>
-            <p>Ao longo da nossa trajetória, seguimos firmes no propósito de levar <strong>energia limpa, economia e sustentabilidade</strong> para mais pessoas e empresas.</p>
+            <h1 data-revelar id="historia-titulo">Uma história de <span>crescimento,</span> inovação e compromisso.</h1>
+            <p data-revelar>Ao longo da nossa trajetória, seguimos firmes no propósito de levar <strong>energia limpa, economia e sustentabilidade</strong> para mais pessoas e empresas.</p>
           </div>
           <p id="trajetoria-ajuda" className="mt-8 text-sm text-white lg:hidden">Deslize para acompanhar os marcos de 2022 a 2025. Pelo teclado, use as setas.</p>
           <LinhaTempoHistoria>
@@ -63,7 +63,7 @@ export default function NossaHistoriaPage() {
       </section>
       <section aria-labelledby="texto-historia-titulo" className="site-section">
         <div className="site-shell">
-          <div className="mx-auto max-w-3xl text-center">
+          <div data-revelar className="mx-auto max-w-3xl text-center">
             <h2 id="texto-historia-titulo" className="font-heading text-3xl font-semibold tracking-tight text-brand-blue md:text-4xl">Nossa História</h2>
             <div className="mt-7 space-y-5 text-base leading-loose text-brand-ink">
               <p>A história da Don Energy começou em 2022, em Mococa (SP), quando um pai e seus dois filhos uniram experiência comercial e conhecimento técnico em energia solar. Essa combinação deu origem a uma empresa pautada pela confiança, pela proximidade e pelo cuidado com cada projeto.</p>
@@ -71,7 +71,7 @@ export default function NossaHistoriaPage() {
               <p>Seguimos com o propósito de entender as necessidades de cada cliente e construir relações de longo prazo. Engenharia, qualidade e atendimento próximo orientam o nosso trabalho, da primeira conversa à execução.</p>
             </div>
           </div>
-          <figure className="mx-auto mt-12 max-w-5xl">
+          <figure data-revelar className="mx-auto mt-12 max-w-5xl">
             <FotoAcervo numero="16" sizes="(min-width: 1200px) 1024px, 90vw" className="aspect-[16/9]" />
             <figcaption className="mt-3 text-center text-xs text-muted-foreground">Igreja Nossa Senhora da Luz · Acervo Don Energy</figcaption>
           </figure>
@@ -86,7 +86,7 @@ export default function NossaHistoriaPage() {
             <p className="site-eyebrow">O que nos move</p>
             <h2 className="site-title">Engenharia, qualidade<br /> e proximidade.</h2>
           </div>
-          <div className="max-w-xl">
+          <div data-revelar className="max-w-xl">
             <p className="leading-relaxed text-muted-foreground">{institucional.compromisso}</p>
             <p className="mt-6 leading-relaxed text-muted-foreground">Cada projeto começa por entender o contexto, as necessidades e as dúvidas de quem procura a Don Energy.</p>
             <div className="mt-6 flex flex-wrap gap-x-8">
